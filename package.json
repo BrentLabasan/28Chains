@@ -1,0 +1,22 @@
+{
+  "name": "28Chains",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrentLabasan/28Chains"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrentLabasan/28Chains/issues"
+  },
+  "homepage": "https://github.com/BrentLabasan/28Chains",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

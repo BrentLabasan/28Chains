@@ -1,0 +1,38 @@
+<div ng-init="getAllBooks()">
+  <h1>Public Library: Delete a book record</h1>
+  <form>
+    <div ng-hide="book">
+      <label>Select book:
+        <select ng-model="book"
+                ng-options="(book.isbn + ' - ' + book.title) for book in books">
+          <option value="">...</option>
+        </select>
+      </label>
+    </div>
+    <div ng-show="book">
+      <div>
+        <label>ISBN:
+          <output type="text" name="isbn" ng-bind="book.isbn" />
+        </label>
+      </div>
+      <div>
+        <label>Title:
+          <output type="text" name="title" ng-bind="book.title" />
+        </label>
+      </div>
+      <div>
+        <label>Year:
+          <output type="number" name="year" ng-bind="book.year" />
+        </label>
+      </div>
+      <div>
+        <button type="submit" name="commit" ng-click="destroyBook()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
+  <nav>
+    <a href="#/main">Back to main menu</a>
+  </nav>
+</div>

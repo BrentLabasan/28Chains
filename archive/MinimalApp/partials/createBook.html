@@ -1,0 +1,26 @@
+<div>
+  <h1>Public Library: Create a new book record</h1>
+  <form>
+    <div>
+      <label>ISBN:
+        <input type="text" name="isbn" ng-model="book.isbn" />
+      </label>
+    </div>
+    <div>
+      <label>Title:
+        <input type="text" name="title" ng-model="book.title" />
+      </label>
+    </div>
+    <div>
+      <label>Year:
+        <input type="number" name="year" ng-model="book.year" />
+      </label>
+    </div>
+    <div>
+      <button type="submit" name="commit" ng-click="addBook()">Save</button>
+    </div>
+  </form>
+  <nav>
+    <a href="#/main">Back to main menu</a>
+  </nav>
+</div>

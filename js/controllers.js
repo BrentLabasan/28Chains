@@ -69,18 +69,24 @@ publicLibraryControllers.controller('BooksController',
     var rootUrl = "https://glowing-heat-6414.firebaseio.com";
     var ref = new Firebase(rootUrl);
 
+    var habitsRef = ref.child("habits");
+    var habitPush = habitsRef.push({
+        id_user: $scope.authData.facebook.id,
+        //id_attempt: attemptPush.key(),
+        name: $scope.book.name,
+        description: $scope.book.description
+    });
+
     var attemptsRef = ref.child("attempts");
-    attemptsRef.push({
+    var attemptPush = attemptsRef.push({
       id_user: $scope.authData.facebook.id,
+      id_habit: habitPush.key(),
       name:"Attempt for Habit" + $scope.book.name,
       journalEntry: "Write about your day here"
     });
 
-    var habitsRef = ref.child("habits");
-    habitsRef.push({
-        id_user: $scope.authData.facebook.id,
-        name: $scope.book.name,
-        description: $scope.book.description
+    habitsRef.child(habitPush.key()).update({
+      id_attempt: attemptPush.key(),
     });
 
 

@@ -1,13 +1,13 @@
 
 /* App Module */
 
-var publicLibraryApp = angular.module( 'publicLibraryApp',
+var app = angular.module( 'TwentyEightChains',
 ['ngRoute', 'publicLibraryControllers']);
 
 /**
  * Configuration Block
  */
-publicLibraryApp.config( [ '$routeProvider', function ( $routeProvider){
+app.config( [ '$routeProvider', function ($routeProvider){
   $routeProvider
   // Router configuration
     .when( '/main', {
@@ -38,7 +38,7 @@ publicLibraryApp.config( [ '$routeProvider', function ( $routeProvider){
 /**
  * Run Block
  */
-publicLibraryApp.run( [ '$http', function ( $http) {
+app.run( [ '$http', function ($http) {
   // Predefine the API's value from Parse.com
   $http.defaults.headers.common = {
     'X-Parse-Application-Id': 'WkRZPQr0whIqwm3fom8zNAmjqfJFqPmZVeFW5sFD',

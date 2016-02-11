@@ -44,6 +44,14 @@ publicLibraryControllers.controller('BooksController',
          */
         $scope.getAllBooks = function () {
 
+            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
+            $scope.showLoading = false;
+
+            ref2.on("value", function(snapshot){
+                $scope.books = $firebaseObject(ref.child('habits'));
+                console.log($scope.books);
+                $scope.showLoading = false;
+            });
 
 
             /*

@@ -10,7 +10,7 @@
             <li><a href="#">My Attempts</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li ng-show="authData"><a href="#" ng-click="auth.$unauth()"><span
+            <li ng-show="authData"><a href="#"><span
                     class="glyphicon glyphicon-log-out"></span> Hello, {{ authData.facebook.displayName }}</a></li>
 
             <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthPopup('facebook')"><span

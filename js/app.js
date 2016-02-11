@@ -56,6 +56,10 @@ app.config( [ '$routeProvider', function ($routeProvider){
       templateUrl: 'partials/deleteBook.html',
       controller: 'BooksController'
     })
+    .when( '/habit/:id', {
+      templateUrl: 'partials/habit.html',
+      controller: 'BooksController'
+    })
     .otherwise( {
       redirectTo: '/main'
   });

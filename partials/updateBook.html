@@ -1,0 +1,38 @@
+<div ng-init="getAllBooks()">
+  <h1>Public Library: Update a book record</h1>
+  <form>
+    <div ng-hide="book">
+      <label>Select book:
+        <select ng-model="book"
+                ng-options="(book.isbn + ' - ' + book.title) for book in books">
+          <option value="">...</option>
+        </select>
+      </label>
+    </div>
+    <div ng-show="book">
+      <div>
+        <label>ISBN:
+          <output type="text" name="isbn" ng-bind="book.isbn" />
+        </label>
+      </div>
+      <div>
+        <label>Title:
+          <input type="text" name="title" ng-model="book.title" />
+        </label>
+      </div>
+      <div>
+        <label>Year:
+          <input type="number" name="year" ng-model="book.year" />
+        </label>
+      </div>
+      <div>
+        <button type="submit" name="commit" ng-click="updateBook()">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </form>
+  <nav>
+    <a href="#/main">Back to main menu</a>
+  </nav>
+</div>

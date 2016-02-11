@@ -65,7 +65,7 @@ app.config( [ '$routeProvider', function ($routeProvider){
       controller: 'BooksController'
     })
     .otherwise( {
-      redirectTo: '/main'
+      redirectTo: '/showAllBooks'
   });
 }]);
 

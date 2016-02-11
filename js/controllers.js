@@ -52,7 +52,24 @@ publicLibraryControllers.controller('BooksController',
    * in console.
    */
   $scope.addBook = function () {
-    $http({
+    var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+    var ref = new Firebase(rootUrl);
+
+    var usersRef = ref.child("users");
+    usersRef.set({
+      alanisawesome: {
+        date_of_birth: "June 23, 1912",
+        full_name: "Alan Turing"
+      },
+      gracehop: {
+        date_of_birth: "December 9, 1906",
+        full_name: "Grace Hopper"
+      }
+    });
+
+
+
+/*    $http({
       method: 'POST',
       url: 'https://api.parse.com/1/classes/Book',
       data: {
@@ -65,7 +82,8 @@ publicLibraryControllers.controller('BooksController',
       .error( function ( data) {
         console.log( data);
         alert("OH! Book is NOT added, see the information in console.");
-      });
+      });*/
+
   };
 
   /**

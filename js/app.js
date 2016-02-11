@@ -1,8 +1,13 @@
 
 /* App Module */
 
-var app = angular.module( 'TwentyEightChains',
-['ngRoute', 'publicLibraryControllers']);
+var app = angular.module( 'TwentyEightChains', ['ngRoute', 'publicLibraryControllers', 'firebase']);
+
+app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray', '$firebaseAuth',
+    function($scope, $firebaseObject, $firebaseArray, $firebaseAuth) {
+        $scope.meow = "a";
+    }
+]);
 
 /**
  * Configuration Block

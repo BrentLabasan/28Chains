@@ -60,6 +60,10 @@ app.config( [ '$routeProvider', function ($routeProvider){
       templateUrl: 'partials/habit.html',
       controller: 'BooksController'
     })
+    .when( '/attempt/:id', {
+      templateUrl: 'partials/attempt.html',
+      controller: 'BooksController'
+    })
     .otherwise( {
       redirectTo: '/main'
   });

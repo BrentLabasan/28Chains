@@ -55,15 +55,11 @@ publicLibraryControllers.controller('BooksController',
     var rootUrl = "https://glowing-heat-6414.firebaseio.com";
     var ref = new Firebase(rootUrl);
 
-    var usersRef = ref.child("users");
+    var usersRef = ref.child("habits");
     usersRef.push({
       alanisawesome: {
-        date_of_birth: "June 23, 1912",
-        full_name: "Alan Turing"
-      },
-      gracehop: {
-        date_of_birth: "December 9, 1906",
-        full_name: "Grace Hopper"
+        name: $scope.book.name,
+        description: $scope.book.description
       }
     });
 

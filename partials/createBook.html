@@ -1,21 +1,21 @@
 <div>
-  <h1>Public Library: Create a new book record</h1>
+  <h1>Create a new Habit</h1>
   <form>
     <div>
-      <label>ISBN:
-        <input type="text" name="isbn" ng-model="book.isbn" />
+      <label>Name:
+        <input type="text" name="Name" ng-model="book.name" />
       </label>
     </div>
     <div>
-      <label>Title:
-        <input type="text" name="title" ng-model="book.title" />
+      <label>Description:
+        <input type="text" name="Description" ng-model="book.description" />
       </label>
     </div>
-    <div>
+<!--    <div>
       <label>Year:
         <input type="number" name="year" ng-model="book.year" />
       </label>
-    </div>
+    </div>-->
     <div>
       <button type="submit" name="commit" ng-click="addBook()">Save</button>
     </div>

@@ -69,12 +69,20 @@ publicLibraryControllers.controller('BooksController',
     var rootUrl = "https://glowing-heat-6414.firebaseio.com";
     var ref = new Firebase(rootUrl);
 
-    var usersRef = ref.child("habits");
-    usersRef.push({
-        id: $scope.authData.facebook.id,
+    var attemptsRef = ref.child("attempts");
+    attemptsRef.push({
+      id_user: $scope.authData.facebook.id,
+      name:"Attempt for Habit" + $scope.book.name,
+      journalEntry: "Write about your day here"
+    });
+
+    var habitsRef = ref.child("habits");
+    habitsRef.push({
+        id_user: $scope.authData.facebook.id,
         name: $scope.book.name,
         description: $scope.book.description
     });
+
 
 
 

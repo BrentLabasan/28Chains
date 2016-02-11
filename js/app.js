@@ -3,9 +3,28 @@
 
 var app = angular.module( 'TwentyEightChains', ['ngRoute', 'publicLibraryControllers', 'firebase']);
 
-app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray', '$firebaseAuth',
-    function($scope, $firebaseObject, $firebaseArray, $firebaseAuth) {
+app.factory("Auth", ["$firebaseAuth",
+    function ($firebaseAuth) {
+        var ref = new Firebase("https://glowing-heat-6414.firebaseio.com", "example3");
+        return $firebaseAuth(ref);
+    }
+]);
+
+app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray', '$firebaseAuth', 'Auth',
+    function($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
         $scope.meow = "a";
+
+        var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+        var ref = new Firebase(rootUrl);
+        var auth = $firebaseAuth(ref);
+
+        // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
+        $scope.auth = Auth;
+        // any time auth status updates, add the user data to scope
+        $scope.auth.$onAuth(function (authData) {
+            $scope.authData = authData;
+            console.log("Authenticated successfully with payload:", authData);
+        });
     }
 ]);
 

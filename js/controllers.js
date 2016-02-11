@@ -1,4 +1,3 @@
-
 /* Controllers */
 
 var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase']);
@@ -14,145 +13,166 @@ var publicLibraryControllers = angular.module('publicLibraryControllers', ['fire
  * @param  {Object} $http       [get connection with parse.com using REST Api]
  ******************************************************************************/
 publicLibraryControllers.controller('BooksController',
-['$scope', '$location', '$http', '$firebaseObject','$firebaseArray', '$firebaseAuth', 'Auth', function ( $scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
+    ['$scope', '$location', '$http', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth', function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
 
-  $scope.meow = "meow";
+        $scope.meow = "meow";
 
-  var rootUrl = "https://glowing-heat-6414.firebaseio.com";
-  var ref = new Firebase(rootUrl);
-  var auth = $firebaseAuth(ref);
+        var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+        var ref = new Firebase(rootUrl);
+        var auth = $firebaseAuth(ref);
 
-  // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
-  $scope.auth = Auth;
-  // any time auth status updates, add the user data to scope
-  $scope.auth.$onAuth(function (authData) {
-    $scope.authData = authData;
-    console.log("authData loaded in BooksController:", authData);
-  });
+        // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
+        $scope.auth = Auth;
+        // any time auth status updates, add the user data to scope
+        $scope.auth.$onAuth(function (authData) {
+            $scope.authData = authData;
+            console.log("authData loaded in BooksController:", authData);
+        });
 
-  /**
-   * ## showLoading
-   * once the page is loaded, only show progressbar, which will be hidden after
-   * loaded all data, and the rest content of this page will be shown;
-   */
-  $scope.showLoading = true;
+        /**
+         * ## showLoading
+         * once the page is loaded, only show progressbar, which will be hidden after
+         * loaded all data, and the rest content of this page will be shown;
+         */
+        $scope.showLoading = true;
 
-  /**
-   * ## getAllBooks
-   * sent a GET request to parse.com once the controller is loaded. If the
-   * request is succeed, all books stored in parse.com will be loaded and
-   * saved to an array $scope.books; otherwise, show error messages in console.
-   */
-  $scope.getAllBooks = function () {
-    $http({
-      method: 'GET',
-      url: 'https://api.parse.com/1/classes/Book'
-    })
-      .success( function ( data) {
-        $scope.showLoading = false;
-        $scope.books = data.results;
-      })
-      .error( function ( data) {
-        console.log( data);
-        alert("OH! Can NOT get all books, see the information in console.");
-      });
-  };
-
-  /**
-   * ## addBook
-   * send a POST request to parse.com for inserting a new book record which
-   * stored in $scope.book to parse.com. If the request is succeed, clear all
-   * the temporary data and jump to parent page; otherwise, show error messages
-   * in console.
-   */
-  $scope.addBook = function () {
-    var rootUrl = "https://glowing-heat-6414.firebaseio.com";
-    var ref = new Firebase(rootUrl);
-
-    var habitsRef = ref.child("habits");
-    var habitPush = habitsRef.push({
-        id_user: $scope.authData.facebook.id,
-        //id_attempt: attemptPush.key(),
-        name: $scope.book.name,
-        description: $scope.book.description
-    });
-
-    var attemptsRef = ref.child("attempts");
-    var attemptPush = attemptsRef.push({
-      id_user: $scope.authData.facebook.id,
-      id_habit: habitPush.key(),
-      name:"Attempt for Habit" + $scope.book.name,
-      journalEntry: "Write about your day here"
-    });
-
-    habitsRef.child(habitPush.key()).update({
-      id_attempt: attemptPush.key(),
-    });
+        /**
+         * ## getAllBooks
+         * sent a GET request to parse.com once the controller is loaded. If the
+         * request is succeed, all books stored in parse.com will be loaded and
+         * saved to an array $scope.books; otherwise, show error messages in console.
+         */
+        $scope.getAllBooks = function () {
 
 
 
+            /*
+             $http({
+             method: 'GET',
+             url: 'https://api.parse.com/1/classes/Book'
+             })
+             .success( function ( data) {
+             $scope.showLoading = false;
+             $scope.books = data.results;
+             })
+             .error( function ( data) {
+             console.log( data);
+             alert("OH! Can NOT get all books, see the information in console.");
+             });*/
 
-/*    $http({
-      method: 'POST',
-      url: 'https://api.parse.com/1/classes/Book',
-      data: {
-        isbn: $scope.book.isbn,
-        title: $scope.book.title,
-        year: $scope.book.year
-      }
-    })
-      .success( function () { $location.path('/');})
-      .error( function ( data) {
-        console.log( data);
-        alert("OH! Book is NOT added, see the information in console.");
-      });*/
+        };
 
-  };
+        /**
+         * ## addBook
+         * send a POST request to parse.com for inserting a new book record which
+         * stored in $scope.book to parse.com. If the request is succeed, clear all
+         * the temporary data and jump to parent page; otherwise, show error messages
+         * in console.
+         */
 
-  /**
-   * ## updateBook
-   * send a PUT request to parse.com for changing book record, which has a
-   * standard objectId defined by parse.com itself and stored in $scope.book,
-   * to parse.com. If the request is succeed, clear all the temporary data and
-   * jump to parent page; otherwise, show error messages in console.
-   */
-  $scope.updateBook = function () {
-    var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
-    $http({
-      method: 'PUT',
-      url: bookUrl,
-      data: {
-        isbn: $scope.book.isbn,
-        title: $scope.book.title,
-        year: $scope.book.year
-      }
-    })
-      .success( function () { $location.path('/');})
-      .error( function ( data){
-        console.log( data);
-        alert("OH! Book is NOT updated, see the information in console.");
-      });
-  };
+        var createDay = function () {
+            var arr = [];
+            var i;
+            for (i = 0; i < 28; i++) {
+                arr[i] = {
+                    status: "n"
+                }
+            }
+            return arr;
+        }
 
-  /**
-   * ## destroyBook
-   * send a DELETE request to parse.com for deleting a book record which has
-   * a standard objectId defined by parse.com itself. If the request is succeed,
-   * jump to parent page; otherwise, show error messages in console.
-   */
-  $scope.destroyBook = function () {
-    var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
-    $http( {
-      method: 'DELETE',
-      url: bookUrl
-    })
-      .success( function () { $location.path('/');})
-      .error( function ( data) {
-        console.log( data);
-        alert("Book is NOT deleted. See the error message in console.");
-      });
-  };
-}]);
+        $scope.addBook = function () {
+            var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+            var ref = new Firebase(rootUrl);
+
+            var habitsRef = ref.child("habits");
+            var habitPush = habitsRef.push({
+                id_user: $scope.authData.facebook.id,
+                //id_attempt: attemptPush.key(),
+                name: $scope.book.name,
+                description: $scope.book.description
+            });
+
+            var attemptsRef = ref.child("attempts");
+            var attemptPush = attemptsRef.push({
+                id_user: $scope.authData.facebook.id,
+                id_habit: habitPush.key(),
+                name: "Attempt for Habit" + $scope.book.name,
+                journalEntry: "Write about your day here",
+                chain: createDay()
+
+            });
+
+            habitsRef.child(habitPush.key()).update({
+                id_attempt: attemptPush.key(),
+            });
+
+
+            /*    $http({
+             method: 'POST',
+             url: 'https://api.parse.com/1/classes/Book',
+             data: {
+             isbn: $scope.book.isbn,
+             title: $scope.book.title,
+             year: $scope.book.year
+             }
+             })
+             .success( function () { $location.path('/');})
+             .error( function ( data) {
+             console.log( data);
+             alert("OH! Book is NOT added, see the information in console.");
+             });*/
+
+        };
+
+        /**
+         * ## updateBook
+         * send a PUT request to parse.com for changing book record, which has a
+         * standard objectId defined by parse.com itself and stored in $scope.book,
+         * to parse.com. If the request is succeed, clear all the temporary data and
+         * jump to parent page; otherwise, show error messages in console.
+         */
+        $scope.updateBook = function () {
+            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
+            $http({
+                method: 'PUT',
+                url: bookUrl,
+                data: {
+                    isbn: $scope.book.isbn,
+                    title: $scope.book.title,
+                    year: $scope.book.year
+                }
+            })
+                .success(function () {
+                    $location.path('/');
+                })
+                .error(function (data) {
+                    console.log(data);
+                    alert("OH! Book is NOT updated, see the information in console.");
+                });
+        };
+
+        /**
+         * ## destroyBook
+         * send a DELETE request to parse.com for deleting a book record which has
+         * a standard objectId defined by parse.com itself. If the request is succeed,
+         * jump to parent page; otherwise, show error messages in console.
+         */
+        $scope.destroyBook = function () {
+            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
+            $http({
+                method: 'DELETE',
+                url: bookUrl
+            })
+                .success(function () {
+                    $location.path('/');
+                })
+                .error(function (data) {
+                    console.log(data);
+                    alert("Book is NOT deleted. See the error message in console.");
+                });
+        };
+    }]);
 
 
 /*==============================================================================
@@ -161,91 +181,91 @@ publicLibraryControllers.controller('BooksController',
  * - for creating and clearing test data.
  ******************************************************************************/
 publicLibraryControllers.controller('TestDatasController',
-['$scope', '$http', '$timeout', function ( $scope, $http, $timeout) {
-  // Create test data.
-  $scope.createTestData = function () {
-    $scope.clearDatabase();
-    $timeout( function () {
-      // basic data from author, publisher and book
-      $http({
-        method: 'POST',
-        url: 'https://api.parse.com/1/batch',
-        data: {
-          requests: [
-            // Create Test Data for Books
-            {
-              method: 'POST',
-              path: '/1/classes/Book',
-              body: {
-                isbn: "0553345842",
-                title: "The Mind's I",
-                year: 1982
-              }
-            },
-            {
-              method: 'POST',
-              path: '/1/classes/Book',
-              body: {
-                isbn: "1463794762",
-                title: "The Critique of Pure Reason",
-                year: 2011
-              }
-            },
-            {
-              method: 'POST',
-              path: '/1/classes/Book',
-              body: {
-                isbn: "1928565379",
-                title: "The Critique of Practical Reason",
-                year: 2009
-              }
-            },
-            {
-              method: 'POST',
-              path: '/1/classes/Book',
-              body: {
-                isbn: "0465030793",
-                title: "I Am A Strange Loop",
-                year: 2000
-              }
-            }
-          ]
-        }
-      })
-        .success( function () {
-          console.log("added 4 books");
-        })
-        .error( function ( data) {
-          console.log( data);
-          alert("OH! Something goes wrong. See the information in console.");
-        });
-    }, 2000);
-  };
+    ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+        // Create test data.
+        $scope.createTestData = function () {
+            $scope.clearDatabase();
+            $timeout(function () {
+                // basic data from author, publisher and book
+                $http({
+                    method: 'POST',
+                    url: 'https://api.parse.com/1/batch',
+                    data: {
+                        requests: [
+                            // Create Test Data for Books
+                            {
+                                method: 'POST',
+                                path: '/1/classes/Book',
+                                body: {
+                                    isbn: "0553345842",
+                                    title: "The Mind's I",
+                                    year: 1982
+                                }
+                            },
+                            {
+                                method: 'POST',
+                                path: '/1/classes/Book',
+                                body: {
+                                    isbn: "1463794762",
+                                    title: "The Critique of Pure Reason",
+                                    year: 2011
+                                }
+                            },
+                            {
+                                method: 'POST',
+                                path: '/1/classes/Book',
+                                body: {
+                                    isbn: "1928565379",
+                                    title: "The Critique of Practical Reason",
+                                    year: 2009
+                                }
+                            },
+                            {
+                                method: 'POST',
+                                path: '/1/classes/Book',
+                                body: {
+                                    isbn: "0465030793",
+                                    title: "I Am A Strange Loop",
+                                    year: 2000
+                                }
+                            }
+                        ]
+                    }
+                })
+                    .success(function () {
+                        console.log("added 4 books");
+                    })
+                    .error(function (data) {
+                        console.log(data);
+                        alert("OH! Something goes wrong. See the information in console.");
+                    });
+            }, 2000);
+        };
 
-  // Clear all test data.
-  $scope.clearDatabase = function () {
-    // Clear all Book Data
-    $http({
-      method: 'GET',
-      url: 'https://api.parse.com/1/classes/Book'
-    })
-      .success( function ( data) {
-        var obs = data.results;
-        obs.forEach( function ( ob) {
-          $http({
-            method: 'DELETE',
-            url: 'https://api.parse.com/1/classes/Book/' + ob.objectId
-          })
-            .error( function ( data, status, headers, config) {
-              alert("OH! Something goes wrong. See the information in console.");
-              console.log( data, status, headers, config);
-            });
-        });
-        console.log("clear all book data.");
-      })
-      .error( function ( data, status, headers, config) {
-        alert("OH! Something goes wrong. See the information in console.");
-        console.log( data, status, headers, config);
-      });
-  };
-}]);
+        // Clear all test data.
+        $scope.clearDatabase = function () {
+            // Clear all Book Data
+            $http({
+                method: 'GET',
+                url: 'https://api.parse.com/1/classes/Book'
+            })
+                .success(function (data) {
+                    var obs = data.results;
+                    obs.forEach(function (ob) {
+                        $http({
+                            method: 'DELETE',
+                            url: 'https://api.parse.com/1/classes/Book/' + ob.objectId
+                        })
+                            .error(function (data, status, headers, config) {
+                                alert("OH! Something goes wrong. See the information in console.");
+                                console.log(data, status, headers, config);
+                            });
+                    });
+                    console.log("clear all book data.");
+                })
+                .error(function (data, status, headers, config) {
+                    alert("OH! Something goes wrong. See the information in console.");
+                    console.log(data, status, headers, config);
+                });
+        };
+    }]);

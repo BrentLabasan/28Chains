@@ -56,7 +56,7 @@ publicLibraryControllers.controller('BooksController',
     var ref = new Firebase(rootUrl);
 
     var usersRef = ref.child("users");
-    usersRef.set({
+    usersRef.push({
       alanisawesome: {
         date_of_birth: "June 23, 1912",
         full_name: "Alan Turing"

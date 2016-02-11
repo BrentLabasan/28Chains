@@ -1,7 +1,7 @@
 
 /* Controllers */
 
-var publicLibraryControllers = angular.module('publicLibraryControllers', []);
+var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase']);
 
 
 /*******************************************************************************
@@ -14,7 +14,21 @@ var publicLibraryControllers = angular.module('publicLibraryControllers', []);
  * @param  {Object} $http       [get connection with parse.com using REST Api]
  ******************************************************************************/
 publicLibraryControllers.controller('BooksController',
-['$scope', '$location', '$http', function ( $scope, $location, $http) {
+['$scope', '$location', '$http', '$firebaseObject','$firebaseArray', '$firebaseAuth', 'Auth', function ( $scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
+
+  $scope.meow = "meow";
+
+  var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+  var ref = new Firebase(rootUrl);
+  var auth = $firebaseAuth(ref);
+
+  // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
+  $scope.auth = Auth;
+  // any time auth status updates, add the user data to scope
+  $scope.auth.$onAuth(function (authData) {
+    $scope.authData = authData;
+    console.log("authData loaded in BooksController:", authData);
+  });
 
   /**
    * ## showLoading
@@ -57,10 +71,9 @@ publicLibraryControllers.controller('BooksController',
 
     var usersRef = ref.child("habits");
     usersRef.push({
-      alanisawesome: {
+        id: $scope.authData.facebook.id,
         name: $scope.book.name,
         description: $scope.book.description
-      }
     });
 
 

@@ -32,6 +32,8 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
  * Configuration Block
  */
 app.config( [ '$routeProvider', function ($routeProvider){
+
+
   $routeProvider
   // Router configuration
     .when( '/main', {

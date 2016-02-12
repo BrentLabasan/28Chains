@@ -60,7 +60,8 @@
         Tabs using nested forms:
         <form name="outerForm" class="tab-form-demo">
             <uib-tabset  justified="true">
-                <uib-tab heading="Form Tab">
+
+                <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}">
                     <ng-form name="nestedForm">
                         <div class="form-group">
                             <label>Name</label>
@@ -68,12 +69,7 @@
                         </div>
                     </ng-form>
                 </uib-tab>
-                <uib-tab heading="Tab One lorem ipsum">
-                    Some Tab Content
-                </uib-tab>
-                <uib-tab heading="Tab Two">
-                    More Tab Content
-                </uib-tab>
+
             </uib-tabset>
         </form>
         Model:

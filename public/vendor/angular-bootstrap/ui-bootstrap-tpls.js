@@ -5415,7 +5415,7 @@ angular.module('ui.bootstrap.tabs', [])
       scope.$watch('headingElement', function updateHeadingElement(heading) {
         if (heading) {
           elm.html('');
-          elm.append(heading);
+          elm.append(heading);          console.log("heading 1" + heading);
         }
       });
     }
@@ -6996,7 +6996,7 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tab.html",
     "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
-    "  <a href ng-click=\"select()\" uib-tab-heading-transclude>{{heading}}</a>\n" +
+    "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span class='label label-success'>{{heading}}</span></a>\n" +
     "</li>\n" +
     "");
 }]);

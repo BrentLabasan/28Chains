@@ -59,13 +59,20 @@
                 <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}">
                     <ng-form name="nestedForm">
                         <div class="form-group">
+                            <br/>
+
                             <label>Accomplished Today?</label>
 <!--
                             <select ng-model="day.status" ng-options="x for x in statusChoices.choices"></select>
 -->
-                            <input type="radio" ng-model="day.status" value="Yes">Yes
-                            <input type="radio" ng-model="day.status" value="No">No
+                            <br/>
+                            <label class="radio-inline"><input type="radio" ng-model="day.status" value="true">Yes
+                            </label>
+                            <label class="radio-inline"><input type="radio" ng-model="day.status" value="false">No
+                            </label>
 
+                            <br/>
+                            <br/>
 
                             <label>Journal Entry</label>
                             <textarea class="form-control" ng-model="day.journalEntry"></textarea>
@@ -83,7 +90,9 @@
                 Nested Form:
                 <pre>{{ outerForm.nestedForm | json }}</pre>-->
 
+<!--
         <pre>{{ statusChoices | json }}</pre>
+-->
 
     </div>
 

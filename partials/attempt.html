@@ -59,7 +59,7 @@
 <!--
                 <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}{{day.status}}" field="{{1+1}}">
 -->
-                <uib-tab ng-repeat="day in data.chain" heading="{{day.status}}" field="{{1+1}}">
+                <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}" field="{{1+1}}">
                     <ng-form name="nestedForm">
                         <div class="form-group">
                             <br/>

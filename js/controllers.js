@@ -130,7 +130,7 @@ publicLibraryControllers.controller('BooksController',
                 id_user: $scope.authData.facebook.id,
                 id_habit: habitPush.key(),
                 name: "Attempt for Habit" + $scope.book.name,
-                journalEntry: "Write about your day here",
+                description: "Write a description about this attempt...",
                 chain: createDay()
 
             });

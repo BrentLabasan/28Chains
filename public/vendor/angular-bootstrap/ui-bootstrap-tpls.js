@@ -6999,7 +6999,7 @@ angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function
   $templateCache.put("uib/template/tabs/tab.html",
       "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
 
-      "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span class=\"label\"            ng-class=\"{'label-info': {{heading}}==true, 'label-danger':{{heading}}==false}\" >{{heading}}</span></a>\n" +
+      "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span class=\"label\"                           ng-class=\"{'label-info': {{heading}}, 'label-danger':{{heading=='false'}}}\" >{{!heading}}</span></a>\n" +
 
 /*      "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span ng-class=\"{'label-default': true}\"                                          class=\"label                        \">{{heading}}</span></a>\n" +*/
 

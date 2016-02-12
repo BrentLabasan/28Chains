@@ -14,4 +14,8 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
     $scope.model = {
         name: 'Tabs'
     };
+
+    $scope.statusChoices = {
+        choices: ["Yes", "No"]
+    };
 });

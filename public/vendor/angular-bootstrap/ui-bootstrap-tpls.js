@@ -6993,13 +6993,22 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
     "");
 }]);
 
-
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
+
+  console.log("meow")
   $templateCache.put("uib/template/tabs/tab.html",
-    "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
-    "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span ng-class=\"{'label label-default': !day.status, 'label label-info': day.status}\">{{heading}}</span></a>\n" +
-    "</li>\n" +
-    "");
+      "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
+/*
+      "  <a href ng-click=\"select()\" uib-tab-heading-transclude>{{heading}}{{day.status}}</a>\n" +
+*/
+      "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span ng-class=\"{'label-default': true}\"                                          class=\"label                        \">{{heading}}</span></a>\n" +
+
+      "</li>\n" +
+      "");
+
+
+
+
 }]);
 
 angular.module("uib/template/tabs/tabset.html", []).run(["$templateCache", function($templateCache) {

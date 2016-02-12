@@ -56,7 +56,7 @@
         <form name="outerForm" class="tab-form-demo">
             <uib-tabset justified="true">
 
-                <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}">
+                <uib-tab ng-repeat="day in data.chain" heading="{{$index+1}}{{day.status}}">
                     <ng-form name="nestedForm">
                         <div class="form-group">
                             <br/>

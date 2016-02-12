@@ -45,6 +45,7 @@ publicLibraryControllers.controller('BooksController',
             var syncobject = $firebaseObject(attemptData);
             syncobject.$bindTo($scope, "data");
             console.log("syncobject " + syncobject);
+            $scope.dog = "woof";
 
         };
 

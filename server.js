@@ -6,6 +6,6 @@ var app = express();
 app.use(express.static(__dirname + ''));
 app.use(express.static(__dirname + '/partials'));
 
-var port = 3030;
+var port = process.env.PORT || CONFIG.port || 3030;
 app.listen(port);
 console.log("Listening on port " + port);

@@ -42,12 +42,13 @@ publicLibraryControllers.controller('BooksController',
         $scope.getHabitsAttempts = function() {
             $scope.woof = "woof1";
 
-            var ref3 = new Firebase("https://glowing-heat-6414.firebaseio.com/habits/" + $routeParams.id + "/id_attempt")
+            var ref3 = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id)
                 //.equalTo($routeParams.id, "id_habit")
                 //.equalTo($routeParams.id)
                 ;
             var syncobject = $firebaseObject(ref3);
             syncobject.$bindTo($scope, "data");
+            console.log("syncobject " + syncobject);
 
             //console.log("ref3 " + ref3);
             //console.log("$scope.blah " + $scope.blah)

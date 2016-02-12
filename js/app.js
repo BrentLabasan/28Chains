@@ -28,6 +28,8 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
     }
 ]);
 
+
+
 /**
  * Configuration Block
  */

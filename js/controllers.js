@@ -1,6 +1,6 @@
 /* Controllers */
 
-var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase']);
+var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase', 'ui.bootstrap.demo']);
 
 
 /*******************************************************************************

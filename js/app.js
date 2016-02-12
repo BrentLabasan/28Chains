@@ -11,7 +11,7 @@ app.factory("Auth", ["$firebaseAuth",
 ]);
 
 app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray', '$firebaseAuth', 'Auth',
-    function($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
+    function($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
         $scope.meow = "a";
 
         var rootUrl = "https://glowing-heat-6414.firebaseio.com";

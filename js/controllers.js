@@ -13,13 +13,16 @@ var publicLibraryControllers = angular.module('publicLibraryControllers', ['fire
  * @param  {Object} $http       [get connection with parse.com using REST Api]
  ******************************************************************************/
 publicLibraryControllers.controller('BooksController',
-    ['$scope', '$location', '$http', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth', function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
+    ['$scope', '$location', '$http', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth', '$routeParams', function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
 
-        $scope.meow = "meow";
+        $scope.meow = "meow1";
 
         var rootUrl = "https://glowing-heat-6414.firebaseio.com";
         var ref = new Firebase(rootUrl);
         var auth = $firebaseAuth(ref);
+
+        console.log("$routeParams " + $routeParams.id);
+        $scope.routeParams = $routeParams;
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
         $scope.auth = Auth;
@@ -35,6 +38,27 @@ publicLibraryControllers.controller('BooksController',
          * loaded all data, and the rest content of this page will be shown;
          */
         $scope.showLoading = true;
+
+        $scope.getHabitsAttempts = function() {
+            $scope.woof = "woof1";
+
+            var ref3 = new Firebase("https://glowing-heat-6414.firebaseio.com/")
+                //.equalTo($routeParams.id, "id_habit")
+                //.equalTo($routeParams.id)
+                ;
+
+            $scope.blah = $firebaseObject(ref3.child('attempts'));
+            console.log("ref3 " + ref3);
+            console.log("$scope.blah " + $scope.blah)
+/*
+            ref3.on("value", function(snapshot){
+                $scope.HabitsAttempts = $firebaseObject(ref3);
+                console.log("$scope.HabitsAttempts " + $firebaseObject(ref3));
+                //$scope.showLoading = false;
+            });*/
+
+
+        };
 
         /**
          * ## getAllBooks
@@ -178,6 +202,8 @@ publicLibraryControllers.controller('BooksController',
                     alert("Book is NOT deleted. See the error message in console.");
                 });
         };
+
+
     }]);
 
 

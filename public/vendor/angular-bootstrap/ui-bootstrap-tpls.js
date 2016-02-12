@@ -6997,7 +6997,7 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/tabs/tab.html",
     "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
-    "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span ng-class=\"{'label label-success': day.status, 'label label-warning': !day.status}\">{{heading}}</span></a>\n" +
+    "  <a href ng-click=\"select()\" uib-tab-heading-transclude><span ng-class=\"{'label label-default': !day.status, 'label label-info': day.status}\">{{heading}}</span></a>\n" +
     "</li>\n" +
     "");
 }]);

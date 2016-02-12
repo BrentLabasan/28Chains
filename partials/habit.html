@@ -4,14 +4,14 @@
         <thead>
         <tr>
             <th>Name of Attempt</th>
-            <th>Log Entry</th>
+            <th>Description</th>
             <th>Parent Habit</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="(key,value) in data">
             <td>
-                <a ng-href="#/attempt/{{key}}">{{value.name}}</a>
+                <a ng-href="#/attempt/{{id_habit}}/{{key}}">{{value.name}}</a>
             </td>
             <td>{{value.description}}
             </td>

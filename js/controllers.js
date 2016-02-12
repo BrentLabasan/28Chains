@@ -39,9 +39,18 @@ publicLibraryControllers.controller('BooksController',
          */
         $scope.showLoading = true;
 
+        $scope.getAttemptData = function() {
+            var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+            var attemptData = new Firebase(url);
+            var syncobject = $firebaseObject(attemptData);
+            syncobject.$bindTo($scope, "data");
+            console.log("syncobject " + syncobject);
+
+        };
+
         $scope.getHabitsAttempts = function() {
             $scope.woof = "woof1";
-
+            $scope.id_habit = $routeParams.id;
             var ref3 = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id)
                 //.equalTo($routeParams.id, "id_habit")
                 //.equalTo($routeParams.id)

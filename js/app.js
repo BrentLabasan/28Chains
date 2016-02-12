@@ -60,7 +60,7 @@ app.config( [ '$routeProvider', function ($routeProvider){
       templateUrl: 'partials/habit.html',
       controller: 'BooksController'
     })
-    .when( '/attempt/:id', {
+    .when( '/attempt/:idhabit/:idattempt', {
       templateUrl: 'partials/attempt.html',
       controller: 'BooksController'
     })

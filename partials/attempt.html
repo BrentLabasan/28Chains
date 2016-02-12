@@ -1,1 +1,9 @@
-attempt.html
+<div ng-init="getAttemptData()">
+
+<ul>
+    <li ng-repeat="x in data.chain">Day {{$index}} {{x.status}}</li>
+</ul>
+
+        {{data.chain}}
+
+</div>

@@ -60,7 +60,11 @@
                     <ng-form name="nestedForm">
                         <div class="form-group">
                             <label>Accomplished Today?</label>
+<!--
                             <select ng-model="day.status" ng-options="x for x in statusChoices.choices"></select>
+-->
+                            <input type="radio" ng-model="day.status" value="Yes">Yes
+                            <input type="radio" ng-model="day.status" value="No">No
 
 
                             <label>Journal Entry</label>

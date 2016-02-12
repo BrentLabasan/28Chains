@@ -124,7 +124,7 @@ publicLibraryControllers.controller('BooksController',
                 description: $scope.book.description
             });
 
-            var attemptsRef = ref.child("attempts");
+            var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({
                 id_user: $scope.authData.facebook.id,
                 id_habit: habitPush.key(),

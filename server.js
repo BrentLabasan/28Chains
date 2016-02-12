@@ -9,6 +9,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.static('src'));
 
-var port = process.env.PORT || CONFIG.port || 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log("Listening on port " + port);

@@ -127,7 +127,7 @@ publicLibraryControllers.controller('BooksController',
             var i;
             for (i = 0; i < 28; i++) {
                 arr[i] = {
-                    status: "n"
+                    status: "ny"
                 }
             }
             return arr;

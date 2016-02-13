@@ -139,7 +139,7 @@ publicLibraryControllers.controller('BooksController',
             var attemptPush = attemptsRef.push({
                 id_user: $scope.authData.facebook.id,
                 id_habit: habitPush.key(),
-                name: "Attempt for Habit" + $scope.book.name,
+                name: "Attempt for Habit: " + $scope.book.name,
                 description: "Write a description about this attempt...",
                 chain: createDay()
 

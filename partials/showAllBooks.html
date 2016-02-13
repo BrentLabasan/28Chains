@@ -16,7 +16,9 @@
             <tbody>
             <tr ng-repeat="(key,value) in books">
                 <td>
-                    <a ng-href="#/habit/{{key}}">{{value.name}}</a>
+                    <a ng-href="#/habit/{{key}}">
+                        <span class="label label-default">HABIT</span> &nbsp;{{value.name}}
+                    </a>
                 </td>
                 <td>{{value.description}}
                 </td>

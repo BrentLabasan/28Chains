@@ -2,7 +2,7 @@
 /* App Module */
 
 var app = angular.module( 'TwentyEightChains', ['ngRoute', 'publicLibraryControllers', 'firebase', 'ngAnimate']);
-
+var masterId ;
 app.factory("Auth", ["$firebaseAuth",
     function ($firebaseAuth) {
         var ref = new Firebase("https://glowing-heat-6414.firebaseio.com", "example3");
@@ -24,6 +24,8 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
             console.log("authData loaded in HeaderController:", authData);
+            masterId = $scope.authData.facebook.id;
+            console.log("masterId1 " + masterId);
         });
     }
 ]);

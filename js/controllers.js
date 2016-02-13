@@ -26,10 +26,13 @@ publicLibraryControllers.controller('BooksController',
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
         $scope.auth = Auth;
+        $scope.authData = null;
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
-            console.log("authData loaded in BooksController:", authData);
+            console.log("$scope.authData loaded in BooksController:", $scope.authData);
+            masterId = $scope.authData.facebook.id;
+            console.log("masterId2 " + masterId);
         });
 
         /**
@@ -82,8 +85,8 @@ publicLibraryControllers.controller('BooksController',
 
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
             ref2.on("value", function(snapshot){
-                $scope.books = $firebaseObject(ref.child('habits').child($scope.authData.facebook.id));
-                console.log("--- $scope.authData.facebook.id " + $scope.authData.facebook.id);
+                console.log("--- $scope.authData.facebook.id " + masterId);
+                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
                 console.log($scope.books);
                 $scope.showLoading = false;
             });

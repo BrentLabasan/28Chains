@@ -83,6 +83,7 @@ publicLibraryControllers.controller('BooksController',
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
             ref2.on("value", function(snapshot){
                 $scope.books = $firebaseObject(ref.child('habits').child($scope.authData.facebook.id));
+                console.log("--- $scope.authData.facebook.id " + $scope.authData.facebook.id);
                 console.log($scope.books);
                 $scope.showLoading = false;
             });

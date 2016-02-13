@@ -23,7 +23,7 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
-            console.log("Authenticated successfully with payload:", authData);
+            console.log("authData loaded in HeaderController:", authData);
         });
     }
 ]);

@@ -88,7 +88,7 @@ publicLibraryControllers.controller('BooksController',
          * saved to an array $scope.books; otherwise, show error messages in console.
          */
         $scope.getAllBooks = function () {
-
+            console.log("kenny");
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
             ref2.on("value", function(snapshot){
                 console.log("--- masterId in getAllBookss " + masterId);
@@ -149,7 +149,7 @@ publicLibraryControllers.controller('BooksController',
             // create the Attempt
             var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({
-                uid: $scope.authData.uid,
+                uid : $scope.authData.uid,
                 id_habit: habitPush.key(),
                 name: "Attempt for Habit: " + $scope.book.name,
                 habitName: $scope.book.name,

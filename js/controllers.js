@@ -20,8 +20,6 @@ publicLibraryControllers.controller('BooksController',
         var rootUrl = "https://glowing-heat-6414.firebaseio.com";
         var ref = new Firebase(rootUrl);
         var auth = $firebaseAuth(ref);
-
-        console.log("$routeParams " + $routeParams.id);
         $scope.routeParams = $routeParams;
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
@@ -48,7 +46,15 @@ publicLibraryControllers.controller('BooksController',
             var syncobject = $firebaseObject(attemptData);
             syncobject.$bindTo($scope, "data");
             console.log("syncobject " + syncobject);
-            $scope.dog = "woof";
+            //$scope.dog = "woof";
+            //alert(masterId);
+            var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $routeParams.idhabit + "/name" ;
+            var habitName = new Firebase(url2);
+            var syncobject2 = $firebaseObject(habitName);
+            syncobject2.$bindTo($scope, "habitName");
+
+            //                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
+
 
         };
 

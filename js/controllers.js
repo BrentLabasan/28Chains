@@ -29,7 +29,7 @@ publicLibraryControllers.controller('BooksController',
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
             console.log("$scope.authData loaded in BooksController:", $scope.authData);
-            masterId = $scope.authData.facebook.id;
+            masterId = $scope.authData.uid;
             console.log("masterId2 " + masterId);
         });
 
@@ -138,9 +138,9 @@ publicLibraryControllers.controller('BooksController',
             var ref = new Firebase(rootUrl);
 
             // create the Habit
-            var habitsRef = ref.child("habits/" + $scope.authData.facebook.id);
+            var habitsRef = ref.child("habits/" + $scope.authData.uid);
             var habitPush = habitsRef.push({
-                id_user: $scope.authData.facebook.id,
+                uid: $scope.authData.uid,
                 //id_attempt: attemptPush.key(),
                 name: $scope.book.name,
                 description: $scope.book.description
@@ -149,7 +149,7 @@ publicLibraryControllers.controller('BooksController',
             // create the Attempt
             var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({
-                id_user: $scope.authData.facebook.id,
+                uid: $scope.authData.uid,
                 id_habit: habitPush.key(),
                 name: "Attempt for Habit: " + $scope.book.name,
                 habitName: $scope.book.name,

@@ -24,7 +24,7 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;
             console.log("authData loaded in HeaderController:", authData);
-            masterId = $scope.authData.facebook.id;
+            masterId = $scope.authData.uid;
             console.log("masterId1 " + masterId);
         });
     }

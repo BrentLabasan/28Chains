@@ -82,7 +82,7 @@ publicLibraryControllers.controller('BooksController',
 
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
             ref2.on("value", function(snapshot){
-                $scope.books = $firebaseObject(ref.child('habits'));
+                $scope.books = $firebaseObject(ref.child('habits').child($scope.authData.facebook.id));
                 console.log($scope.books);
                 $scope.showLoading = false;
             });
@@ -127,7 +127,7 @@ publicLibraryControllers.controller('BooksController',
             var rootUrl = "https://glowing-heat-6414.firebaseio.com";
             var ref = new Firebase(rootUrl);
 
-            var habitsRef = ref.child("habits");
+            var habitsRef = ref.child("habits/" + $scope.authData.facebook.id);
             var habitPush = habitsRef.push({
                 id_user: $scope.authData.facebook.id,
                 //id_attempt: attemptPush.key(),

@@ -37,7 +37,7 @@ footer {
     transition: 0.2s linear opacity;
 }
 
-/* overwrite display: none and remove from document flow */
+/* overwrite display: none and remove Kfrom document flow */
 .tab-animation > .tab-content > .tab-pane.active-remove {
     position: absolute;
     top: 0;

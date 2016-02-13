@@ -23,7 +23,9 @@ footer {
     opacity: 0;
 }
 
-
+line {
+    z-index:; -1;
+}
 
 
 /* http://stackoverflow.com/a/25803967 */

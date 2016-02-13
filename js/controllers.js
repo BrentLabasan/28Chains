@@ -45,12 +45,12 @@ publicLibraryControllers.controller('BooksController',
             var attemptData = new Firebase(url);
             var syncobject = $firebaseObject(attemptData);
             syncobject.$bindTo($scope, "data");
-            console.log("syncobject " + syncobject);
+            console.log("syncobject1 " + syncobject);
             //$scope.dog = "woof";
-            //alert(masterId);
+            //alert(attemptData);
             var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $routeParams.idhabit + "/name" ;
-            var habitName = new Firebase(url2);
-            var syncobject2 = $firebaseObject(habitName);
+            var habitName3 = new Firebase(url2);
+            var syncobject2 = $firebaseObject(habitName3);
             syncobject2.$bindTo($scope, "habitName");
 
             //                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
@@ -91,7 +91,7 @@ publicLibraryControllers.controller('BooksController',
 
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
             ref2.on("value", function(snapshot){
-                console.log("--- $scope.authData.facebook.id " + masterId);
+                console.log("--- masterId in getAllBookss " + masterId);
                 $scope.books = $firebaseObject(ref.child('habits').child(masterId));
                 console.log($scope.books);
                 $scope.showLoading = false;
@@ -137,6 +137,7 @@ publicLibraryControllers.controller('BooksController',
             var rootUrl = "https://glowing-heat-6414.firebaseio.com";
             var ref = new Firebase(rootUrl);
 
+            // create the Habit
             var habitsRef = ref.child("habits/" + $scope.authData.facebook.id);
             var habitPush = habitsRef.push({
                 id_user: $scope.authData.facebook.id,
@@ -145,11 +146,13 @@ publicLibraryControllers.controller('BooksController',
                 description: $scope.book.description
             });
 
+            // create the Attempt
             var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({
                 id_user: $scope.authData.facebook.id,
                 id_habit: habitPush.key(),
                 name: "Attempt for Habit: " + $scope.book.name,
+                habitName: $scope.book.name,
                 description: "Write a description about this attempt...",
                 chain: createDay()
 
@@ -159,6 +162,13 @@ publicLibraryControllers.controller('BooksController',
                 id_attempt: attemptPush.key(),
             });
 
+/*
+
+            attemptsRef.child(attemptPush.key()).update({
+                id_habit: habitPush.key(),
+            });
+
+*/
 
             /*    $http({
              method: 'POST',

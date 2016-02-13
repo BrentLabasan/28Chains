@@ -27,6 +27,9 @@ line {
     z-index:; -1;
 }
 
+uib-tab-heading {
+    font-weight: bold;
+}
 
 /* http://stackoverflow.com/a/25803967 */
 /* set reference point */

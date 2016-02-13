@@ -89,13 +89,14 @@ publicLibraryControllers.controller('BooksController',
          */
         $scope.getAllBooks = function () {
             console.log("kenny");
-            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com");
+            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com/habits");
             ref2.on("value", function(snapshot){
                 console.log("--- masterId in getAllBookss " + masterId);
-                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
+                $scope.books = $firebaseObject(ref.child(masterId));
                 console.log($scope.books);
                 $scope.showLoading = false;
             });
+            console.log("kyle");
 
 
             /*

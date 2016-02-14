@@ -231,13 +231,14 @@ publicLibraryControllers.controller('BooksController',
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.destroyBook = function () {
-            var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+            var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
             var ref4 = new Firebase(rootUrl);
 
             // delete the Habit
-            var habitToDlete = ref.child("habits/" + $scope.authData.uid);
-
-
+            console.log("$scope.book.id " + $scope.book.id);
+            var habitToDelete = ref4.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
+            habitToDelete.remove();
+            console.log("tamale");
 /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
             $http({
                 method: 'DELETE',

@@ -3,7 +3,7 @@
   <form>
     <div ng-hide="book">
       <label>Select a Habit to delete:
-        <select ng-model="book" ng-options="(book.key) for book in books">
+        <select ng-model="book" ng-options="(book.id) for book in books">
 <!--
           ng-options="(book.isbn + ' - ' + book.title) for book in books">
 -->

@@ -21,12 +21,12 @@ angular.module('ui.bootstrap.demo')
     };
 }).controller('DatepickerDemoCtrl', function ($scope) {
     $scope.today = function() {
-        $scope.dt = new Date();
+        $scope.bookdt = new Date();
     };
     $scope.today();
 
     $scope.clear = function() {
-        $scope.dt = null;
+        $scope.bookdt = null;
     };
 
     // Disable weekend selection
@@ -50,7 +50,7 @@ angular.module('ui.bootstrap.demo')
     };
 
     $scope.setDate = function(year, month, day) {
-        $scope.dt = new Date(year, month, day);
+        $scope.bookdt = new Date(year, month, day);
     };
 
     $scope.dateOptions = {

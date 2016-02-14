@@ -156,7 +156,7 @@ publicLibraryControllers.controller('BooksController',
                 habitName: $scope.book.name,
                 description: "Write a description about this attempt...",
                 chain: createDay(),
-
+                startDate: document.getElementById("startDate").value
 
             });
 

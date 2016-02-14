@@ -3,12 +3,12 @@
 
     <form role="form">
         <div class="form-group">
-            <label for="name">Name:
-                <input id="name" class="form-control" type="text" name="name" ng-model="book.name"/>
+            <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6>
+                <input required id="name" class="form-control" type="text" name="name" ng-model="book.name"/>
             </label>
         </div>
         <div class="form-group">
-            <label for="description">Description:
+            <label for="description"><h6>DESCRIPTION</h6>
                 <textarea id="description" class="form-control" name="description"
                           ng-model="book.description"></textarea>
             </label>
@@ -43,14 +43,17 @@
 
                 </div>-->
 
+<!--
         {{book | json}}
+-->
 
         <div>
-            <label>Year:
+            <label><h6>START DATE</h6>
+
                 <input type="date" id="startDate" name="startDate" ng-model="bookdt"/>
             </label>
         </div>
-
+<br/>
         <div>
             <button type="submit" name="commit" ng-click="addBook()" ng-show="authData">Create Habit</button>
         </div>

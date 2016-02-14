@@ -226,7 +226,10 @@ publicLibraryControllers.controller('BooksController',
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.destroyBook = function () {
-            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
+
+
+
+/*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
             $http({
                 method: 'DELETE',
                 url: bookUrl
@@ -237,7 +240,7 @@ publicLibraryControllers.controller('BooksController',
                 .error(function (data) {
                     console.log(data);
                     alert("Book is NOT deleted. See the error message in console.");
-                });
+                });*/
         };
 
 

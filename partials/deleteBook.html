@@ -1,21 +1,21 @@
 <div ng-init="getAllBooks()">
-  <h1>Public Library: Delete a book record</h1>
+  <h1>Delete Habit</h1>
   <form>
     <div ng-hide="book">
-      <label>Select book:
+      <label>Select a Habit to delete:
         <select ng-model="book"
-                ng-options="(book.isbn + ' - ' + book.title) for book in books">
-          <option value="">...</option>
+                ng-options="(book.name) for book in books">
+          <option value="">No Habit Selected</option>
         </select>
       </label>
     </div>
     <div ng-show="book">
       <div>
         <label>ISBN:
-          <output type="text" name="isbn" ng-bind="book.isbn" />
+          <output type="text" name="isbn" ng-bind="book.name" />
         </label>
       </div>
-      <div>
+<!--      <div>
         <label>Title:
           <output type="text" name="title" ng-bind="book.title" />
         </label>
@@ -24,7 +24,7 @@
         <label>Year:
           <output type="number" name="year" ng-bind="book.year" />
         </label>
-      </div>
+      </div>-->
       <div>
         <button type="submit" name="commit" ng-click="destroyBook()">
           Delete

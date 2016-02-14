@@ -22,6 +22,14 @@
     <script src="js/controllers.js"></script>
     <link rel="stylesheet" type="text/css" href="public/vendor/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="public/style.css">
+
+    <script type="text/css">
+
+        $( document ).on( 'click', '.nav-list li', function ( e ) {
+            $( this ).addClass( 'active' ).siblings().removeClass( 'active' );
+        } );
+
+    </script>
 </head>
 <body>
 <div ng-include="'header.html'"></div>

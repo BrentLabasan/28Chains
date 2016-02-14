@@ -14,10 +14,15 @@
     </div>
     <div ng-show="book">
       <div>
-        <span class="label label-danger">Are you sure you want to delete this habit?
-        </span>
-        <output type="text" name="isbn" ng-bind="book.name" />
-
+        <p class="label label-warning">Are you sure you want to delete this habit?
+        </p>
+<br/>
+<section class="well well-sm">
+<!--
+    <output type="text" name="isbn" ng-bind="book.name" />
+-->
+    {{ book.name }}
+</section>
       </div>
 <!--      <div>
         <label>Title:

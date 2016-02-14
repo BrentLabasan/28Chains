@@ -1,13 +1,21 @@
 <div ng-init="getAllBooks()">
     <div>
         <progress ng-show="showLoading"></progress>
+
+        <div ng-hide="authData">
+            <h1>Sign up or log in to start to being using 28Chains!</h1>
+            <a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span
+                    class="glyphicon glyphicon-user"></span> Sign Up / Log In
+            </a>
+        </div>
     </div>
     <div ng-hide="showLoading">
         <h1>All Habits</h1>
-<!-- WTF WHY DOESN'T THIS WORK
-        <div class="col-sm-12" ng-show="!books">Click here to create a Habit to track!</div>
--->
-        <a href="#/createHabit" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+        <!-- WTF WHY DOESN'T THIS WORK
+                <div class="col-sm-12" ng-show="!books">Click here to create a Habit to track!</div>
+        -->
+        <a href="#/createHabit" type="button" class="btn btn-warning"><span
+                class="glyphicon glyphicon-plus-sign"></span>&nbsp;
             CREATE HABIT</a>
         <br/>
         <br/>
@@ -39,9 +47,9 @@
             </tbody>
         </table>
         <nav>
-<!--
-            <a href="#/main">Back to main menu</a>
--->
+            <!--
+                        <a href="#/main">Back to main menu</a>
+            -->
         </nav>
     </div>
 </div>

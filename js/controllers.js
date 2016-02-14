@@ -149,7 +149,7 @@ publicLibraryControllers.controller('BooksController',
                 description: $scope.book.description
             });
 
-            console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value)
+            console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
             // create the Attempt
             var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({
@@ -165,6 +165,11 @@ publicLibraryControllers.controller('BooksController',
 
             habitsRef.child(habitPush.key()).update({
                 id_attempt: attemptPush.key(),
+                id: habitPush.key()
+            });
+
+            attemptsRef.child(attemptPush.key()).update({
+                id: attemptPush.key()
             });
 
 /*
@@ -226,7 +231,11 @@ publicLibraryControllers.controller('BooksController',
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.destroyBook = function () {
+            var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+            var ref4 = new Firebase(rootUrl);
 
+            // delete the Habit
+            var habitToDlete = ref.child("habits/" + $scope.authData.uid);
 
 
 /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;

@@ -4,13 +4,13 @@
     <form role="form">
         <div class="form-group">
             <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6>
-                <input required id="name" class="form-control" type="text" name="name" ng-model="book.name"/>
+                <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
             </label>
         </div>
         <div class="form-group">
-            <label for="description"><h6>DESCRIPTION</h6>
+            <label for="description"><h6>DESCRIPTION </h6><span class="label label-info">REQUIRED</span></h6>
                 <textarea id="description" class="form-control" name="description"
-                          ng-model="book.description"></textarea>
+                          ng-model="book.description" required></textarea>
             </label>
         </div>
 

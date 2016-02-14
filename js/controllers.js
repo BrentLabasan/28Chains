@@ -129,20 +129,28 @@ publicLibraryControllers.controller('BooksController',
                 return moment();
             }
 
-            console.log(date);
+            console.log("date " + date);
 /*
             x = (function() { return (function() { moment(date).add(7, 'days') })() })() ;
 */
             var arr = [];
             var i;
-            var not = new Date();
+            //var not = new Date();
+            var not = Date.parse(date);
+            //console.log("not" + not);
             for (i = 0; i < 28; i++) {
+                //console.log("Date( Date.parse(date) + 86400000*i ) " + Date( Date.parse(date) + 86400000*i ))
                 var today = moment();
+                //console.log("date" + date);
+                //console.log("ded" + ded);
+                var ded = Date.parse(date);
+                console.log("incra " + ded + 86400000*i)
                 arr[i] = {
                     status: "ny",
                     //date: not.setDate(not.getDate() + 1)
-                    date: date
-                    //date: moment()
+                    //date: date
+                    //date: date.setDate(not.getDate() + 1)
+                    date: Date( ded )
                     //date: dayday
                 }
             }
@@ -162,6 +170,7 @@ publicLibraryControllers.controller('BooksController',
                 description: $scope.book.description
             });
 
+            console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value)
             // create the Attempt
             var attemptsRef = ref.child("attempts/" +habitPush.key());
             var attemptPush = attemptsRef.push({

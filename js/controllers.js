@@ -146,7 +146,7 @@ publicLibraryControllers.controller('BooksController',
                     status: "ny",
                     //date: not.setDate(not.getDate() + 1)
                     // date: moment().add('days', 2).fromNow() // WORKS
-                    date: moment().add(i, 'days').format()
+                    date: moment(date).add(i, 'days').format()
                     //date: date.setDate(not.getDate() + 1)
 
                     //date: now

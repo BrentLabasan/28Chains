@@ -124,12 +124,15 @@ publicLibraryControllers.controller('BooksController',
          */
 
         var createDay = function (date) {
+            console.log(date);
             var arr = [];
             var i;
             for (i = 0; i < 28; i++) {
                 arr[i] = {
                     status: "ny",
-                    date: date
+                    date: (function() {return date})()
+                    //date: moment()
+                    //date: dayday
                 }
             }
             return arr;

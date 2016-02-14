@@ -4,6 +4,13 @@
     </div>
     <div ng-hide="showLoading">
         <h1>All Habits</h1>
+<!-- WTF WHY DOESN'T THIS WORK
+        <div class="col-sm-12" ng-show="!books">Click here to create a Habit to track!</div>
+-->
+        <a href="#/createHabit" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+            CREATE HABIT</a>
+        <br/>
+        <br/>
         <table class="table table-striped table-hover">
             <thead>
             <tr>

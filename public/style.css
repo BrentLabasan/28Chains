@@ -25,6 +25,10 @@ color: grey;
     font-weight: bold;s
 }
 
+button {
+    font-weight: bold;
+}
+
 table a:hover {
     text-decoration: none;
 }

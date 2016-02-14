@@ -124,13 +124,23 @@ publicLibraryControllers.controller('BooksController',
          */
 
         var createDay = function (date) {
+
+            function myFunction() {
+                return moment();
+            }
+
             console.log(date);
+/*
+            x = (function() { return (function() { moment(date).add(7, 'days') })() })() ;
+*/
             var arr = [];
             var i;
+            var not = new Date();
             for (i = 0; i < 28; i++) {
+                var today = moment();
                 arr[i] = {
                     status: "ny",
-                    date: (function() {return date})()
+                    date: not.setDate(not.getDate() + 1)
                     //date: moment()
                     //date: dayday
                 }

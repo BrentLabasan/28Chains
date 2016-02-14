@@ -123,12 +123,13 @@ publicLibraryControllers.controller('BooksController',
          * in console.
          */
 
-        var createDay = function () {
+        var createDay = function (date) {
             var arr = [];
             var i;
             for (i = 0; i < 28; i++) {
                 arr[i] = {
-                    status: "ny"
+                    status: "ny",
+                    date: date
                 }
             }
             return arr;
@@ -155,7 +156,7 @@ publicLibraryControllers.controller('BooksController',
                 name: "Attempt for Habit: " + $scope.book.name,
                 habitName: $scope.book.name,
                 description: "Write a description about this attempt...",
-                chain: createDay(),
+                chain: createDay(document.getElementById("startDate").value),
                 startDate: document.getElementById("startDate").value
 
             });

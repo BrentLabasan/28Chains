@@ -236,9 +236,13 @@ publicLibraryControllers.controller('BooksController',
 
             // delete the Habit
             console.log("$scope.book.id " + $scope.book.id);
+            // delete the Habit
             var habitToDelete = ref4.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
             habitToDelete.remove();
-            console.log("tamale");
+            // delete it's Attempt
+            var attemptToDelete = ref4.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
+            attemptToDelete.remove();
+
 /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
             $http({
                 method: 'DELETE',

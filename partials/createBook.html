@@ -48,10 +48,36 @@
 -->
 
         <div>
-            <label><h6>START DATE</h6>
+<!--            <label><h6>START DATE</h6>
 
                 <input type="date" id="startDate" name="startDate" ng-model="bookdt"/>
-            </label>
+            </label>-->
+
+
+            <div class="form-group" ng-controller="DatepickerDemoCtrl">
+                <label for="startDate"><h6>START DATE</h6>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="input-group">
+                                <input type="text" id="startDate" name="startDate" class="form-control"
+                                       uib-datepicker-popup="{{format}}"
+                                       ng-model="bookdt"
+                                       is-open="popup1.opened" min-date="minDate" max-date="maxDate"
+                                       datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                       close-text="Close" alt-input-formats="altInputFormats"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                            </p>
+                        </div>
+                </label>
+
+            </div>
+
+
+
         </div>
 <br/>
         <div>

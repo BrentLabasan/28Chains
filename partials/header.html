@@ -11,7 +11,7 @@
 <!--
             <li><a href="#/updateBook">Update Habit</a></li>
 -->
-            <li><a href="#/deleteBook">Delete Habit</a></li>
+            <li ng-show="authData"><a href="#/deleteBook">Delete Habit</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li ng-show="authData"><a href="#"><span

@@ -60,7 +60,10 @@ angular.module('ui.bootstrap.demo')
 
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     //$scope.format = $scope.formats[0];
-    $scope.format = 'MM-dd-yyyy';
+    //$scope.format = "MM/dd/yyyy";
+    //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";
+    //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";
+    //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
     $scope.popup1 = {

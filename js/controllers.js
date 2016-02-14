@@ -124,10 +124,7 @@ publicLibraryControllers.controller('BooksController',
          */
 
         var createDay = function (date) {
-
-            function myFunction() {
-                return moment();
-            }
+            var now = moment();
 
             console.log("date " + date);
 /*
@@ -143,19 +140,25 @@ publicLibraryControllers.controller('BooksController',
                 var today = moment();
                 //console.log("date" + date);
                 //console.log("ded" + ded);
-                var ded = Date.parse(date);
-                console.log("incra " + ded + 86400000*i)
+                //var ded = Date.parse(date);
+                //console.log("incra " + ded + 86400000*i);
                 arr[i] = {
                     status: "ny",
                     //date: not.setDate(not.getDate() + 1)
-                    //date: date
+                    date: moment().add('days', 2).fromNow()
                     //date: date.setDate(not.getDate() + 1)
-                    date: Date( ded )
-                    //date: dayday
+
+                    //date: now
+
+/*                   date: (function(n) {
+                        return function() {
+                            return n;
+                        };
+                    })(now)*/
                 }
             }
             return arr;
-        }
+        };
 
         $scope.addBook = function () {
             var rootUrl = "https://glowing-heat-6414.firebaseio.com";

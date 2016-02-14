@@ -140,7 +140,8 @@ publicLibraryControllers.controller('BooksController',
                 var today = moment();
                 arr[i] = {
                     status: "ny",
-                    date: not.setDate(not.getDate() + 1)
+                    //date: not.setDate(not.getDate() + 1)
+                    date: date
                     //date: moment()
                     //date: dayday
                 }

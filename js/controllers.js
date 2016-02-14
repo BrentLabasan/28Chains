@@ -88,7 +88,7 @@ publicLibraryControllers.controller('BooksController',
          * saved to an array $scope.books; otherwise, show error messages in console.
          */
         $scope.getAllBooks = function () {
-            console.log("kenny");
+            //console.log(authData); // !! I THINK IT'S BECAUSE AUTHDATA NOT DEFINED AT THIS POINT
             var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
             ref2.on("value", function(snapshot){
                 console.log("--- masterId in getAllBookss " + masterId);
@@ -155,7 +155,8 @@ publicLibraryControllers.controller('BooksController',
                 name: "Attempt for Habit: " + $scope.book.name,
                 habitName: $scope.book.name,
                 description: "Write a description about this attempt...",
-                chain: createDay()
+                chain: createDay(),
+
 
             });
 

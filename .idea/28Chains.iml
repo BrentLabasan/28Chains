@@ -7,5 +7,6 @@
     <orderEntry type="library" name="angular" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery-2.2.0" level="application" />
+    <orderEntry type="library" name="angularfire" level="application" />
   </component>
 </module>

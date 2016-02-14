@@ -20,6 +20,7 @@ app.controller('HeaderController', ['$scope', '$firebaseObject','$firebaseArray'
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
         $scope.auth = Auth;
+        //console.log("$scope.auth " + $scope.auth);
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
             $scope.authData = authData;

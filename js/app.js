@@ -45,20 +45,20 @@ app.config( [ '$routeProvider', function ($routeProvider){
       templateUrl: 'partials/main.html',
       controller: 'TestDatasController'
      })
-    .when( '/showAllBooks', {
-      templateUrl: 'partials/showAllBooks.html',
+    .when( '/showAllHabits', {
+      templateUrl: 'partials/showAllHabits.html',
       controller: 'BooksController'
     })
-    .when( '/createBook', {
-      templateUrl: 'partials/createBook.html',
+    .when( '/createHabit', {
+      templateUrl: 'partials/createHabit.html',
       controller: 'BooksController'
     })
-    .when( '/updateBook', {
-      templateUrl: 'partials/updateBook.html',
+    .when( '/updateHabit', {
+      templateUrl: 'partials/updateHabit.html',
       controller: 'BooksController'
     })
-    .when( '/deleteBook', {
-      templateUrl: 'partials/deleteBook.html',
+    .when( '/deleteHabit', {
+      templateUrl: 'partials/deleteHabit.html',
       controller: 'BooksController'
     })
     .when( '/habit/:id', {
@@ -70,7 +70,7 @@ app.config( [ '$routeProvider', function ($routeProvider){
       controller: 'BooksController'
     })
     .otherwise( {
-      redirectTo: '/showAllBooks'
+      redirectTo: '/showAllHabits'
   });
 }]);
 

@@ -15,19 +15,19 @@ publicLibraryApp.config( [ '$routeProvider', function ( $routeProvider){
       controller: 'TestDatasController'
      })
     .when( '/showAllBooks', {
-      templateUrl: 'partials/showAllBooks.html',
+      templateUrl: 'partials/showAllHabits.html',
       controller: 'BooksController'
     })
     .when( '/createBook', {
-      templateUrl: 'partials/createBook.html',
+      templateUrl: 'partials/createHabit.html',
       controller: 'BooksController'
     })
     .when( '/updateBook', {
-      templateUrl: 'partials/updateBook.html',
+      templateUrl: 'partials/updateHabit.html',
       controller: 'BooksController'
     })
     .when( '/deleteBook', {
-      templateUrl: 'partials/deleteBook.html',
+      templateUrl: 'partials/deleteHabit.html',
       controller: 'BooksController'
     })
     .otherwise( {

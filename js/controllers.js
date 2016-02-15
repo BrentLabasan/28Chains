@@ -61,8 +61,8 @@ publicLibraryControllers.controller('BooksController',
 
         $scope.getTabHeading = function(index, dateOfTab) {
             var s = "" + (index+1);
-            console.log(dateOfTab + " " + moment().format() );
-            if (dateOfTab === moment().format()){
+            console.log( moment(dateOfTab).format("MM-DD-YYYY") + "-----" + moment().format("MM-DD-YYYY") );
+            if ( moment(dateOfTab).format("MM-DD-YYYY") === moment().format("MM-DD-YYYY") ){
                 s += "T";
             }
             return s;

@@ -175,6 +175,9 @@ publicLibraryControllers.controller('BooksController',
                 id: attemptPush.key()
             });
 
+            window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
+
+
 /*
 
             attemptsRef.child(attemptPush.key()).update({

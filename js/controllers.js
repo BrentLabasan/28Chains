@@ -63,7 +63,7 @@ publicLibraryControllers.controller('BooksController',
             var s = "" + (index+1);
             //console.log( moment(dateOfTab).format("MM-DD-YYYY") + "-----" + moment().format("MM-DD-YYYY") );
             if ( moment(dateOfTab).format("MM-DD-YYYY") === moment().format("MM-DD-YYYY") ){
-                s += "<br/>T";
+                s += "<span class='glyphicon glyphicon-flash animate-flicker' ></span>";
             }
             //console.log("s " + s);
             return s;

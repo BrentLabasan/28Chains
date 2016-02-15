@@ -55,7 +55,7 @@ footer {
 }
 
 line {
-    z-index:; -1;
+    z-index:: -99;
 }
 
 uib-tab-heading {
@@ -129,4 +129,35 @@ color: #adadad;
 }
 .container .text-muted {
     margin: 20px 0;
+}
+
+
+
+
+
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+}
+.animate-flicker {
+    -webkit-animation: flickerAnimation 1s infinite;
+    -moz-animation: flickerAnimation 1s infinite;
+    -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite;
 }

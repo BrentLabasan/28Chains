@@ -4,7 +4,7 @@
     <form role="form">
         <div class="form-group">
             <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6></label>
-                <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
+            <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
         </div>
         <div class="form-group">
             <label for="description"><h6>DESCRIPTION <span class="label label-info">REQUIRED</span></h6></label>
@@ -41,43 +41,43 @@
 
                 </div>-->
 
-<!--
-        {{book | json}}
--->
+        <!--
+                {{book | json}}
+        -->
 
         <div>
-<!--            <label><h6>START DATE</h6>
+            <!--            <label><h6>START DATE</h6>
 
-                <input type="date" id="startDate" name="startDate" ng-model="bookdt"/>
-            </label>-->
+                            <input type="date" id="startDate" name="startDate" ng-model="bookdt"/>
+                        </label>-->
 
 
-            <div class="form-group" ng-controller="DatepickerDemoCtrl">
-                <label for="startDate"><h6>START DATE</h6>
+            <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p class="input-group">
-                                <input type="text" id="startDate" name="startDate" class="form-control"
-                                       uib-datepicker-popup="{{format}}"
-                                       ng-model="bookdt"
-                                       is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
-                                       datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
-                                       close-text="Close" alt-input-formats="altInputFormats"/>
+                <div>
+                    <label for="startDate"><h6>START DATE</h6>
+                        <p class="input-group">
+                            <input type="text" id="startDate" name="startDate" class="form-control"
+                                   uib-datepicker-popup="{{format}}"
+                                   ng-model="bookdt"
+                                   is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
+                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                   ng-required="true"
+                                   close-text="Close" alt-input-formats="altInputFormats"/>
                       <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="open1()"><i
                                 class="glyphicon glyphicon-calendar"></i></button>
                       </span>
-                            </p>
-                        </div>
-                </label>
+                        </p>
+                    </label>
+
+                </div>
 
             </div>
 
 
-
         </div>
-<br/>
+        <br/>
         <div>
             <button type="submit" name="commit" ng-click="addBook()" ng-show="authData">Create Habit</button>
         </div>

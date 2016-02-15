@@ -22,7 +22,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-show="authData"><a href="#"><span
-                        class="glyphicon glyphicon-log-out"></span> Hello, {{ authData.facebook.displayName }}</a></li>
+                        class="glyphicon glyphicon-user"></span> Hello, {{ authData.facebook.displayName }}</a></li>
 
                 <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span
                         class="glyphicon glyphicon-user"></span> Sign Up</a></li>

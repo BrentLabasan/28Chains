@@ -7,28 +7,31 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/">
-                28Chains<span class="label label-warning" style="font-size:9px; position: absolute; z-index:999; left: 68px; top:34px;">BETA</span>
+                28Chains<span class="label label-warning"
+                              style="font-size:9px; position: absolute; z-index:999; left: 68px; top:34px;">BETA</span>
             </a>
         </div>
-<div class="collapse navbar-collapse" id="myNavbar">        <ul class="nav navbar-nav">
-            <li class="active"><a href="#/showAllHabit">My Habits</a></li>
-            <li><a href="#/createHabit">Add Habit</a></li>
-<!--
-            <li><a href="#/updateHabit">Update Habit</a></li>
--->
-            <li ng-show="authData"><a href="#/deleteHabit">Delete Habit</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li ng-show="authData"><a href="#"><span
-                    class="glyphicon glyphicon-log-out"></span> Hello, {{ authData.facebook.displayName }}</a></li>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/showAllHabit">My Habits</a></li>
+                <li><a href="#/createHabit">Add Habit</a></li>
+                <!--
+                            <li><a href="#/updateHabit">Update Habit</a></li>
+                -->
+                <li ng-show="authData"><a href="#/deleteHabit">Delete Habit</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="authData"><a href="#"><span
+                        class="glyphicon glyphicon-log-out"></span> Hello, {{ authData.facebook.displayName }}</a></li>
 
-            <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthPopup('facebook')"><span
-                    class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthPopup('facebook')"><span
-                    class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthPopup('facebook')"><span
+                        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthPopup('facebook')"><span
+                        class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-            <li ng-show="authData"><a href="" ng-click="auth.$unauth()"><span
-                    class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-        </ul></div>
+                <li ng-show="authData"><a href="" ng-click="auth.$unauth()"><span
+                        class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
     </div>
 </nav>

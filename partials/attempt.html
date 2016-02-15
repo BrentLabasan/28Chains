@@ -83,7 +83,7 @@
 <!--                        <\
                             {{$index+1}}
 -->
-                            <span ng-bind="getTabHeading($index, day.date)"></span>
+                            <span ng-bind-html="getTabHeading($index, day.date)"></span>
                         </span>
 
                             <svg class="brenterface" ng-show="day.status=='true' && $index !=27" height="10" width="80"

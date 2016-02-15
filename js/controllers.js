@@ -1,6 +1,6 @@
 /* Controllers */
 
-var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase', 'ui.bootstrap.demo']);
+var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase', 'ui.bootstrap.demo', 'ngSanitize']);
 
 
 /*******************************************************************************
@@ -61,10 +61,11 @@ publicLibraryControllers.controller('BooksController',
 
         $scope.getTabHeading = function(index, dateOfTab) {
             var s = "" + (index+1);
-            console.log( moment(dateOfTab).format("MM-DD-YYYY") + "-----" + moment().format("MM-DD-YYYY") );
+            //console.log( moment(dateOfTab).format("MM-DD-YYYY") + "-----" + moment().format("MM-DD-YYYY") );
             if ( moment(dateOfTab).format("MM-DD-YYYY") === moment().format("MM-DD-YYYY") ){
-                s += "T";
+                s += "<br/>T";
             }
+            //console.log("s " + s);
             return s;
         };
 

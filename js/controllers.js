@@ -59,6 +59,15 @@ publicLibraryControllers.controller('BooksController',
 
         };
 
+        $scope.getTabHeading = function(index, dateOfTab) {
+            var s = "" + (index+1);
+            console.log(dateOfTab + " " + moment().format() );
+            if (dateOfTab === moment().format()){
+                s += "T";
+            }
+            return s;
+        };
+
         $scope.getHabitsAttempts = function() {
 
             $scope.woof = "woof1";

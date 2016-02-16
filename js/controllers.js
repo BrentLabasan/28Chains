@@ -143,7 +143,8 @@ publicLibraryControllers.controller('BooksController',
             for (i = 0; i < 28; i++) {
                 arr[i] = {
                     status: "ny",
-                    date: moment(date).add(i, 'days').format()
+                    date: moment(date).add(i, 'days').format(),
+                    YouTube: ""
                 }
             }
             return arr;

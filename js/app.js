@@ -1,7 +1,7 @@
 
 /* App Module */
 
-var app = angular.module( 'TwentyEightChains', ['ngRoute', 'publicLibraryControllers', 'firebase', 'ngAnimate']);
+var app = angular.module( 'TwentyEightChains', ['ngRoute', 'publicLibraryControllers', 'firebase', 'ngAnimate', 'anguvideo']);
 var masterId ;
 app.factory("Auth", ["$firebaseAuth",
     function ($firebaseAuth) {

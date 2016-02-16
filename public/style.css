@@ -20,6 +20,10 @@ h5 {
 
 }
 
+.journalHeadings {
+    font-family: 'Permanent Marker', cursive;
+}
+
 label h6 {
 color: grey;
     font-weight: bold;s
@@ -133,7 +137,7 @@ color: #adadad;
 
 
 
-
+/* http://stackoverflow.com/questions/23985018/simple-css-animation-loop-fading-in-out-loading-text */
 
 @keyframes flickerAnimation {
     0%   { opacity:1; }

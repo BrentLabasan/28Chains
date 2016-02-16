@@ -65,7 +65,7 @@
 
                                             <label>Journal Entry</label>
                                             <textarea rows="4" class="form-control"
-                                                       ng-model="day.journalEntry"></textarea>
+                                                      ng-model="day.journalEntry"></textarea>
 
                                         </div>
                                     </ng-form>
@@ -74,9 +74,11 @@
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
                                         Pics and Videos
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                        <anguvideo ng-model="day.YouTube"></anguvideo>
-                                            </div>
+                                        <h6>YouTube URL</h6>
+                                        <input type="text" ng-model="day.YouTube" size="60"/>
+                                        <div ng-show="day.YouTube" class="embed-responsive embed-responsive-16by9">
+                                            <anguvideo ng-model="day.YouTube"></anguvideo>
+                                        </div>
                                     </h3>
                                 </div>
                                 <div class="col-lg-4">

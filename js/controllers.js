@@ -45,7 +45,7 @@ publicLibraryControllers.controller('BooksController',
             var attemptData = new Firebase(url);
             var syncobject = $firebaseObject(attemptData);
             syncobject.$bindTo($scope, "data");
-            console.log("syncobject1 " + syncobject);
+            console.log("syncobject1 " + syncobject );
             //$scope.dog = "woof";
             //alert(attemptData);
             var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $routeParams.idhabit + "/name" ;
@@ -95,10 +95,19 @@ publicLibraryControllers.controller('BooksController',
         };
 
       $scope.changeChainDates = function(data) {
-        alert(data);
+        //alert(data);
+        var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+        var attemptData = new Firebase(url);
+        //alert(attemptData)
         for (i=0;i<data.length;i++){
-          data[i].date = moment(data[i]).add(i, 'days').format();
-          console.log(data[i]);
+          attemptData.child("chain").child(i).update({
+            //date: moment().format()
+            date: moment(data[i].date).add(i, 'days').format()
+          });
+
+           // = moment(data[i].date).add(i, 'days').format();
+          //data[i].date = moment(data[i].date).add(i, 'days').format();
+          // console.log(data[i]);
         }
       };
 

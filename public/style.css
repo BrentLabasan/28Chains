@@ -36,11 +36,11 @@ h5 {
     left: -20px;
 }
 
-#attemptName {
+.editableField {
   border:0px solid #FFFFFF;
 }
 
-#attemptName:hover {
+.editableField:hover {
 
   border:1px solid lightgrey;
 }

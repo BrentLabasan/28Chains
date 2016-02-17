@@ -4,7 +4,14 @@
     </div>
     <div ng-hide="showLoading">
         <h2><label class="label label-default">HABIT</label> &nbsp; {{data.habitName}}</h2>
-        <h3>&nbsp;&nbsp;&nbsp;<label class="label label-primary">ATTEMPT</label> &nbsp; <input id="attemptName" type="text" ng-model="data.name"/></h3>
+        <h3>&nbsp;&nbsp;&nbsp;
+            <label class="label label-primary">ATTEMPT</label> &nbsp;
+          <input class="editableField" type="text" ng-model="data.name"/>
+          <label class="label label-primary">START DATE</label> &nbsp;
+          <input class="editableField" type="text" ng-model="data.startDate"/>
+
+
+        </h3>
         <br/>
         <div ng-controller="TabsDemoCtrl">
 

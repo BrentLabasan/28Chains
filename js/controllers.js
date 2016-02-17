@@ -229,7 +229,7 @@ publicLibraryControllers.controller('BooksController',
 
           var ref7 = new Firebase(rootUrl);
 
-          // create the Habit
+          // update the Habit
           var habitsRef = ref7.child("habits/" + $scope.authData.uid);
           var habitPush = habitsRef.set({
             //id_attempt: attemptPush.key(),
@@ -239,12 +239,12 @@ publicLibraryControllers.controller('BooksController',
 
           console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
           // create the Attempt
-          var attemptsRef = ref7.child("attempts/" +habitPush.key());
+          var attemptsRef = ref7.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
           var attemptPush = attemptsRef.set({
             startDate: document.getElementById("startDate").value
           });
 
-          window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
+          window.location = "/#/attempt/" + $scope.book.id + "/" + $scope.book.id_attempt ;
 
 /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
             $http({

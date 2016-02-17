@@ -96,12 +96,12 @@ publicLibraryControllers.controller('BooksController',
 
       $scope.changeChainDates = function(data, blah) {
         //alert(data);
-        console.log("blah " + blah);
+        //console.log("blah " + blah);
         var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
         var attemptData = new Firebase(url);
         //alert(attemptData)
         for (i=0;i<data.length;i++){
-          console.log(data[i].date);
+          //console.log(data[i].date);
           attemptData.child("chain").child(i).update({
             //date: moment().format()
             //date: data[i].date

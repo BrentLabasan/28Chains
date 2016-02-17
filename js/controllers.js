@@ -94,6 +94,13 @@ publicLibraryControllers.controller('BooksController',
 
         };
 
+/*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {
+        var ref10 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
+        var attemptRef = ref10.child(book_id).child(book_id_attempt);
+        return "9/9/1999";
+        //return attemptRef.startDate;
+      };*/
+
         /**
          * ## getAllBooks
          * sent a GET request to parse.com once the controller is loaded. If the
@@ -106,11 +113,9 @@ publicLibraryControllers.controller('BooksController',
             ref2.on("value", function(snapshot){
                 console.log("--- masterId in getAllBookss " + masterId);
                 $scope.books = $firebaseObject(ref.child('habits').child(masterId));
-                console.log($scope.books);
+
                 $scope.showLoading = false;
             });
-            console.log("kyle");
-
 
             /*
              $http({
@@ -151,7 +156,6 @@ publicLibraryControllers.controller('BooksController',
         };
 
         $scope.addBook = function () {
-            var rootUrl = "https://glowing-heat-6414.firebaseio.com";
             var ref = new Firebase(rootUrl);
 
             // create the Habit

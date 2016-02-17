@@ -1,10 +1,10 @@
 <div ng-init="getAllBooks()">
-  <h1>Public Library: Update a book record</h1>
+  <h1>Update Habit</h1>
   <form>
     <div ng-hide="book">
       <label>Select book:
         <select ng-model="book"
-                ng-options="(book.isbn + ' - ' + book.title) for book in books">
+                ng-options="(book.name) for book in books">
           <option value="">...</option>
         </select>
       </label>

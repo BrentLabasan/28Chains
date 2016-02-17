@@ -11,20 +11,21 @@
     </div>
     <div ng-show="book">
       <div>
-        <label>ISBN:
-          <output type="text" name="isbn" ng-bind="book.isbn" />
+        <label>NAME
+          <input type="text" name="name" ng-model="book.name" />
         </label>
       </div>
       <div>
-        <label>Title:
-          <input type="text" name="title" ng-model="book.title" />
+        <label>DESCRIPTION
+          <input type="text" name="description" ng-model="book.description" />
         </label>
       </div>
       <div>
-        <label>Year:
-          <input type="number" name="year" ng-model="book.year" />
+        <label>START DATE
+          <input type="text" name="startDate" ng-model="book.startDate" />
         </label>
       </div>
+      {{book|json}}
       <div>
         <button type="submit" name="commit" ng-click="updateBook()">
           Save Changes

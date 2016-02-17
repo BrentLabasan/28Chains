@@ -17,7 +17,7 @@ publicLibraryControllers.controller('BooksController',
 
         $scope.meow = "meow1";
 
-        var rootUrl = "https://glowing-heat-6414.firebaseio.com";
+        var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
         var ref = new Firebase(rootUrl);
         var auth = $firebaseAuth(ref);
         $scope.routeParams = $routeParams;
@@ -222,7 +222,27 @@ publicLibraryControllers.controller('BooksController',
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.updateBook = function () {
-            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
+
+          var ref7 = new Firebase(rootUrl);
+
+          // create the Habit
+          var habitsRef = ref7.child("habits/" + $scope.authData.uid);
+          var habitPush = habitsRef.set({
+            //id_attempt: attemptPush.key(),
+            name: $scope.book.name,
+            description: $scope.book.description
+          });
+
+          console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
+          // create the Attempt
+          var attemptsRef = ref7.child("attempts/" +habitPush.key());
+          var attemptPush = attemptsRef.set({
+            startDate: document.getElementById("startDate").value
+          });
+
+          window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
+
+/*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
             $http({
                 method: 'PUT',
                 url: bookUrl,
@@ -238,7 +258,8 @@ publicLibraryControllers.controller('BooksController',
                 .error(function (data) {
                     console.log(data);
                     alert("OH! Book is NOT updated, see the information in console.");
-                });
+                });*/
+
         };
 
         /**

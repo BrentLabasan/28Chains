@@ -36,9 +36,18 @@ h5 {
     left: -20px;
 }
 
+#attemptName {
+  border:0px solid #FFFFFF;
+}
+
+#attemptName:hover {
+
+  border:1px solid lightgrey;
+}
+
 label h6 {
 color: grey;
-    font-weight: bold;s
+    font-weight: bold;
 }
 
 button {

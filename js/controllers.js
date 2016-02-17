@@ -94,6 +94,10 @@ publicLibraryControllers.controller('BooksController',
 
         };
 
+      $scope.changeChainDates = function() {
+        alert();
+      };
+
 /*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {
         var ref10 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
         var attemptRef = ref10.child(book_id).child(book_id_attempt);

@@ -8,10 +8,13 @@
             <label class="label label-primary">ATTEMPT</label> &nbsp;
           <input class="editableField" type="text" ng-model="data.name"/>
           <label class="label label-primary">START DATE</label> &nbsp;
-          <input class="editableField" type="text" ng-model="data.startDate"/>
+          <input ng-blur="changeChainDates()" class="editableField" type="text" ng-model="data.startDate"/>
 
 
         </h3>
+<!--
+      {{data | json}}
+-->
         <br/>
         <div ng-controller="TabsDemoCtrl">
 

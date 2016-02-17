@@ -231,7 +231,7 @@ publicLibraryControllers.controller('BooksController',
 
           // update the Habit
           var habitsRef = ref7.child("habits/" + $scope.authData.uid);
-          var habitPush = habitsRef.set({
+          var habitPush = habitsRef.update({
             //id_attempt: attemptPush.key(),
             name: $scope.book.name,
             description: $scope.book.description
@@ -240,29 +240,11 @@ publicLibraryControllers.controller('BooksController',
           console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
           // create the Attempt
           var attemptsRef = ref7.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
-          var attemptPush = attemptsRef.set({
+          var attemptPush = attemptsRef.update({
             startDate: document.getElementById("startDate").value
           });
 
-          window.location = "/#/attempt/" + $scope.book.id + "/" + $scope.book.id_attempt ;
-
-/*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
-            $http({
-                method: 'PUT',
-                url: bookUrl,
-                data: {
-                    isbn: $scope.book.isbn,
-                    title: $scope.book.title,
-                    year: $scope.book.year
-                }
-            })
-                .success(function () {
-                    $location.path('/');
-                })
-                .error(function (data) {
-                    console.log(data);
-                    alert("OH! Book is NOT updated, see the information in console.");
-                });*/
+          window.location = "/#/attempt/" + $scope.book.id + "/" + $scope.book.id_attempt;
 
         };
 

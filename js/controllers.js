@@ -94,8 +94,12 @@ publicLibraryControllers.controller('BooksController',
 
         };
 
-      $scope.changeChainDates = function() {
-        alert();
+      $scope.changeChainDates = function(data) {
+        alert(data);
+        for (i=0;i<data.length;i++){
+          data[i].date = moment(data[i]).add(i, 'days').format();
+          console.log(data[i]);
+        }
       };
 
 /*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {

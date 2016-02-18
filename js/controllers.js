@@ -27,11 +27,16 @@ publicLibraryControllers.controller('BooksController',
         $scope.authData = null;
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
-            $scope.authData = authData;
-            console.log("$scope.authData loaded in BooksController:", $scope.authData);
-            masterId = $scope.authData.uid;
-            console.log("masterId2 " + masterId);
+          $scope.authData = authData;
+          console.log("$scope.authData loaded in BooksController:", $scope.authData);
+          masterId = $scope.authData.uid;
+          console.log("masterId2 " + masterId);
+
+          $scope.getAllBooks();
         });
+
+
+
 
         /**
          * ## showLoading
@@ -128,32 +133,33 @@ publicLibraryControllers.controller('BooksController',
          * saved to an array $scope.books; otherwise, show error messages in console.
          */
         $scope.getAllBooks = function () {
+console.log("GET ALL BOOKS 1")
             //console.log(authData); // !! I THINK IT'S BECAUSE AUTHDATA NOT DEFINED AT THIS POINT
-            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
+
+/*            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
             ref2.on("value", function(snapshot){
                 console.log("--- masterId in getAllBookss " + masterId);
                 $scope.books = $firebaseObject(ref.child('habits').child(masterId));
 
                 $scope.showLoading = false;
-            });
+              console.log("GET ALL BOOKS 2")
 
-            /*
-             $http({
-             method: 'GET',
-             url: 'https://api.parse.com/1/classes/Book'
-             })
-             .success( function ( data) {
-             $scope.showLoading = false;
-             $scope.books = data.results;
-             })
-             .error( function ( data) {
-             console.log( data);
-             alert("OH! Can NOT get all books, see the information in console.");
-             });*/
+            });*/
+
+          var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId ;
+          console.log(url2)
+          var habitName3 = new Firebase(url2);
+          var syncobject2 = $firebaseObject(habitName3);
+          syncobject2.$bindTo($scope, "books");
+
+          console.log("GET ALL BOOKS 3")
+          $scope.showLoading = false;
 
         };
 
-        /**
+
+
+      /**
          * ## addBook
          * send a POST request to parse.com for inserting a new book record which
          * stored in $scope.book to parse.com. If the request is succeed, clear all

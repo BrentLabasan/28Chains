@@ -36,8 +36,7 @@
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
         $scope.auth = Auth;
-        $scope.authData = null;
-
+        
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
           $scope.authData = authData;
@@ -145,11 +144,15 @@
          */
         $scope.getAllHabits = function () {
           console.log("begin getAllHabits()");
-          var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
-          console.log(url2)
-          var habitName3 = new Firebase(url2);
-          var syncobject2 = $firebaseObject(habitName3);
-          syncobject2.$bindTo($scope, "books");
+
+          var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
+
+          //var reference_allUsersHabits = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
+          //console.log("reference_allUsersHabits " + reference_allUsersHabits);
+          console.log("allUsersHabits " + allUsersHabits);
+
+          var syncObject = $firebaseObject(allUsersHabits);
+          syncObject.$bindTo($scope, "books");
 
           $scope.showLoading = false;
           console.log("end getAllHabits()");

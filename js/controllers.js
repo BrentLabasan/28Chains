@@ -19,8 +19,18 @@
     ['$scope', '$location', '$http', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth', '$routeParams',
       function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
 
-        var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
-        var reference_FirebaseRoot = new Firebase(rootUrl);
+        var createDaysForChain = function (date) {
+          var arr = [],
+            i;
+          for (i = 0; i < 28; i++) {
+            arr[i] = {
+              status: "ny",
+              date: moment(date).add(i, 'days').format(),
+              YouTube: ""
+            };
+          }
+          return arr;
+        };
 
         $scope.routeParams = $routeParams;
 
@@ -159,20 +169,6 @@
         };
 
 
-        var createDay = function (date) {
-
-          var arr = [];
-          var i;
-          for (i = 0; i < 28; i++) {
-            arr[i] = {
-              status: "ny",
-              date: moment(date).add(i, 'days').format(),
-              YouTube: ""
-            }
-          }
-          return arr;
-        };
-
         /**
          * ## addHabit
          * send a POST request to parse.com for inserting a new book record which
@@ -202,7 +198,7 @@
             name: "Attempt for Habit: " + $scope.book.name,
             habitName: $scope.book.name,
             description: "Write a description about this attempt...",
-            chain: createDay(document.getElementById("startDate").value),
+            chain: createDaysForChain(document.getElementById("startDate").value),
             startDate: document.getElementById("startDate").value
 
           });

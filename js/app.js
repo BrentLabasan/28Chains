@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /* App Module */
 
 var app = angular
@@ -11,43 +11,47 @@ var app = angular
     'anguvideo',
     // 28Chain modules.
     'twentyEightChainsControllers'
-  ]).config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-    // Router configuration
-      .when('/main', {
-        templateUrl: 'partials/main.html',
-        controller: 'TestDatasController'
-      })
-      .when('/showAllHabits', {
-        templateUrl: 'partials/showAllHabits.html',
-        controller: 'CoreController'
-      })
-      .when('/createHabit', {
-        templateUrl: 'partials/createHabit.html',
-        controller: 'CoreController'
-      })
-      .when('/updateHabit', {
-        templateUrl: 'partials/updateHabit.html',
-        controller: 'CoreController'
-      })
-      .when('/deleteHabit', {
-        templateUrl: 'partials/deleteHabit.html',
-        controller: 'CoreController'
-      })
-      .when('/habit/:id', {
-        templateUrl: 'partials/habit.html',
-        controller: 'CoreController'
-      })
-      .when('/attempt/:idhabit/:idattempt', {
-        templateUrl: 'partials/attempt.html',
-        controller: 'CoreController'
-      })
-      .otherwise({
-        redirectTo: '/showAllHabits'
-      });
-  }]);
+  ]);
+
+app.config(['$routeProvider', function ($routeProvider) {
+  $routeProvider
+  // Router configuration
+    .when('/main', {
+      templateUrl: 'partials/main.html',
+      controller: 'TestDatasController'
+    })
+    .when('/showAllHabits', {
+      templateUrl: 'partials/showAllHabits.html',
+      controller: 'CoreController'
+    })
+    .when('/createHabit', {
+      templateUrl: 'partials/createHabit.html',
+      controller: 'CoreController'
+    })
+    .when('/updateHabit', {
+      templateUrl: 'partials/updateHabit.html',
+      controller: 'CoreController'
+    })
+    .when('/deleteHabit', {
+      templateUrl: 'partials/deleteHabit.html',
+      controller: 'CoreController'
+    })
+    .when('/habit/:id', {
+      templateUrl: 'partials/habit.html',
+      controller: 'CoreController'
+    })
+    .when('/attempt/:idhabit/:idattempt', {
+      templateUrl: 'partials/attempt.html',
+      controller: 'CoreController'
+    })
+    .otherwise({
+      redirectTo: '/showAllHabits'
+    });
+}]);
 
 var masterId;
+
+
 
 app.factory("Auth", ["$firebaseAuth",
   function ($firebaseAuth) {
@@ -76,7 +80,8 @@ app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray
   }
 ]);
 
-
+var rootUrl = "https://glowing-heat-6414.firebaseio.com/",
+  reference_FirebaseRoot = new Firebase(rootUrl);
 
 
 /**

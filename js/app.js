@@ -51,25 +51,20 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 var masterId;
 
-
+var rootUrl = "https://glowing-heat-6414.firebaseio.com/",
+  reference_FirebaseRoot = new Firebase(rootUrl);
 
 app.factory("Auth", ["$firebaseAuth",
   function ($firebaseAuth) {
-    var ref = new Firebase("https://glowing-heat-6414.firebaseio.com", "example3");
-    return $firebaseAuth(ref);
+    return $firebaseAuth(reference_FirebaseRoot);
   }]);
 
 app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth',
-  function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
-    $scope.meow = "a";
-
-    var rootUrl = "https://glowing-heat-6414.firebaseio.com";
-    var ref = new Firebase(rootUrl);
-    var auth = $firebaseAuth(ref);
-
+  //function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
+  function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
     // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
     $scope.auth = Auth;
-    //console.log("$scope.auth " + $scope.auth);
+
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function (authData) {
       $scope.authData = authData;
@@ -79,9 +74,6 @@ app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray
     });
   }
 ]);
-
-var rootUrl = "https://glowing-heat-6414.firebaseio.com/",
-  reference_FirebaseRoot = new Firebase(rootUrl);
 
 
 /**

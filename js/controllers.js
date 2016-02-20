@@ -1,17 +1,17 @@
 /* Controllers */
 
-var publicLibraryControllers = angular.module('publicLibraryControllers', ['firebase', 'ui.bootstrap.demo', 'ngSanitize']);
+var twentyEightChainsControllers = angular.module('twentyEightChainsControllers', ['firebase', 'ui.bootstrap.demo', 'ngSanitize']);
 
 /*******************************************************************************
  *******************************************************************************
- * # BooksController:
+ * # CoreController:
  * - for showAllBooks, addBook, updateBook and destroyBook.
  *
  * @param  {Object} $scope      [glue between view/model and controller]
  * @param  {Object} $location   [control the url]
  * @param  {Object} $http       [get connection with parse.com using REST Api]
  ******************************************************************************/
-publicLibraryControllers.controller('BooksController',
+twentyEightChainsControllers.controller('CoreController',
   ['$scope', '$location', '$http', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth', '$routeParams',
     function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
 
@@ -26,7 +26,7 @@ publicLibraryControllers.controller('BooksController',
       // any time auth status updates, add the user data to scope
       $scope.auth.$onAuth(function (authData) {
         $scope.authData = authData;
-        console.log("$scope.authData loaded in BooksController:", $scope.authData);
+        console.log("$scope.authData loaded in CoreController:", $scope.authData);
         masterId = $scope.authData.uid;
         console.log("masterId2 " + masterId);
 
@@ -332,7 +332,7 @@ publicLibraryControllers.controller('BooksController',
  * # TestDatasController
  * - for creating and clearing test data.
  ******************************************************************************/
-publicLibraryControllers.controller('TestDatasController',
+twentyEightChainsControllers.controller('TestDatasController',
   ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
     // Create test data.
     $scope.createTestData = function () {

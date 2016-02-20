@@ -2,7 +2,7 @@
 /* App Module */
 
 var publicLibraryApp = angular.module( 'publicLibraryApp',
-['ngRoute', 'publicLibraryControllers']);
+['ngRoute', 'twentyEightChainsControllers']);
 
 /**
  * Configuration Block

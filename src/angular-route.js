@@ -334,8 +334,8 @@ function $RouteProvider() {
      *          $scope.$routeParams = $routeParams;
      *      })
      *
-     *      .controller('BookController', function($scope, $routeParams) {
-     *          $scope.name = "BookController";
+     *      .controller('BooksController', function($scope, $routeParams) {
+     *          $scope.name = "BooksController";
      *          $scope.params = $routeParams;
      *      })
      *
@@ -348,7 +348,7 @@ function $RouteProvider() {
      *       $routeProvider
      *        .when('/Book/:bookId', {
      *         templateUrl: 'book.html',
-     *         controller: 'BookController',
+     *         controller: 'BooksController',
      *         resolve: {
      *           // I will cause a 1 second delay
      *           delay: function($q, $timeout) {
@@ -380,7 +380,7 @@ function $RouteProvider() {
      *       element(by.partialLinkText('Scarlet')).click();
      *
      *       content = element(by.css('[ng-view]')).getText();
-     *       expect(content).toMatch(/controller\: BookController/);
+     *       expect(content).toMatch(/controller\: BooksController/);
      *       expect(content).toMatch(/Book Id\: Scarlet/);
      *     });
      *   </file>

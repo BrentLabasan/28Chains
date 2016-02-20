@@ -6,7 +6,7 @@ var publicLibraryControllers = angular.module('publicLibraryControllers', []);
 
 /*******************************************************************************
  *******************************************************************************
- * # BooksController:
+ * # CoreController:
  * - for showAllBooks, addBook, updateBook and destroyBook.
  *
  * @param  {Object} $scope      [glue between view/model and controller]

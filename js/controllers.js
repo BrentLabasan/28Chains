@@ -36,7 +36,7 @@
 
         // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
         $scope.auth = Auth;
-        
+
         // any time auth status updates, add the user data to scope
         $scope.auth.$onAuth(function (authData) {
           $scope.authData = authData;
@@ -286,7 +286,7 @@
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.destroyHabit = function () {
-          // gets the reference to the Habit to delete |
+          // gets the reference to the Habit to delete
           var habitToDelete = reference_FirebaseRoot.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
           // Habit is deleted from Firebase
           habitToDelete.remove();

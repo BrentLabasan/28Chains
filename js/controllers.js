@@ -20,7 +20,7 @@
       function ($scope, $location, $http, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
 
         var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
-        var reference2Root = new Firebase(rootUrl);
+        var reference_FirebaseRoot = new Firebase(rootUrl);
 
         $scope.routeParams = $routeParams;
 
@@ -302,13 +302,13 @@
          * jump to parent page; otherwise, show error messages in console.
          */
         $scope.destroyHabit = function () {
-          // delete the Habit
-          console.log("$scope.book.id " + $scope.book.id);
-          // delete the Habit
-          var habitToDelete = reference2Root.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
+          // gets the reference to the Habit to delete |
+          var habitToDelete = reference_FirebaseRoot.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
+          // Habit is deleted from Firebase
           habitToDelete.remove();
-          // delete it's Attempt
-          var attemptToDelete = reference2Root.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
+          // the lone Attempt of the Habit that was just deleted is also deleted
+          // TODO when Habits are able to have multiple Attempts, write code to delete all Habit's Attempts
+          var attemptToDelete = reference_FirebaseRoot.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
           attemptToDelete.remove();
 
           /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;

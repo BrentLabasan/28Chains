@@ -1,8 +1,51 @@
 "use strict";
 /* App Module */
 
-var app = angular.module('TwentyEightChains',
-  ['ngRoute', 'twentyEightChainsControllers', 'firebase', 'ngAnimate', 'anguvideo']);
+var app = angular
+  .module('TwentyEightChains', [
+    // Angular modules.
+    'ngRoute',
+    'ngAnimate',
+    // Third party modules.
+    'firebase',
+    'anguvideo',
+    // 28Chain modules.
+    'twentyEightChainsControllers'
+  ]).config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+    // Router configuration
+      .when('/main', {
+        templateUrl: 'partials/main.html',
+        controller: 'TestDatasController'
+      })
+      .when('/showAllHabits', {
+        templateUrl: 'partials/showAllHabits.html',
+        controller: 'CoreController'
+      })
+      .when('/createHabit', {
+        templateUrl: 'partials/createHabit.html',
+        controller: 'CoreController'
+      })
+      .when('/updateHabit', {
+        templateUrl: 'partials/updateHabit.html',
+        controller: 'CoreController'
+      })
+      .when('/deleteHabit', {
+        templateUrl: 'partials/deleteHabit.html',
+        controller: 'CoreController'
+      })
+      .when('/habit/:id', {
+        templateUrl: 'partials/habit.html',
+        controller: 'CoreController'
+      })
+      .when('/attempt/:idhabit/:idattempt', {
+        templateUrl: 'partials/attempt.html',
+        controller: 'CoreController'
+      })
+      .otherwise({
+        redirectTo: '/showAllHabits'
+      });
+  }]);
 
 var masterId;
 
@@ -33,47 +76,6 @@ app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray
   }
 ]);
 
-
-/**
- * Configuration Block
- */
-app.config(['$routeProvider', function ($routeProvider) {
-
-
-  $routeProvider
-  // Router configuration
-    .when('/main', {
-      templateUrl: 'partials/main.html',
-      controller: 'TestDatasController'
-    })
-    .when('/showAllHabits', {
-      templateUrl: 'partials/showAllHabits.html',
-      controller: 'CoreController'
-    })
-    .when('/createHabit', {
-      templateUrl: 'partials/createHabit.html',
-      controller: 'CoreController'
-    })
-    .when('/updateHabit', {
-      templateUrl: 'partials/updateHabit.html',
-      controller: 'CoreController'
-    })
-    .when('/deleteHabit', {
-      templateUrl: 'partials/deleteHabit.html',
-      controller: 'CoreController'
-    })
-    .when('/habit/:id', {
-      templateUrl: 'partials/habit.html',
-      controller: 'CoreController'
-    })
-    .when('/attempt/:idhabit/:idattempt', {
-      templateUrl: 'partials/attempt.html',
-      controller: 'CoreController'
-    })
-    .otherwise({
-      redirectTo: '/showAllHabits'
-    });
-}]);
 
 /**
  * Run Block

@@ -5,7 +5,7 @@ var twentyEightChainsControllers = angular.module('twentyEightChainsControllers'
 /*******************************************************************************
  *******************************************************************************
  * # CoreController:
- * - for showAllBooks, addBook, updateBook and destroyBook.
+ * - for showAllBooks, addHabit, updateHabit and destroyHabit.
  *
  * @param  {Object} $scope      [glue between view/model and controller]
  * @param  {Object} $location   [control the url]
@@ -30,7 +30,7 @@ twentyEightChainsControllers.controller('CoreController',
         masterId = $scope.authData.uid;
         console.log("masterId2 " + masterId);
 
-        $scope.getAllBooks();
+        $scope.getAllHabits();
       });
 
 
@@ -123,12 +123,12 @@ twentyEightChainsControllers.controller('CoreController',
        };*/
 
       /**
-       * ## getAllBooks
+       * ## getAllHabits
        * sent a GET request to parse.com once the controller is loaded. If the
        * request is succeed, all books stored in parse.com will be loaded and
        * saved to an array $scope.books; otherwise, show error messages in console.
        */
-      $scope.getAllBooks = function () {
+      $scope.getAllHabits = function () {
         console.log("GET ALL BOOKS 1")
         //console.log(authData); // !! I THINK IT'S BECAUSE AUTHDATA NOT DEFINED AT THIS POINT
 
@@ -169,14 +169,14 @@ twentyEightChainsControllers.controller('CoreController',
       };
 
       /**
-       * ## addBook
+       * ## addHabit
        * send a POST request to parse.com for inserting a new book record which
        * stored in $scope.book to parse.com. If the request is succeed, clear all
        * the temporary data and jump to parent page; otherwise, show error messages
        * in console.
        */
 
-      $scope.addBook = function () {
+      $scope.addHabit = function () {
         var ref = new Firebase(rootUrl);
 
         // create the Habit
@@ -240,13 +240,13 @@ twentyEightChainsControllers.controller('CoreController',
       };
 
       /**
-       * ## updateBook
+       * ## updateHabit
        * send a PUT request to parse.com for changing book record, which has a
        * standard objectId defined by parse.com itself and stored in $scope.book,
        * to parse.com. If the request is succeed, clear all the temporary data and
        * jump to parent page; otherwise, show error messages in console.
        */
-      $scope.updateBook = function () {
+      $scope.updateHabit = function () {
 
         var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $scope.book.id + "/" + $scope.book.id_attempt;
         var attemptData = new Firebase(url);
@@ -291,12 +291,12 @@ twentyEightChainsControllers.controller('CoreController',
       };
 
       /**
-       * ## destroyBook
+       * ## destroyHabit
        * send a DELETE request to parse.com for deleting a book record which has
        * a standard objectId defined by parse.com itself. If the request is succeed,
        * jump to parent page; otherwise, show error messages in console.
        */
-      $scope.destroyBook = function () {
+      $scope.destroyHabit = function () {
         var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
         var ref4 = new Firebase(rootUrl);
 

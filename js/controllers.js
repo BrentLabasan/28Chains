@@ -144,28 +144,15 @@
          * saved to an array $scope.books; otherwise, show error messages in console.
          */
         $scope.getAllHabits = function () {
-          console.log("GET ALL BOOKS 1")
-          //console.log(authData); // !! I THINK IT'S BECAUSE AUTHDATA NOT DEFINED AT THIS POINT
-
-          /*            var ref2 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
-           ref2.on("value", function(snapshot){
-           console.log("--- masterId in getAllBookss " + masterId);
-           $scope.books = $firebaseObject(ref.child('habits').child(masterId));
-
-           $scope.showLoading = false;
-           console.log("GET ALL BOOKS 2")
-
-           });*/
-
+          console.log("begin getAllHabits()");
           var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
           console.log(url2)
           var habitName3 = new Firebase(url2);
           var syncobject2 = $firebaseObject(habitName3);
           syncobject2.$bindTo($scope, "books");
 
-          console.log("GET ALL BOOKS 3")
           $scope.showLoading = false;
-
+          console.log("end getAllHabits()");
         };
 
 

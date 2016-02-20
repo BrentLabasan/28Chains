@@ -178,10 +178,8 @@
          */
 
         $scope.addHabit = function () {
-          var ref = new Firebase(rootUrl);
-
           // create the Habit
-          var habitsRef = ref.child("habits/" + $scope.authData.uid);
+          var habitsRef = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
           var habitPush = habitsRef.push({
             uid: $scope.authData.uid,
             //id_attempt: attemptPush.key(),
@@ -191,7 +189,7 @@
 
           console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
           // create the Attempt
-          var attemptsRef = ref.child("attempts/" + habitPush.key());
+          var attemptsRef = reference_FirebaseRoot.child("attempts/" + habitPush.key());
           var attemptPush = attemptsRef.push({
             uid: $scope.authData.uid,
             id_habit: habitPush.key(),

@@ -186,3 +186,8 @@ color: #adadad;
     -o-animation: flickerAnimation 1s infinite;
     animation: flickerAnimation 1s infinite;
 }
+
+/* ATTEMPT PAGE */
+#atmptPge_hbtNme {
+  width: 50%;
+}

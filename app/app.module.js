@@ -12,6 +12,7 @@
       'firebase',
       'anguvideo',
       // 28Chain modules.
+      'app.auth',
       'twentyEightChainsControllers'
     ]);
 

@@ -244,7 +244,7 @@
           console.log("syncobject1 " + syncobject);
           //$scope.dog = "woof";
           //alert(attemptData);
-          var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $scope.book.id + "/name";
+          var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + $scope.authData.uid + "/" + $scope.book.id + "/name";
           var habitName3 = new Firebase(url2);
           var syncobject2 = $firebaseObject(habitName3);
           syncobject2.$bindTo($scope, "habitData");

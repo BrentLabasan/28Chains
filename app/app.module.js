@@ -14,8 +14,7 @@
       // 28Chain modules.
       'app.auth',
       'app.header',
-      'app.core',
-      'twentyEightChainsControllers'
+      'app.core'
     ]);
 
   app.config(['$routeProvider', function ($routeProvider) {

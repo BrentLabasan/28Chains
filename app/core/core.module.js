@@ -24,6 +24,7 @@
 
     // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
     $scope.auth = Auth;
+/*
 
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function (authData) {
@@ -34,6 +35,7 @@
 
       $scope.getAllHabits();
     });
+*/
 
 
     /**

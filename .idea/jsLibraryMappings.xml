@@ -3,7 +3,7 @@
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{28Chains node_modules}" />
     <file url="file://$PROJECT_DIR$/app/app.module.js" libraries="{angular, angularfire, firebase}" />
-    <file url="file://$PROJECT_DIR$/app/controllers.js" libraries="{angular, angularfire}" />
+    <file url="file://$PROJECT_DIR$/app/core.module.js" libraries="{angular, angularfire}" />
     <file url="file://$PROJECT_DIR$/partials/attempt.html" libraries="{angular}" />
     <file url="PROJECT" libraries="{bootstrap, jquery-2.2.0}" />
   </component>

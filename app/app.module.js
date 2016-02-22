@@ -13,6 +13,8 @@
       'anguvideo',
       // 28Chain modules.
       'app.auth',
+      'app.header',
+      'app.core',
       'twentyEightChainsControllers'
     ]);
 
@@ -52,17 +54,8 @@
       });
   }]);
 
-  var masterId;
 
-  var rootUrl = "https://glowing-heat-6414.firebaseio.com/",
-    reference_FirebaseRoot = new Firebase(rootUrl);
-
-  app.factory("Auth", ["$firebaseAuth",
-    function ($firebaseAuth) {
-      return $firebaseAuth(reference_FirebaseRoot);
-    }]);
-
-  app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth',
+/*  app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray', '$firebaseAuth', 'Auth',
     //function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $routeParams) {
     function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth) {
       // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
@@ -76,7 +69,7 @@
         console.log("masterId1 " + masterId);
       });
     }
-  ]);
+  ]);*/
 
 
   /**

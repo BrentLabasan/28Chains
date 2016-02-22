@@ -1,19 +1,24 @@
 (function () {
   'use strict';
 
-  var x = angular.module('app.auth', []);
+  var x = angular.module('app.auth', ['firebase']);
 
-  function AuthController($location, authService) {
-    var rootUrl = "https://glowing-heat-6414.firebaseio.com/",
-      reference_FirebaseRoot = new Firebase(rootUrl);
+  x.factory("Auth", ["$firebaseAuth",
+    function ($firebaseAuth) {
+      var rootUrl = "https://glowing-heat-6414.firebaseio.com/";
+      var reference_FirebaseRoot = new Firebase(rootUrl);
+      return $firebaseAuth(reference_FirebaseRoot);
+    }]);
 
-    app.factory("Auth", ["$firebaseAuth",
-      function ($firebaseAuth) {
-        return $firebaseAuth(reference_FirebaseRoot);
-      }]);
-  }
+  x.controller("SampleCtrl", ["$scope", "Auth",
+    function ($scope, Auth) {
+      $scope.auth = Auth;
 
-  x.controller('AuthController', AuthController);
-
+      // any time auth status updates, add the user data to scope
+      $scope.auth.$onAuth(function (authData) {
+        $scope.authData = authData;
+      });
+    }
+  ]);
 
 })();

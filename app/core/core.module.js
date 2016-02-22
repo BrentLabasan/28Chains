@@ -22,28 +22,28 @@
 
     $scope.routeParams = $routeParams;
 
-    // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
-    $scope.auth = Auth;
-/*
-
-    // any time auth status updates, add the user data to scope
-    $scope.auth.$onAuth(function (authData) {
-      $scope.authData = authData;
-      console.log("$scope.authData loaded in CoreController:", $scope.authData);
-      masterId = $scope.authData.uid;
-      console.log("masterId2 " + masterId);
-
-      $scope.getAllHabits();
-    });
-*/
-
-
     /**
      * ## showLoading
      * once the page is loaded, only show progressbar, which will be hidden after
      * loaded all data, and the rest content of this page will be shown;
      */
     $scope.showLoading = true;
+
+    $scope.getAllHabits = function () {
+      console.log("begin getAllHabits()");
+
+      var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
+
+      //var reference_allUsersHabits = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
+      //console.log("reference_allUsersHabits " + reference_allUsersHabits);
+      console.log("allUsersHabits " + allUsersHabits);
+
+      var syncObject = $firebaseObject(allUsersHabits);
+      syncObject.$bindTo($scope, "books");
+
+      $scope.showLoading = false;
+      console.log("end getAllHabits()");
+    };
 
     $scope.getAttemptData = function () {
       var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
@@ -126,27 +126,8 @@
      //return attemptRef.startDate;
      };*/
 
-    /**
-     * ## getAllHabits
-     * sent a GET request to parse.com once the controller is loaded. If the
-     * request is succeed, all books stored in parse.com will be loaded and
-     * saved to an array $scope.books; otherwise, show error messages in console.
-     */
-    $scope.getAllHabits = function () {
-      console.log("begin getAllHabits()");
 
-      var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
 
-      //var reference_allUsersHabits = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
-      //console.log("reference_allUsersHabits " + reference_allUsersHabits);
-      console.log("allUsersHabits " + allUsersHabits);
-
-      var syncObject = $firebaseObject(allUsersHabits);
-      syncObject.$bindTo($scope, "books");
-
-      $scope.showLoading = false;
-      console.log("end getAllHabits()");
-    };
 
 
     /**

@@ -10,7 +10,7 @@
       return $firebaseAuth(reference_FirebaseRoot);
     }]);
 
-  x.controller("SampleCtrl", ["$scope", "Auth",
+  x.controller("AuthController", ["$scope", "Auth",
     function ($scope, Auth) {
       $scope.auth = Auth;
 

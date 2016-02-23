@@ -21,7 +21,13 @@
     var vm = this;
 
     vm.isLoggedIn = authService.isLoggedIn;
+    vm.login = login;
     vm.logout = logout;
+
+    function login() {
+      authService.login();
+      $location.path('/');
+    }
 
     function logout() {
       authService.logout();

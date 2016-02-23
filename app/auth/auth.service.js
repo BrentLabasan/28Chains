@@ -27,12 +27,17 @@
       return firebaseAuthObject.$createUser(user);
     }
 
-    function login(user) {
-      return firebaseAuthObject.$authWithPassword(user);
+    function login() {
+    //function login(user) {
+    //  return firebaseAuthObject.$authWithPassword(user);
+      console.log("login");
+      firebaseAuthObject.$authWithOAuthRedirect('facebook');
     }
 
     function logout() {
       //partyService.reset();
+      console.log("logout");
+
       firebaseAuthObject.$unauth();
     }
 

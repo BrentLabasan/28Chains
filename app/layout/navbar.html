@@ -31,12 +31,17 @@
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 -->
         <li ng-hide="vm.isLoggedIn()">
-          <a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">
+          <!--<a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">-->
+          <a href="" ng-click="vm.login()">
+          <!--<a href="#/login">-->
             <span class="glyphicon glyphicon-user"></span> Sign Up
           </a>
         </li>
+
         <li ng-hide="vm.isLoggedIn()">
-          <a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">
+          <!--<a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">-->
+          <a href="" ng-click="vm.login()">
+          <!--<a href="#/login">-->
             <span class="glyphicon glyphicon-log-in"></span> Login
           </a>
         </li>

@@ -1,0 +1,9 @@
+
+Building Angular and Node.js Apps with the MEAN Stack
+
+TO START NODE SERVER WITH NODEMON - NO NEED TO START AND RESTART AFTER MAKING CHANGES
+nodemon server.js
+
+
+anchor scroll from a service
+https://app.pluralsight.com/player?course=angularjs-get-started&author=scott-allen&name=angularjs-get-started-m4-services&clip=5&mode=live

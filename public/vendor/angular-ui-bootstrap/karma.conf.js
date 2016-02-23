@@ -16,12 +16,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'misc/test-lib/jquery-1.8.2.min.js',
-      'node_modules/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'node_modules/angular-sanitize/angular-sanitize.js',
+      'node_modules/angular/angular.app',
+      'node_modules/angular-mocks/angular-mocks.app',
+      'node_modules/angular-sanitize/angular-sanitize.app',
       'misc/test-lib/helpers.js',
-      'src/**/*.js',
-      'template/**/*.js'
+      'src/**/*.app',
+      'template/**/*.app'
     ],
 
 

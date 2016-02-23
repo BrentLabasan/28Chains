@@ -2,7 +2,7 @@
     License: https://www.firebase.com/terms/terms-of-service.html */
 (function(ns) {
   ns.wrapper = function(goog, fb) {
-    // Prevents closure from trying (and failing) to retrieve a deps.js file.
+    // Prevents closure from trying (and failing) to retrieve a deps.app file.
     var CLOSURE_NO_DEPS = true;
 
     // Sets CLIENT_VERSION manually, since we can't use a closure --define with WHITESPACE_ONLY compilation.
@@ -10239,7 +10239,7 @@ fb.login.AuthenticationManager.prototype.getInitialEvent = function(event) {
   return[this.authData_];
 };
 fb.login.AuthenticationManager.prototype.versionString = function() {
-  return(NODE_CLIENT ? "node-" : "js-") + CLIENT_VERSION;
+  return(NODE_CLIENT ? "node-" : "app-") + CLIENT_VERSION;
 };
 fb.login.AuthenticationManager.prototype.checkServerSettingsOrThrow = function() {
   if (this.repoInfo_.isCustomHost() && fb.login.Constants.SERVER_HOST === fb.login.Constants.DEFAULT_SERVER_HOST) {

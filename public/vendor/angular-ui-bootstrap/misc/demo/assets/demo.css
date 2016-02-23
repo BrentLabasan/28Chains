@@ -286,7 +286,7 @@ border-color: #fff;
 }
 
 
-/* Not enough room on mobile for markup tab, js tab, and plunk btn.
+/* Not enough room on mobile for markup tab, app tab, and plunk btn.
   And no one cares about plunk button on a phone anyway */
 @media only screen and (max-device-width: 480px) {
     #plunk-btn {

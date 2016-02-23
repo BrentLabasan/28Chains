@@ -15,10 +15,10 @@ angular.module('plunker', [])
         return '<!doctype html>\n' +
           '<html ng-app="ui.bootstrap.demo">\n' +
           '  <head>\n' +
-          '    <script src="//ajax.googleapis.com/ajax/libs/angularjs/'+ngVersion+'/angular.js"></script>\n' +
-          '    <script src="//ajax.googleapis.com/ajax/libs/angularjs/'+ngVersion+'/angular-animate.js"></script>\n' +
-          '    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-'+version+'.js"></script>\n' +
-          '    <script src="example.js"></script>\n' +
+          '    <script src="//ajax.googleapis.com/ajax/libs/angularjs/'+ngVersion+'/angular.app"></script>\n' +
+          '    <script src="//ajax.googleapis.com/ajax/libs/angularjs/'+ngVersion+'/angular-animate.app"></script>\n' +
+          '    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-'+version+'.app"></script>\n' +
+          '    <script src="example.app"></script>\n' +
           '    <link href="//netdna.bootstrapcdn.com/bootstrap/'+bsVersion+'/css/bootstrap.min.css" rel="stylesheet">\n' +
           '  </head>\n' +
           '  <body>\n\n' +
@@ -33,7 +33,7 @@ angular.module('plunker', [])
 
       addField('description', 'http://angular-ui.github.io/bootstrap/');
       addField('files[index.html]', indexContent(content.markup, version));
-      addField('files[example.js]', scriptContent(content.javascript));
+      addField('files[example.app]', scriptContent(content.javascript));
 
       $document.find('body').append(form);
       form[0].submit();

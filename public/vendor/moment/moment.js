@@ -1,6 +1,6 @@
 //! moment.js
 //! version : 2.11.2
-//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+//! authors : Tim Wood, Iskren Chernev, Moment.app contributors
 //! license : MIT
 //! momentjs.com
 
@@ -972,7 +972,7 @@
     }
 
     utils_hooks__hooks.createFromInputFallback = deprecate(
-        'moment construction falls back to js Date. This is ' +
+        'moment construction falls back to app Date. This is ' +
         'discouraged and will be removed in upcoming major ' +
         'release. Please refer to ' +
         'https://github.com/moment/moment/issues/1407 for more info.',

@@ -429,7 +429,7 @@ module.exports = function(grunt) {
         .replace(/\s*\,\s*/g, ',')
         .replace(/\s*\;\s*/g, ';');
     }
-    //escape for js
+    //escape for app
     css = css
       .replace(/\\/g, '\\\\')
       .replace(/'/g, "\\'")

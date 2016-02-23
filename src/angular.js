@@ -4529,7 +4529,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    *   triggered.
    *
    *
-   * ```js
+   * ```app
    *   return {
      *     eventFn : function(element, done) {
      *       //code to run the animation
@@ -10880,7 +10880,7 @@ var locationPrototype = {
    * [RFC 3986](http://www.ietf.org/rfc/rfc3986.txt).
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var absUrl = $location.absUrl();
    * // => "http://example.com/#/some/path?foo=bar&baz=xoxo"
@@ -10902,7 +10902,7 @@ var locationPrototype = {
    * Change path, search and hash, when called with parameter and return `$location`.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var url = $location.url();
    * // => "/some/path?foo=bar&baz=xoxo"
@@ -10933,7 +10933,7 @@ var locationPrototype = {
    * Return protocol of current url.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var protocol = $location.protocol();
    * // => "http"
@@ -10953,7 +10953,7 @@ var locationPrototype = {
    * Return host of current url.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var host = $location.host();
    * // => "example.com"
@@ -10973,7 +10973,7 @@ var locationPrototype = {
    * Return port of current url.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var port = $location.port();
    * // => 80
@@ -10998,7 +10998,7 @@ var locationPrototype = {
    * if it is missing.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var path = $location.path();
    * // => "/some/path"
@@ -11024,7 +11024,7 @@ var locationPrototype = {
    * Change search part when called with parameter and return `$location`.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var searchObject = $location.search();
    * // => {foo: 'bar', baz: 'xoxo'}
@@ -11102,7 +11102,7 @@ var locationPrototype = {
    * Change hash fragment when called with parameter and return `$location`.
    *
    *
-   * ```js
+   * ```app
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
    * var hash = $location.hash();
    * // => "hashValue"
@@ -13353,7 +13353,7 @@ function qFactory(nextTick, exceptionHandler) {
    * current promise, you have to "rethrow" the error by returning a rejection constructed via
    * `reject`.
    *
-   * ```js
+   * ```app
    *   promiseB = promiseA.then(function(result) {
    *     // success: do something and resolve promiseB
    *     //          with the old or a new result
@@ -13644,12 +13644,12 @@ function $RootScopeProvider() {
      *
      * Here is a simple scope snippet to show how you can interact with the scope.
      * ```html
-     * <file src="./test/ng/rootScopeSpec.js" tag="docs1" />
+     * <file src="./test/ng/rootScopeSpec.app" tag="docs1" />
      * ```
      *
      * # Inheritance
      * A scope can inherit from a parent scope, as in this example:
-     * ```js
+     * ```app
          var parent = $rootScope;
          var child = parent.$new();
 
@@ -13820,7 +13820,7 @@ function $RootScopeProvider() {
        *
        *
        * # Example
-       * ```js
+       * ```app
            // let's assume that scope was dependency injected as the $rootScope
            var scope = $rootScope;
            scope.name = 'misko';
@@ -14029,7 +14029,7 @@ function $RootScopeProvider() {
        *
        *
        * # Example
-       * ```js
+       * ```app
           $scope.names = ['igor', 'matias', 'misko', 'james'];
           $scope.dataCount = 4;
 
@@ -14225,7 +14225,7 @@ function $RootScopeProvider() {
        * In unit tests, you may need to call `$digest()` to simulate the scope life cycle.
        *
        * # Example
-       * ```js
+       * ```app
            var scope = ...;
            scope.name = 'misko';
            scope.counter = 0;
@@ -14445,7 +14445,7 @@ function $RootScopeProvider() {
        * expressions.
        *
        * # Example
-       * ```js
+       * ```app
            var scope = ng.$rootScope.Scope();
            scope.a = 1;
            scope.b = 2;
@@ -14529,7 +14529,7 @@ function $RootScopeProvider() {
        * ## Life cycle
        *
        * # Pseudo-Code of `$apply()`
-       * ```js
+       * ```app
            function $apply(expr) {
              try {
                return $eval(expr);
@@ -15217,7 +15217,7 @@ function $SceDelegateProvider() {
      * See {@link ng.$sce $sce} for enabling strict contextual escaping.
      *
      * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-     *   resourceUrl, html, js and css.
+     *   resourceUrl, html, app and css.
      * @param {*} value The value that that should be considered trusted/safe.
      * @returns {*} A value that can be used to stand in for the provided `value` in places
      * where Angular expects a $sce.trustAs() return value.
@@ -15661,7 +15661,7 @@ function $SceProvider() {
    *
    * Inheritance happens to capture this in a natural way.  In some future, we
    * may not use inheritance anymore.  That is OK because no code outside of
-   * sce.js and sceSpecs.js would need to be aware of this detail.
+   * sce.app and sceSpecs.app would need to be aware of this detail.
    */
 
   this.$get = ['$parse', '$sceDelegate', function(

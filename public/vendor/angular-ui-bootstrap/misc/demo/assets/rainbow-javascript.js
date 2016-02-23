@@ -55,7 +55,7 @@ Rainbow.extend('javascript', [
     },
 
     /**
-     * matches any escaped characters inside of a js regex pattern
+     * matches any escaped characters inside of a app regex pattern
      *
      * @see https://github.com/ccampbell/rainbow/issues/22
      *

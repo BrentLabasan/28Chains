@@ -110,7 +110,7 @@ export function configFromString(config) {
 }
 
 hooks.createFromInputFallback = deprecate(
-    'moment construction falls back to js Date. This is ' +
+    'moment construction falls back to app Date. This is ' +
     'discouraged and will be removed in upcoming major ' +
     'release. Please refer to ' +
     'https://github.com/moment/moment/issues/1407 for more info.',

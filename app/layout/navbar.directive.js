@@ -15,9 +15,17 @@
     };
   }
 
-  NavbarController.$inject = ['$location', 'authService'];
+  NavbarController.$inject = ['$location', 'authService', '$scope', 'Auth'];
 
-  function NavbarController($location, authService) {
+  function NavbarController($location, authService, $scope, Auth) {
+
+    $scope.auth = Auth;
+    console.log($scope.auth);
+    // any time auth status updates, add the user data to scope
+    $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+    });
+
     var vm = this;
 
     vm.isLoggedIn = authService.isLoggedIn;

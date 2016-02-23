@@ -23,8 +23,10 @@
         <li ng-show="vm.isLoggedIn()"><a href="#/deleteHabit">Delete Habit</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show="vm.isLoggedIn()"><a href="#"><span
-          class="glyphicon glyphicon-user"></span> Hello, {{ user.facebook.displayName }}</a></li>
+        <li ng-show="vm.isLoggedIn()">
+          <a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ authData.facebook.displayName }}
+          </a>
+        </li>
 
 <!--
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

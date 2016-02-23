@@ -1,11 +1,18 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('app.auth')
-    .factory('authService', authService);
+    .factory('authService', authService)
+    .factory('Auth', Auth);
 
   authService.$inject = ['$firebaseAuth', 'firebaseDataService'];
+  Auth.$inject = ['$firebaseAuth'];
+
+  function Auth($firebaseAuth) {
+    var ref = new Firebase("https://glowing-heat-6414.firebaseio.com");
+    return $firebaseAuth(ref);
+  }
 
   function authService($firebaseAuth, firebaseDataService, partyService) {
     var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
@@ -28,8 +35,8 @@
     }
 
     function login() {
-    //function login(user) {
-    //  return firebaseAuthObject.$authWithPassword(user);
+      //function login(user) {
+      //  return firebaseAuthObject.$authWithPassword(user);
       console.log("login");
       firebaseAuthObject.$authWithOAuthRedirect('facebook');
     }

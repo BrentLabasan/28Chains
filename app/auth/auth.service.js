@@ -4,6 +4,8 @@
   angular
     .module('app.auth')
     .factory('authService', authService)
+    //https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
+    //Retrieving Authentication State
     .factory('Auth', Auth);
 
   authService.$inject = ['$firebaseAuth', 'firebaseDataService'];

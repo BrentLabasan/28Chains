@@ -24,12 +24,14 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="vm.isLoggedIn()"><a href="#"><span
-          class="glyphicon glyphicon-user"></span> Hello, {{ authData.facebook.displayName }}</a></li>
+          class="glyphicon glyphicon-user"></span> Hello, {{ user.facebook.displayName }}</a></li>
 
 <!--
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 -->
+        <li>
+        </li>
         <li ng-hide="vm.isLoggedIn()">
           <!--<a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">-->
           <a href="" ng-click="vm.login()">

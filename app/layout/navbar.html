@@ -16,14 +16,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li ng-hide="authData" class="active"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">Please log in before using 28Chains.</a></li>
-        <li ng-show="authData" class="active"><a href="#/showAllHabit">My Habits</a></li>
-        <li ng-show="authData"><a href="#/createHabit">Add Habit</a></li>
-        <li ng-show="authData"><a href="#/updateHabit">Edit Habit</a></li>
-        <li ng-show="authData"><a href="#/deleteHabit">Delete Habit</a></li>
+        <li ng-hide="vm.isLoggedIn()" class="active"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')">Please log in before using 28Chains.</a></li>
+        <li ng-show="vm.isLoggedIn()" class="active"><a href="#/showAllHabit">My Habits</a></li>
+        <li ng-show="vm.isLoggedIn()"><a href="#/createHabit">Add Habit</a></li>
+        <li ng-show="vm.isLoggedIn()"><a href="#/updateHabit">Edit Habit</a></li>
+        <li ng-show="vm.isLoggedIn()"><a href="#/deleteHabit">Delete Habit</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show="authData"><a href="#"><span
+        <li ng-show="vm.isLoggedIn()"><a href="#"><span
           class="glyphicon glyphicon-user"></span> Hello, {{ authData.facebook.displayName }}</a></li>
 
 <!--
@@ -33,7 +33,7 @@
         <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-        <li ng-show="authData"><a href="" ng-click="auth.$unauth()"><span
+        <li ng-show="vm.isLoggedIn()"><a href="" ng-click="auth.$unauth()"><span
           class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>

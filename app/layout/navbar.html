@@ -1,4 +1,7 @@
+<!--
 <nav ng-controller="HeaderController" class="navbar navbar-default">
+-->
+<nav ng-controller="NavbarController" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,8 +26,12 @@
         <li ng-show="authData"><a href="#"><span
           class="glyphicon glyphicon-user"></span> Hello, {{ authData.facebook.displayName }}</a></li>
 
+<!--
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li ng-hide="authData"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+-->
+        <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
         <li ng-show="authData"><a href="" ng-click="auth.$unauth()"><span
           class="glyphicon glyphicon-log-out"></span> Logout</a></li>

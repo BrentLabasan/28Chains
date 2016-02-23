@@ -2,49 +2,55 @@
 <html ng-app="TwentyEightChains" xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en" lang="en" vocab="http://schema.org/" typeof="WebApplication">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
-    <title>28Chains: A Complete Picture Of The Habit Building Process</title>
-    <meta property="browserRequirements" content="requires HTML5 support"/>
-    <meta property="countriesSupported" content="en"/>
-    <meta property="applicationCategory" content="Data management"/>
-    <meta property="creator" content="Li, Bo"/>
-    <script>'use strict';</script>
-    <script src="public/vendor/jquery/dist/jquery.js"></script>
-    <script src="public/vendor/angular/angular.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="public/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="public/vendor/angular-animate/angular-animate.js"></script>
-    <script src="public/vendor/angular-sanitize/angular-sanitize.js"></script>
-    <script src="src/angular-route.js"></script>
-    <script src="public/vendor/firebase/firebase.js"></script>
-    <script src="public/vendor/angularfire/dist/angularfire.js"></script>
-    <script src="public/vendor/moment/moment.js"></script>
-    <script src="public/vendor/angular-video/js/anguvideo.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+  <title>28Chains: A Complete Picture Of The Habit Building Process</title>
+  <meta property="browserRequirements" content="requires HTML5 support"/>
+  <meta property="countriesSupported" content="en"/>
+  <meta property="applicationCategory" content="Data management"/>
+  <meta property="creator" content="Li, Bo"/>
+  <script>'use strict';</script>
+  <script src="public/vendor/jquery/dist/jquery.js"></script>
+  <script src="public/vendor/angular/angular.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="public/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="public/vendor/angular-animate/angular-animate.js"></script>
+  <script src="public/vendor/angular-sanitize/angular-sanitize.js"></script>
+  <script src="src/angular-route.js"></script>
+  <script src="public/vendor/firebase/firebase.js"></script>
+  <script src="public/vendor/angularfire/dist/angularfire.js"></script>
+  <script src="public/vendor/moment/moment.js"></script>
+  <script src="public/vendor/angular-video/js/anguvideo.js"></script>
 
 
-    <script src="app/app.js"></script>
-    <script src="app/auth/auth.module.js"></script>
-    <script src="app/auth/auth.controller.js"></script>
+  <script src="app/app.js"></script>
 
-    <script src="app/core/core.module.js"></script>
-    <script src="app/core/constants.js"></script>
-    <script src="app/core/firebaseData.service.js"></script>
+  <script src="app/auth/auth.module.js"></script>
+  <script src="app/auth/auth.controller.js"></script>
+  <script src="app/auth/auth.service.js"></script>
 
-    <script src="app/pagination.js"></script>
-    <script src="app/controllers.js"></script>
-    <link rel="stylesheet" type="text/css" href="public/vendor/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="public/style.css">
-    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+  <script src="app/core/core.module.js"></script>
+  <script src="app/core/constants.js"></script>
+  <script src="app/core/firebaseData.service.js"></script>
 
-    <script type="text/css">
+  <!--layout module-->
+  <script src="app/layout/layout.module.js"></script>
+  <script src="app/layout/navbar.directive.js"></script>
 
 
+  <script src="app/pagination.js"></script>
+  <script src="app/controllers.js"></script>
+  <link rel="stylesheet" type="text/css" href="public/vendor/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="public/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+
+  <script type="text/css">
 
 
-    </script>
+  </script>
 </head>
 <body>
-<div ng-include="'app/layout/navbar.html'"></div>
+<!--<div ng-include="'app/layout/navbar.html'"></div>-->
+<gz-navbar></gz-navbar>
 <div id="div-nvView" ng-view="ng-view"></div>
 <div ng-include="'footer.html'"></div>
 

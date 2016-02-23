@@ -12,6 +12,7 @@ var app = angular
     // 28Chain modules.
     'app.auth',
     'app.core',
+    'app.layout',
     'twentyEightChainsControllers'
   ]);
 

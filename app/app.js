@@ -10,6 +10,7 @@ var app = angular
     'firebase',
     'anguvideo',
     // 28Chain modules.
+    'app.auth',
     'twentyEightChainsControllers'
   ]);
 

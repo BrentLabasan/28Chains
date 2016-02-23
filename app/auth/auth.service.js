@@ -5,7 +5,7 @@
     .module('app.auth')
     .factory('authService', authService);
 
-  authService.$inject = ['$firebaseAuth', 'firebaseDataService', 'partyService'];
+  authService.$inject = ['$firebaseAuth', 'firebaseDataService'];
 
   function authService($firebaseAuth, firebaseDataService, partyService) {
     var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);

@@ -11,6 +11,7 @@ var app = angular
     'anguvideo',
     // 28Chain modules.
     'app.auth',
+    'app.core',
     'twentyEightChainsControllers'
   ]);
 

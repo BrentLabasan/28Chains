@@ -32,7 +32,7 @@
     }
 
     function logout() {
-      partyService.reset();
+      //partyService.reset();
       firebaseAuthObject.$unauth();
     }
 

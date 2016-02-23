@@ -33,8 +33,12 @@
         <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="auth.$authWithOAuthRedirect('facebook')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-        <li ng-show="vm.isLoggedIn()"><a href="" ng-click="auth.$unauth()"><span
-          class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li ng-show="vm.isLoggedIn()">
+          <!--<a href="" ng-click="auth.$unauth()">-->
+          <a href="" ng-click="vm.logout()">
+            <span class="glyphicon glyphicon-log-out"></span> Logout
+          </a>
+        </li>
       </ul>
     </div>
   </div>

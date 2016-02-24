@@ -22,7 +22,6 @@
     //https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
     //Retrieving Authentication State
     $scope.auth = Auth;
-    console.log($scope.auth);
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       console.log("$scope.auth.$onAuth in navbar.directive.js");

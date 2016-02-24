@@ -65,9 +65,11 @@
       console.log("syncobject1 " + syncobject);
       //$scope.dog = "woof";
       //alert(attemptData);
-      var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $routeParams.idhabit + "/name";
+      //var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $routeParams.idhabit ;
+      var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + $scope.authData.uid + "/" + $routeParams.idhabit ;
+      //var url2 = "https://glowing-heat-6414.firebaseio.com";
       var habitName3 = new Firebase(url2);
-      var syncobject2 = $firebaseObject(habitName3);
+      //var syncobject2 = $firebaseObject(habitName3.child('habits').child($scope.authData.uid).child($routeParams.idhabit));
       syncobject2.$bindTo($scope, "habitName");
 
       $scope.showLoading = false;

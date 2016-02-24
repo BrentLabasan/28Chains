@@ -6,7 +6,10 @@
 <!--
         <h2><label class="label label-default">HABIT</label> &nbsp; {{data.habitName}}</h2>
 -->
-        <h2><label class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="data.habitName"/></h2>
+        <h2>
+            <!--<label class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName"/>-->
+            <label class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName"/>
+        </h2>
         <h3>&nbsp;&nbsp;&nbsp;
             <label class="label label-primary">ATTEMPT</label> &nbsp;
           <input class="editableField" type="text" ng-model="data.name"/>
@@ -19,6 +22,7 @@
       <!--{{data | json}}-->
 
         <br/>
+      {{habitName}}
         <div ng-controller="TabsDemoCtrl">
 
 

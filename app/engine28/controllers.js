@@ -13,7 +13,8 @@
     '$firebaseArray',
     '$firebaseAuth',
     'Auth',
-    '$routeParams'
+    '$routeParams',
+    'currentAuth'
   ];
 
 
@@ -25,7 +26,8 @@
    $firebaseArray,
    $firebaseAuth,
    Auth,
-   $routeParams
+   $routeParams,
+   currentAuth
   )
   {
 
@@ -141,9 +143,12 @@
 
 
     $scope.getAllHabits = function () {
-      var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
+      console.log(currentAuth.uid);
+      var allUsersHabits = reference_FirebaseRoot.child("habits/" + currentAuth.uid);
+      //console.log(allUsersHabits);
       var syncObject = $firebaseObject(allUsersHabits);
       syncObject.$bindTo($scope, "books");
+      console.log($scope)
       $scope.showLoading = false;
     };
 

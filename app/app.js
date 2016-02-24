@@ -27,7 +27,15 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
     .when('/showAllHabits', {
       templateUrl: 'partials/showAllHabits.html',
-      controller: 'engine28Controller'
+      controller: 'engine28Controller',
+      resolve: {
+        // controller will not be loaded until $waitForAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function (Auth) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return Auth.$waitForAuth();
+        }]
+      }
     })
     .when('/createHabit', {
       templateUrl: 'partials/createHabit.html',
@@ -47,7 +55,15 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
     .when('/attempt/:idhabit/:idattempt', {
       templateUrl: 'partials/attempt.html',
-      controller: 'engine28Controller'
+      controller: 'engine28Controller',
+      resolve: {
+        // controller will not be loaded until $waitForAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return Auth.$waitForAuth();
+        }]
+      }
     })
     .otherwise({
       redirectTo: '/showAllHabits'
@@ -84,10 +100,22 @@ app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray
 /**
  * Run Block
  */
-app.run(['$http', function ($http) {
+app.run(['$http', "$rootScope", "$location", function ($http, $rootScope, $location) {
+
+  $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+    // We can catch the error thrown when the $requireAuth promise is rejected
+    // and redirect the user back to the home page
+    if (error === "AUTH_REQUIRED") {
+      $location.path("/home");
+    }
+  });
+
+
   // Predefine the API's value from Parse.com
   $http.defaults.headers.common = {
     'X-Parse-Application-Id': 'WkRZPQr0whIqwm3fom8zNAmjqfJFqPmZVeFW5sFD',
     'X-Parse-REST-API-Key': 'FszCMz7KIEeHjYUy3mbSA4iZPUZ3wZnwRnFa3nvd'
   }
+
+
 }]);

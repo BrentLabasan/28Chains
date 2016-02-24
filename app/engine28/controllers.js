@@ -46,12 +46,11 @@
 
     // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
     $scope.auth = Auth;
-
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function (authData) {
+      console.log("$scope.auth.$onAuth in engine28/controller.js");
+      // any time auth status updates, add the user data to scope
       $scope.authData = authData;
-      console.log("$scope.authData loaded in CoreController:", $scope.authData);
-
       $scope.getAllHabits();
     });
 

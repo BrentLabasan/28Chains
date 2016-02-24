@@ -90,17 +90,12 @@
       return s;
     };
 
+    // cleaned
     $scope.getHabitsAttempts = function () {
-
-      $scope.id_habit = $routeParams.id;
-      var ref3 = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id);
-
-      var syncobject = $firebaseObject(ref3);
-      syncobject.$bindTo($scope, "data");
-
+      var refFbase_attempt = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id);
+      var syncObject = $firebaseObject(refFbase_attempt);
+      syncObject.$bindTo($scope, "data");
       $scope.showLoading = false;
-
-
     };
 
     $scope.changeChainDates = function (data, blah) {

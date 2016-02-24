@@ -51,7 +51,15 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
     .when('/habit/:id', {
       templateUrl: 'partials/habit.html',
-      controller: 'engine28Controller'
+      controller: 'engine28Controller',
+      resolve: {
+        // controller will not be loaded until $waitForAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function (Auth) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return Auth.$waitForAuth();
+        }]
+      }
     })
     .when('/attempt/:idhabit/:idattempt', {
       templateUrl: 'partials/attempt.html',

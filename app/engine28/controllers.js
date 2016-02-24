@@ -157,13 +157,19 @@
       });
 
       habitsRef.child(habitPush.key()).update({
-        id_attempt: attemptPush.key(),
+        attempts:  [ attemptPush.key() ],
         id: habitPush.key()
       });
 
       attemptsRef.child(attemptPush.key()).update({
         id: attemptPush.key()
       });
+
+/*      habitsRef.$add({ foo: "bar" }).then(function(ref) {
+        var id = ref.key();
+        console.log("added record with id " + id);
+        habitsRef.$indexFor(id); // returns location in the array
+      });*/
 
       window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
 

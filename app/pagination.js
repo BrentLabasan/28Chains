@@ -1,5 +1,5 @@
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo')
+angular.module('angularBootstrap', ['ngAnimate', 'ui.bootstrap']);
+angular.module('angularBootstrap')
     .controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [
         { title:'Dynamic Title 1', content:'Dynamic content 1' },

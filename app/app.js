@@ -12,8 +12,8 @@ var app = angular
     // 28Chain modules.
     'app.auth',
     'app.core',
-    'app.layout',
-    'twentyEightChainsControllers'
+    'app.engine28',
+    'app.layout'
   ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -25,27 +25,27 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
     .when('/showAllHabits', {
       templateUrl: 'partials/showAllHabits.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .when('/createHabit', {
       templateUrl: 'partials/createHabit.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .when('/updateHabit', {
       templateUrl: 'partials/updateHabit.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .when('/deleteHabit', {
       templateUrl: 'partials/deleteHabit.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .when('/habit/:id', {
       templateUrl: 'partials/habit.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .when('/attempt/:idhabit/:idattempt', {
       templateUrl: 'partials/attempt.html',
-      controller: 'CoreController'
+      controller: 'engine28Controller'
     })
     .otherwise({
       redirectTo: '/showAllHabits'

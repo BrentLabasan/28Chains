@@ -14,7 +14,8 @@
         <tbody>
         <tr ng-repeat="(key,value) in data">
             <td>
-                <a ng-href="#/attempt/{{id_habit}}/{{key}}">
+              <!--{{value.id_habit}}-->
+                <a ng-href="#/attempt/{{value.id_habit}}/{{key}}">
                     <span class="label label-primary">ATTEMPT</span> &nbsp;{{value.name}}
                 </a>
             </td>

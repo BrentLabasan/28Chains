@@ -6995,7 +6995,7 @@ angular.module("uib/template/rating/rating.html", []).run(["$templateCache", fun
 
 angular.module("uib/template/tabs/tab.html", []).run(["$templateCache", function($templateCache) {
 
-  console.log("meow")
+  //console.log("Brent")
   $templateCache.put("uib/template/tabs/tab.html",
       "<li ng-class=\"{active: active, disabled: disabled}\" class=\"uib-tab\">\n" +
 

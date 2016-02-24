@@ -1,4 +1,3 @@
-angular.module('angularBootstrap', ['ngAnimate', 'ui.bootstrap']);
 angular.module('angularBootstrap')
     .controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [

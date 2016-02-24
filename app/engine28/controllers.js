@@ -47,6 +47,7 @@
     $scope.routeParams = $routeParams;
 
     // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html
+
     $scope.auth = Auth;
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function (authData) {
@@ -143,12 +144,14 @@
 
 
     $scope.getAllHabits = function () {
+      console.log(currentAuth);
       console.log(currentAuth.uid);
       var allUsersHabits = reference_FirebaseRoot.child("habits/" + currentAuth.uid);
       //console.log(allUsersHabits);
       var syncObject = $firebaseObject(allUsersHabits);
       syncObject.$bindTo($scope, "books");
       console.log($scope)
+      console.log($scope.books)
       $scope.showLoading = false;
     };
 

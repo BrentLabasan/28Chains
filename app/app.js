@@ -6,9 +6,11 @@ var app = angular
     // Angular modules.
     'ngRoute',
     'ngAnimate',
+    'ngSanitize',
     // Third party modules.
     'firebase',
     'anguvideo',
+    'angularBootstrap',
     // 28Chain modules.
     'app.auth',
     'app.core',

@@ -125,7 +125,7 @@
      //return attemptRef.startDate;
      };*/
 
-
+    // cleaned
     $scope.getAllHabits = function () {
       //console.log(currentAuth);
       //console.log(currentAuth.uid);

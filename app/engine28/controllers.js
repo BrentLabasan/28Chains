@@ -60,15 +60,18 @@
 
     $scope.showLoading = true;
 
+    // cleaned
     $scope.getAttemptData = function () {
-      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
-      var attemptData = new Firebase(url);
-      var syncobject = $firebaseObject(attemptData);
-      syncobject.$bindTo($scope, "data");
-      console.log("syncobject1 " + syncobject);
-      var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + $scope.authData.uid + "/" + $routeParams.idhabit ;
-      var habitName3 = new Firebase(url2);
-      syncobject2.$bindTo($scope, "habitName");
+      var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      var refFbase_attempt = new Firebase(url_attempt);
+      var syncObjectAttempt = $firebaseObject(refFbase_attempt);
+      syncObjectAttempt.$bindTo($scope, "data");
+
+      var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit ;
+      var refFbase_habit = new Firebase(url_Habit);
+      var syncObjectHabit = $firebaseObject(refFbase_habit);
+      syncObjectHabit.$bindTo($scope, "habitName");
+
       $scope.showLoading = false;
     };
 

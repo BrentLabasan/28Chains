@@ -253,18 +253,6 @@
       var attemptToDelete = reference_FirebaseRoot.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
       attemptToDelete.remove();
 
-      /*            var bookUrl = 'https://api.parse.com/1/classes/Book/' + $scope.book.objectId;
-       $http({
-       method: 'DELETE',
-       url: bookUrl
-       })
-       .success(function () {
-       $location.path('/');
-       })
-       .error(function (data) {
-       console.log(data);
-       alert("Book is NOT deleted. See the error message in console.");
-       });*/
     };
   }
 

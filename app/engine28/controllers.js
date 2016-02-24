@@ -168,29 +168,6 @@
       window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
 
 
-      /*
-
-       attemptsRef.child(attemptPush.key()).update({
-       id_habit: habitPush.key(),
-       });
-
-       */
-
-      /*    $http({
-       method: 'POST',
-       url: 'https://api.parse.com/1/classes/Book',
-       data: {
-       isbn: $scope.book.isbn,
-       title: $scope.book.title,
-       year: $scope.book.year
-       }
-       })
-       .success( function () { $location.path('/');})
-       .error( function ( data) {
-       console.log( data);
-       alert("OH! Book is NOT added, see the information in console.");
-       });*/
-
     };
 
 

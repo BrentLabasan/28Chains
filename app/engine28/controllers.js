@@ -51,8 +51,6 @@
     $scope.auth.$onAuth(function (authData) {
       $scope.authData = authData;
       console.log("$scope.authData loaded in CoreController:", $scope.authData);
-      masterId = $scope.authData.uid;
-      console.log("masterId2 " + masterId);
 
       $scope.getAllHabits();
     });
@@ -73,7 +71,6 @@
       var syncobject2 = $firebaseObject(habitName3);
       syncobject2.$bindTo($scope, "habitName");
 
-      //                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
       $scope.showLoading = false;
 
 
@@ -147,8 +144,6 @@
 
       var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
 
-      //var reference_allUsersHabits = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId;
-      //console.log("reference_allUsersHabits " + reference_allUsersHabits);
       console.log("allUsersHabits " + allUsersHabits);
 
       var syncObject = $firebaseObject(allUsersHabits);
@@ -235,7 +230,6 @@
       var syncobject2 = $firebaseObject(habitName3);
       syncobject2.$bindTo($scope, "habitData");
 
-      //                $scope.books = $firebaseObject(ref.child('habits').child(masterId));
       $scope.showLoading = false;
 
       /*          var ref7 = new Firebase(rootUrl);

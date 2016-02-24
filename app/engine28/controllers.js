@@ -140,17 +140,10 @@
 
 
     $scope.getAllHabits = function () {
-      console.log("begin getAllHabits()");
-
       var allUsersHabits = reference_FirebaseRoot.child("habits/" + $scope.authData.uid);
-
-      console.log("allUsersHabits " + allUsersHabits);
-
       var syncObject = $firebaseObject(allUsersHabits);
       syncObject.$bindTo($scope, "books");
-
       $scope.showLoading = false;
-      console.log("end getAllHabits()");
     };
 
 

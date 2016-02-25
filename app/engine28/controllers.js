@@ -18,18 +18,15 @@
   ];
 
 
-  function engine28Controller(
-   $scope,
-   $location,
-   $http,
-   $firebaseObject,
-   $firebaseArray,
-   $firebaseAuth,
-   Auth,
-   $routeParams,
-   currentAuth
-  )
-  {
+  function engine28Controller($scope,
+                              $location,
+                              $http,
+                              $firebaseObject,
+                              $firebaseArray,
+                              $firebaseAuth,
+                              Auth,
+                              $routeParams,
+                              currentAuth) {
 
     var createDaysForChain = function (date) {
       var arr = [],
@@ -67,7 +64,7 @@
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "data");
 
-      var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit ;
+      var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
       var refFbase_habit = new Firebase(url_Habit);
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
@@ -157,7 +154,7 @@
       });
 
       habitsRef.child(habitPush.key()).update({
-        attempts:  [ attemptPush.key() ],
+        attempts: [attemptPush.key()],
         id: habitPush.key()
       });
 
@@ -165,34 +162,38 @@
         id: attemptPush.key()
       });
 
-/*      habitsRef.$add({ foo: "bar" }).then(function(ref) {
-        var id = ref.key();
-        console.log("added record with id " + id);
-        habitsRef.$indexFor(id); // returns location in the array
-      });*/
+      /*      habitsRef.$add({ foo: "bar" }).then(function(ref) {
+       var id = ref.key();
+       console.log("added record with id " + id);
+       habitsRef.$indexFor(id); // returns location in the array
+       });*/
 
       window.location = "/#/attempt/" + habitPush.key() + "/" + attemptPush.key();
 
 
     };
 
-    $scope.addAttempt = function() {
+    $scope.addAttempt = function () {
       console.log("Attempting to add a new Attempt to Habit " + $routeParams.id);
 
-      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
-      refFbase_attemptsArray.push({
-        name: "a"
-/*
+      // add Attempt to Firebase/attempts/
+      var attemptsRef = reference_FirebaseRoot.child("attempts/" + $routeParams.id);
+      attemptsRef.push({
         uid: $scope.authData.uid,
         id_habit: $routeParams.id,
         name: "Attempt for Habit: " + "HABIT NAME",
         habitName: "HABIT NAME",
         description: "Write a description about this attempt...",
-        chain: createDaysForChain(moment(date).add(i, 'days').format()),
-        startDate: moment(date).add(i, 'days').format()
-*/
-
+        chain: createDaysForChain(moment().format()),
+        startDate: moment().format()
       });
+
+      // add Attemt's ID to Habit's Attempt array
+      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
+      refFbase_attemptsArray.push({
+        id: attemptsRef
+      });
+
 
     };
 

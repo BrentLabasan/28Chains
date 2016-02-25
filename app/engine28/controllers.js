@@ -32,7 +32,8 @@
       var arr = [],
         i;
       for (i = 0; i < 28; i++) {
-        arr[i] = {
+        //arr[i] = { // chain array is indexed from 0 to 27
+        arr[moment(date).add(i, 'days').format()] = { // chain array is indexed by a day's respective date
           status: "ny",
           date: moment(date).add(i, 'days').format(),
           YouTube: ""

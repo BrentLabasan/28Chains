@@ -87,6 +87,7 @@
       var refFbase_attempt = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id);
       var syncObject = $firebaseObject(refFbase_attempt);
       syncObject.$bindTo($scope, "data");
+      console.log()
       $scope.showLoading = false;
     };
 
@@ -175,9 +176,9 @@
 
     $scope.addAttempt = function () {
       console.log("Attempting to add a new Attempt to Habit " + $routeParams.id);
-
       // add Attempt to Firebase/attempts/
       var attemptsRef = reference_FirebaseRoot.child("attempts/" + $routeParams.id);
+
       var attemptPush = attemptsRef.push({
         uid: $scope.authData.uid,
         id_habit: $routeParams.id,

@@ -104,7 +104,7 @@
       var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var attemptData = new Firebase(url);
       //alert(attemptData)
-      for (i = 0; i < data.length; i++) {
+      for (var i = 0; i < data.length; i++) {
         //console.log(data[i].date);
         attemptData.child("chain").child(i).update({
           //date: moment().format()

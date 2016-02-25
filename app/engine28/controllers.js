@@ -190,7 +190,7 @@
 
       // add Attemt's ID to Habit's Attempt array
       var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
-      refFbase_attemptsArray.push({
+      refFbase_attemptsArray.update({
         id: attemptPush.key()
       });
 

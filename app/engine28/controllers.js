@@ -176,17 +176,22 @@
 
     };
 
+    $scope.addAttempt = function() {
+      console.log("Attempting to add a new Attempt to Habit " + $routeParams.id);
+
+    };
+
 
     $scope.updateHabit = function () {
 
-      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $scope.book.id + "/" + $scope.book.id_attempt;
+      var url = reference_FirebaseRoot + $scope.book.id + "/" + $scope.book.id_attempt;
       var attemptData = new Firebase(url);
       var syncobject = $firebaseObject(attemptData);
       syncobject.$bindTo($scope, "attemptData");
       console.log("syncobject1 " + syncobject);
       //$scope.dog = "woof";
       //alert(attemptData);
-      var url2 = "https://glowing-heat-6414.firebaseio.com/habits/" + masterId + "/" + $scope.book.id + "/name";
+      var url2 = reference_FirebaseRoot + masterId + "/" + $scope.book.id + "/name";
       var habitName3 = new Firebase(url2);
       var syncobject2 = $firebaseObject(habitName3);
       syncobject2.$bindTo($scope, "habitData");

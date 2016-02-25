@@ -1,35 +1,41 @@
 <div ng-init="getHabitsAttempts()">
-<h1>Habit's Attempts</h1>
-    <div>
-        <progress ng-show="showLoading"></progress>
-    </div>
-    <table class="table table-striped table-hover" ng-hide="showLoading">
-        <thead>
-        <tr>
-            <th>Name of Attempt</th>
-            <th>Description</th>
-            <th>Parent Habit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="(key,value) in data">
-            <td>
-              <!--{{value.id_habit}}-->
-                <a ng-href="#/attempt/{{value.id_habit}}/{{key}}">
-                    <span class="label label-primary">ATTEMPT</span> &nbsp;{{value.name}}
-                </a>
-            </td>
-            <td>{{value.description}}
-            </td>
-            <td>
-                TODO parent Habit name
-            </td>
-        </tr>
-        </tbody>
-    </table>
+  <h1>Habit's Attempts</h1>
+  <div>
+    <progress ng-show="showLoading"></progress>
+  </div>
+  <button ng-click="addAttempt()" type="button" class="btn btn-warning">
+    <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;NEW ATTEMPT
+  </button>
+  {{data|json}}
+  <br/>
+  <br/>
+  <table class="table table-striped table-hover" ng-hide="showLoading">
+    <thead>
+    <tr>
+      <th>Name of Attempt</th>
+      <th>Description</th>
+      <th>Parent Habit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="(key,value) in data">
+      <td>
+        <!--{{value.id_habit}}-->
+        <a ng-href="#/attempt/{{value.id_habit}}/{{key}}">
+          <span class="label label-primary">ATTEMPT</span> &nbsp;{{value.name}}
+        </a>
+      </td>
+      <td>{{value.description}}
+      </td>
+      <td>
+        TODO parent Habit name
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-<!--
-    {{data}}
--->
+  <!--
+      {{data}}
+  -->
 
 </div>

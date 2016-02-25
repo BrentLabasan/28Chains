@@ -179,6 +179,21 @@
     $scope.addAttempt = function() {
       console.log("Attempting to add a new Attempt to Habit " + $routeParams.id);
 
+      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
+      refFbase_attemptsArray.push({
+        name: "a"
+/*
+        uid: $scope.authData.uid,
+        id_habit: $routeParams.id,
+        name: "Attempt for Habit: " + "HABIT NAME",
+        habitName: "HABIT NAME",
+        description: "Write a description about this attempt...",
+        chain: createDaysForChain(moment(date).add(i, 'days').format()),
+        startDate: moment(date).add(i, 'days').format()
+*/
+
+      });
+
     };
 
 

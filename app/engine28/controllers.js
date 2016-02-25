@@ -178,7 +178,7 @@
 
       // add Attempt to Firebase/attempts/
       var attemptsRef = reference_FirebaseRoot.child("attempts/" + $routeParams.id);
-      attemptsRef.push({
+      var attemptPush = attemptsRef.push({
         uid: $scope.authData.uid,
         id_habit: $routeParams.id,
         name: "Attempt for Habit: " + "HABIT NAME",
@@ -191,7 +191,7 @@
       // add Attemt's ID to Habit's Attempt array
       var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
       refFbase_attemptsArray.push({
-        id: attemptsRef
+        id: attemptPush.key()
       });
 
 

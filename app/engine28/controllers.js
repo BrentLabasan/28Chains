@@ -192,8 +192,8 @@
         name: "Attempt for Habit: " + "HABIT NAME",
         habitName: "HABIT NAME",
         description: "Write a description about this attempt...",
-        chain: createDaysForChain(moment().format()),
-        startDate: moment().format()
+        chain: createDaysForChain(moment().format('YYYY-MM-DD')),
+        startDate: moment().format('YYYY-MM-DD')
       });
 
       // add Attemt's ID to Habit's Attempt array

@@ -112,10 +112,6 @@
           //date: data[i].date
           date: moment(blah).add(i, 'days').format()
         });
-
-        // = moment(data[i].date).add(i, 'days').format();
-        //data[i].date = moment(data[i].date).add(i, 'days').format();
-        // console.log(data[i]);
       }
     };
 

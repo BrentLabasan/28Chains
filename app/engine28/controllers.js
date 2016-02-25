@@ -253,9 +253,12 @@
     $scope.destroyHabit = function () {
       var habitToDelete = reference_FirebaseRoot.child("habits/" + $scope.authData.uid + "/" + $scope.book.id);
       habitToDelete.remove(); // Habit is deleted from Firebase
+
       // the lone Attempt of the Habit that was just deleted is also deleted
-      var attemptToDelete = reference_FirebaseRoot.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
-      attemptToDelete.remove();
+      //var attemptToDelete = reference_FirebaseRoot.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
+
+      var attemptsToDelete = reference_FirebaseRoot.child("attempts/" + $scope.book.id);
+      attemptsToDelete.remove();
       // TODO when Habits are able to have multiple Attempts, write code to delete all Habit's Attempts
     };
   }

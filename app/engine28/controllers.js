@@ -82,13 +82,14 @@
       refFbase_AttemptStartDate.on("value", function(snapshot) {
         console.log("startDate " + snapshot.val());  // Alerts "San Francisco"
         startDate = snapshot.val();
-
+        var endDate = moment(startDate).add(27, 'd').format('YYYY-MM-DD');
+        console.log("endDate " + endDate);
         // get the entire Attempt's chain
         var urlEntireChain = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/chain/";
         var refFbase_chain = new Firebase(urlEntireChain);
         // query the start date and the following 27
         //refFbase_chain.orderByChild('date').startAt(startDate).endAt(moment(startDate, 'YYYY-MM-DD').add(27, 'days')).on("child_added", function(snapshot) {
-        refFbase_chain.orderByChild('date').startAt(startDate).endAt('2016-03-10').on("child_added", function(snapshot) {
+        refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate).on("child_added", function(snapshot) {
           console.log("snapshot.key()" + snapshot.key());
         });
 

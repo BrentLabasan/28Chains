@@ -9,6 +9,7 @@
     '$scope',
     '$location',
     '$http',
+    '$firebase',
     '$firebaseObject',
     '$firebaseArray',
     '$firebaseAuth',
@@ -21,6 +22,7 @@
   function engine28Controller($scope,
                               $location,
                               $http,
+                              $firebase,
                               $firebaseObject,
                               $firebaseArray,
                               $firebaseAuth,
@@ -58,6 +60,8 @@
 
     $scope.showLoading = true;
 
+    var origAttemptDate ;
+
     // cleaned
     $scope.getAttemptData = function () {
       var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
@@ -69,6 +73,26 @@
       var refFbase_habit = new Firebase(url_Habit);
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
+
+
+
+      var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/startDate/";
+      var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
+      var startDate;
+      refFbase_AttemptStartDate.on("value", function(snapshot) {
+        console.log("startDate " + snapshot.val());  // Alerts "San Francisco"
+        startDate = snapshot.val();
+
+        // get the entire Attempt's chain
+        var urlEntireChain = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/chain/";
+        var refFbase_chain = new Firebase(urlEntireChain);
+        // query the start date and the following 27
+        refFbase_chain.orderByChild('date').startAt(startDate).on("child_added", function(snapshot) {
+          console.log("snapshot.key()" + snapshot.key());
+        });
+      });
+
+
 
       $scope.showLoading = false;
     };
@@ -99,18 +123,22 @@
       $scope.showLoading = false;
     };
 
-    $scope.changeChainDates = function (data, blah) {
-      //alert(data);
-      //console.log("blah " + blah);
+    $scope.changeChainDates = function (chain, newDate) {
+      //console.log("chain " + chain);
+      //console.log("newDate " + newDate);
+
+      // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
+      // date and the new date. then apply that change to each day's date in the chain
+
       var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var attemptData = new Firebase(url);
       //alert(attemptData)
-      for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < chain.length; i++) {
         //console.log(data[i].date);
         attemptData.child("chain").child(i).update({
           //date: moment().format()
           //date: data[i].date
-          date: moment(blah).add(i, 'days').format()
+          date: moment(newDate).add(i, 'days').format()
         });
       }
     };

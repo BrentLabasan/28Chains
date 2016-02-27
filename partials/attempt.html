@@ -30,6 +30,9 @@
 
                     <uib-tab ng-repeat="day in data.chain" field="{{1+1}}">
                         <uib-tab-heading>
+                        <!--<uib-tab-heading ng-if="1===1">-->
+                        <!--<uib-tab-heading ng-if="day.date <= data.startDate">-->
+
 
                         <span ng-class="{true: 'brenterface label label-success', false: 'brenterface label label-danger'}[day.status]">
 
@@ -47,10 +50,11 @@
 
 
                         <div class="container-fluid" id="attempt-3colContainer">
+                        <!--<div ng-if="day.date <= data.startDate" class="container-fluid" id="attempt-3colContainer">-->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
-                                        Progress Log
+                                        Progress Log {{day.date}} {{data.startDate}}
                                     </h3>
                                     <ng-form name="nestedForm">
                                         <div class="form-group">

@@ -12,9 +12,9 @@
         </h2>
         <h3>&nbsp;&nbsp;&nbsp;
             <label class="label label-primary">ATTEMPT</label> &nbsp;
-          <input class="editableField" type="text" ng-model="data.name"/>
+          <input class="editableField" type="text" ng-model="attempt.name"/>
           <label class="label label-primary">START DATE</label> &nbsp;
-          <input ng-blur="changeChainDates(data.chain, data.startDate)" class="editableField" type="text" ng-model="data.startDate"/>
+          <input ng-blur="changeChainDates(data.chain, data.startDate)" class="editableField" type="text" ng-model="attempt.startDate"/>
 
 
         </h3>
@@ -23,7 +23,7 @@
 
         <br/>
         <div ng-controller="TabsDemoCtrl">
-{{data}}
+<!--{{data}}-->
 
             <form name="outerForm" class="tab-form-demo">
                 <uib-tabset class="tab-animation" justified="true">

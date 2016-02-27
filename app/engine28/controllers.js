@@ -64,19 +64,15 @@
 
     // cleaned
     $scope.getAttemptData = function () {
-/*
       var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
-      syncObjectAttempt.$bindTo($scope, "data");
-*/
+      syncObjectAttempt.$bindTo($scope, "attempt");
 
       var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
       var refFbase_habit = new Firebase(url_Habit);
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
-
-
 
       var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/startDate/";
       var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);

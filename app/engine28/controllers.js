@@ -64,10 +64,12 @@
 
     // cleaned
     $scope.getAttemptData = function () {
+/*
       var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "data");
+*/
 
       var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
       var refFbase_habit = new Firebase(url_Habit);
@@ -89,9 +91,9 @@
         var refFbase_chain = new Firebase(urlEntireChain);
         // query the start date and the following 27
         //refFbase_chain.orderByChild('date').startAt(startDate).endAt(moment(startDate, 'YYYY-MM-DD').add(27, 'days')).on("child_added", function(snapshot) {
-        refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate).on("child_added", function(snapshot) {
-          console.log("snapshot.key()" + snapshot.key());
-        });
+        var query = refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate);
+
+        $scope.data = $firebaseArray(query);
 
       });
 

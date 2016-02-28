@@ -141,8 +141,8 @@
       //console.log(typeof newDate === 'undefined');
       var newDate = window.prompt("Please enter the new date.\nPlease use the format YYYY-MM-DD 2016-12-25", newDate);
 
-      console.log((newDate) + (newDate !== "null") + (newDate!== "undefined"));
-      if (newDate && newDate !== "null" && newDate!== "undefined") {
+      console.log("" + (newDate) + (newDate !== "null") + (newDate!== "undefined"));
+      if (newDate && newDate !== "null" && newDate!== "undefined") { // uhh the last 2 return true even though I know they aren't
         console.log("chain " + chain);
         console.log("oldDate " + oldDate);
         console.log("newDate " + newDate);

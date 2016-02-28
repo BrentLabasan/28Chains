@@ -138,7 +138,7 @@
     }
 
     $scope.changeChainDates = function (chain, oldDate, newDate) {
-      var newDate = window.prompt("Please enter the new date.", newDate);
+      var newDate = window.prompt("Please enter the new date.\nPlease use the format listed below.\nPlease don't click the Cancel button.", newDate);
       console.log("chain " + chain);
       console.log("oldDate " + oldDate);
       console.log("newDate " + newDate);
@@ -163,10 +163,10 @@
       //for (var i = 0; i < chain.length; i++) {
       for (var i = 0; i < 28; i++) {
         //console.log(data[i].date);
-        attemptData.child("chain").child( moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD') ).update({
+        attemptData.child("chain").child( moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD') ).update({
           //date: moment().format()
           //date: data[i].date
-          date: moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD')
+          date: moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD')
         });
       }
 

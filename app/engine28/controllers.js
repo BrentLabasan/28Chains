@@ -363,6 +363,14 @@
       attemptsToDelete.remove();
       // TODO when Habits are able to have multiple Attempts, write code to delete all Habit's Attempts
     };
+
+    $scope.deleteAttempt = function() {
+      // delete Attempt
+
+      // delete Attempt's Habit's reference to Attempt
+      console.log("deleteAttempt end");
+    };
+
   }
 
 

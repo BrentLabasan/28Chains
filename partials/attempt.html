@@ -14,7 +14,7 @@
             <label class="label label-primary">ATTEMPT</label> &nbsp;
           <input class="editableField" type="text" ng-model="attempt.name"/>
           <label class="label label-primary">START DATE</label> &nbsp;
-          <input ng-blur="changeChainDates(data.chain, data.startDate)" class="editableField" type="text" ng-model="attempt.startDate"/>
+          <input ng-focus="storeOldStartDate(attempt.startDate)" ng-blur="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)" class="editableField" type="text" ng-model="attempt.startDate"/>
 
 
         </h3>

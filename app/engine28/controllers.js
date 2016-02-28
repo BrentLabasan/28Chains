@@ -63,6 +63,7 @@
     var origAttemptDate ;
 
     // cleaned
+    $scope.oldDateValue;
     $scope.getAttemptData = function () {
       // get the Attempt data. To get the exact 28 days of the Chain to be shown,
       // I use a separate proceure (below)
@@ -130,14 +131,25 @@
       $scope.showLoading = false;
     };
 
-    $scope.changeChainDates = function (chain, newDate) {
-      //console.log("chain " + chain);
-      //console.log("newDate " + newDate);
+    $scope.oldDateValue;
+    $scope.storeOldStartDate = function(oldStartDate) {
+      console.log("oldStartDate " + oldStartDate);
+      $scope.oldDateValue = oldStartDate;
+    }
+
+    $scope.changeChainDates = function (chain, oldDate, newDate) {
+      console.log("chain " + chain);
+      console.log("oldDate " + oldDate);
+      console.log("newDate " + newDate);
+      var duration = moment.duration(moment(newDate).diff(moment(oldDate)));
+      var difference = duration.asDays();
+      console.log("day difference " + difference);
+
 
       // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
       // date and the new date. then apply that change to each day's date in the chain
 
-      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+/*      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var attemptData = new Firebase(url);
       //alert(attemptData)
       for (var i = 0; i < chain.length; i++) {
@@ -147,7 +159,8 @@
           //date: data[i].date
           date: moment(newDate).add(i, 'days').format()
         });
-      }
+      }*/
+
     };
 
     /*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {

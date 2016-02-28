@@ -137,7 +137,9 @@
     }
 
     $scope.changeChainDates = function (chain, oldDate, newDate) {
-      var newDate = window.prompt("Please enter the new date.\nPlease use the format YYYY-MM-DD 2016-12-25", newDate);
+      var newDate = window.prompt("Please enter the new date.\n" +
+        "Please use format YYYY-MM-DD (2016-12-25)\n" +
+        "Any day data outside of the updated 28 day range WILL be deleted!", newDate);
       console.log("" + (newDate) + (newDate !== "null") + (newDate!== "undefined"));
       if (newDate && newDate !== "null" && newDate!== "undefined") { // uhh the last 2 return true even though I know they aren't
         console.log("chain " + chain);
@@ -174,8 +176,8 @@
 
           var lowerBound = moment(oldDate).add(0 + difference, 'days').format('YYYY-MM-DD');
           var upperBound = moment(oldDate).add(27 + difference, 'days').format('YYYY-MM-DD');
-          console.log("lowerBound" + lowerBound);
-          console.log("upperBound" + upperBound);
+          //console.log("lowerBound" + lowerBound);
+          //console.log("upperBound" + upperBound);
 
           snapshot.forEach(function(childSnapshot) {
             var key = childSnapshot.key();

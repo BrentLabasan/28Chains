@@ -173,6 +173,9 @@
             date: moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD')
           });
         }
+
+        // erase all dates that don't fit into the current date range
+
       } else {
         console.log("changeChainDates aborted");
       }

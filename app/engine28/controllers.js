@@ -94,9 +94,18 @@
         var refFbase_chain = new Firebase(urlEntireChain);
         // query the start date and the following 27
         //refFbase_chain.orderByChild('date').startAt(startDate).endAt(moment(startDate, 'YYYY-MM-DD').add(27, 'days')).on("child_added", function(snapshot) {
-        var query = refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate);
 
-        $scope.data = $firebaseArray(query);
+/*        // old code, before the changeStartDate() had code to delete any Days that don't fall in the new range
+        var query = refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate);
+        $scope.data = $firebaseArray(query);*/
+
+        var urlAttempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/chain/";
+        var ref = new Firebase(urlAttempt);
+        // download the data into a local object
+        var syncObject = $firebaseObject(ref);
+        // synchronize the object with a three-way data binding
+        // click on `index.html` above to see it used in the DOM!
+        syncObject.$bindTo($scope, "data");
 
       });
 
@@ -136,6 +145,7 @@
       $scope.oldDateValue = oldStartDate;
     }
 
+    // TODO implement regex for incorrect date format http://stackoverflow.com/a/22061879/708355
     $scope.changeChainDates = function (chain, oldDate, newDate) {
       var newDate = window.prompt("Please enter the new date.\n" +
         "Please use format YYYY-MM-DD (2016-12-25)\n" +
@@ -194,6 +204,8 @@
 
           });
         });
+
+        location.reload();
 
       } else {
         console.log("changeChainDates aborted");

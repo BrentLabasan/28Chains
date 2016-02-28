@@ -170,6 +170,8 @@
         });
       }
 
+
+
     };
 
     /*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {

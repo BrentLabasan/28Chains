@@ -60,7 +60,7 @@
 
     $scope.showLoading = true;
 
-    var origAttemptDate ;
+    var origAttemptDate;
 
     // cleaned
     $scope.oldDateValue;
@@ -83,7 +83,7 @@
       var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/startDate/";
       var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
       var startDate;
-      refFbase_AttemptStartDate.on("value", function(snapshot) {
+      refFbase_AttemptStartDate.on("value", function (snapshot) {
         //console.log("startDate " + snapshot.val());
         startDate = snapshot.val();
         var endDate = moment(startDate).add(27, 'd').format('YYYY-MM-DD');
@@ -99,7 +99,6 @@
         $scope.data = $firebaseArray(query);
 
       });
-
 
 
       $scope.showLoading = false;
@@ -132,44 +131,51 @@
     };
 
     $scope.oldDateValue;
-    $scope.storeOldStartDate = function(oldStartDate) {
+    $scope.storeOldStartDate = function (oldStartDate) {
       console.log("oldStartDate " + oldStartDate);
       $scope.oldDateValue = oldStartDate;
     }
 
     $scope.changeChainDates = function (chain, oldDate, newDate) {
-      var newDate = window.prompt("Please enter the new date.\nPlease use the format listed below.\nPlease don't click the Cancel button.", newDate);
-      console.log("chain " + chain);
-      console.log("oldDate " + oldDate);
-      console.log("newDate " + newDate);
-      var duration = moment.duration(moment(newDate).diff(moment(oldDate)));
-      var difference = duration.asDays();
-      console.log("day difference " + difference);
+      //console.log("newDate " + newDate);
+      //console.log(typeof newDate === 'undefined');
+      var newDate = window.prompt("Please enter the new date.\nPlease use the format YYYY-MM-DD 2016-12-25", newDate);
 
-      var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
-      var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
-      refFbase_AttemptStartDate.update({
-        startDate: newDate
+      console.log((newDate) + (newDate !== "null") + (newDate!== "undefined"));
+      if (newDate && newDate !== "null" && newDate!== "undefined") {
+        console.log("chain " + chain);
+        console.log("oldDate " + oldDate);
+        console.log("newDate " + newDate);
+        var duration = moment.duration(moment(newDate).diff(moment(oldDate)));
+        var difference = duration.asDays();
+        console.log("day difference " + difference);
 
-      });
+        var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+        var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
+        refFbase_AttemptStartDate.update({
+          startDate: newDate
 
-
-      // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
-      // date and the new date. then apply that change to each day's date in the chain
-
-      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
-      var attemptData = new Firebase(url);
-      //alert(attemptData)
-      //for (var i = 0; i < chain.length; i++) {
-      for (var i = 0; i < 28; i++) {
-        //console.log(data[i].date);
-        attemptData.child("chain").child( moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD') ).update({
-          //date: moment().format()
-          //date: data[i].date
-          date: moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD')
         });
-      }
 
+
+        // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
+        // date and the new date. then apply that change to each day's date in the chain
+
+        var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+        var attemptData = new Firebase(url);
+        //alert(attemptData)
+        //for (var i = 0; i < chain.length; i++) {
+        for (var i = 0; i < 28; i++) {
+          //console.log(data[i].date);
+          attemptData.child("chain").child(moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD')).update({
+            //date: moment().format()
+            //date: data[i].date
+            date: moment(oldDate).add(i + difference, 'days').format('YYYY-MM-DD')
+          });
+        }
+      } else {
+        console.log("changeChainDates aborted");
+      }
 
 
     };

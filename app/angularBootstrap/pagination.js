@@ -52,6 +52,8 @@ angular.module('angularBootstrap')
         $scope.bookdt = new Date(year, month, day);
     };
 
+    $scope.bookBook = new Date('2016-01-01');
+
     $scope.dateOptions = {
         formatYear: 'yy',
         startingDay: 1
@@ -60,6 +62,7 @@ angular.module('angularBootstrap')
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     //$scope.format = $scope.formats[0];
     //$scope.format = "MM/dd/yyyy";
+    $scope.format = "yyyy-MM-dd";
     //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";
     //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";
     //$scope.format = "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ";

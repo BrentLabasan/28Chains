@@ -138,12 +138,20 @@
     }
 
     $scope.changeChainDates = function (chain, oldDate, newDate) {
+      var newDate = window.prompt("Please enter the new date.", newDate);
       console.log("chain " + chain);
       console.log("oldDate " + oldDate);
       console.log("newDate " + newDate);
       var duration = moment.duration(moment(newDate).diff(moment(oldDate)));
       var difference = duration.asDays();
       console.log("day difference " + difference);
+
+      var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
+      refFbase_AttemptStartDate.update({
+        startDate: newDate
+
+      });
 
 
       // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old

@@ -137,10 +137,7 @@
     }
 
     $scope.changeChainDates = function (chain, oldDate, newDate) {
-      //console.log("newDate " + newDate);
-      //console.log(typeof newDate === 'undefined');
       var newDate = window.prompt("Please enter the new date.\nPlease use the format YYYY-MM-DD 2016-12-25", newDate);
-
       console.log("" + (newDate) + (newDate !== "null") + (newDate!== "undefined"));
       if (newDate && newDate !== "null" && newDate!== "undefined") { // uhh the last 2 return true even though I know they aren't
         console.log("chain " + chain);
@@ -150,17 +147,15 @@
         var difference = duration.asDays();
         console.log("day difference " + difference);
 
-        var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
-        var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
+        var urlAttemptStart = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+        var refFbase_AttemptStartDate = new Firebase(urlAttemptStart);
         refFbase_AttemptStartDate.update({
           startDate: newDate
 
         });
 
-
         // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
         // date and the new date. then apply that change to each day's date in the chain
-
         var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
         var attemptData = new Firebase(url);
         //alert(attemptData)
@@ -175,6 +170,28 @@
         }
 
         // erase all dates that don't fit into the current date range
+        attemptData.child('chain').once("value", function(snapshot) {
+
+          var lowerBound = moment(oldDate).add(0 + difference, 'days').format('YYYY-MM-DD');
+          var upperBound = moment(oldDate).add(27 + difference, 'days').format('YYYY-MM-DD');
+          console.log("lowerBound" + lowerBound);
+          console.log("upperBound" + upperBound);
+
+          snapshot.forEach(function(childSnapshot) {
+            var key = childSnapshot.key();
+            //console.log("key " + key);
+            var childData = childSnapshot.val();
+            //console.log("childData " + childData);
+            //console.log(childSnapshot.key() + " " + lowerBound + "| " + (childSnapshot.key() <= lowerBound));
+            //console.log(childSnapshot.key() + " " + upperBound + "| " + (childSnapshot.key() >= upperBound));
+            if (childSnapshot.key() < lowerBound || childSnapshot.key() > upperBound) {
+              console.log("!! Removing item " + key);
+              //childSnapshot.remove(); // doesn't work, it's just a snapshot
+              attemptData.child('chain').child(childSnapshot.key()).remove();
+            }
+
+          });
+        });
 
       } else {
         console.log("changeChainDates aborted");

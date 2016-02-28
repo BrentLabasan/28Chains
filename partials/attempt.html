@@ -14,10 +14,33 @@
             <label class="label label-primary">ATTEMPT</label> &nbsp;
           <input class="editableField" type="text" ng-model="attempt.name"/>
           <label class="label label-primary">START DATE</label> &nbsp;
-          <input ng-focus="storeOldStartDate(attempt.startDate)" ng-blur="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)" class="editableField" type="text" ng-model="attempt.startDate"/>
+          <!--<input ng-focus="storeOldStartDate(attempt.startDate)" ng-blur="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)" class="editableField" type="text" ng-model="attempt.startDate"/>-->
 
 
         </h3>
+
+      <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">
+
+        <div>
+          <label for="startDate"><h6>START DATE</h6>
+            <p class="input-group">
+              <input type="text" id="startDate" name="startDate" class="form-control"
+                     uib-datepicker-popup="{{format}}"
+                     ng-model="bookdt"
+                     is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
+                     datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                     ng-required="true"
+                     close-text="Close" alt-input-formats="altInputFormats"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()"><i
+                          class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+            </p>
+          </label>
+
+        </div>
+
+      </div>
 
       <!--{{data | json}}-->
 

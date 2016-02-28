@@ -64,25 +64,31 @@
 
     // cleaned
     $scope.getAttemptData = function () {
+      // get the Attempt data. To get the exact 28 days of the Chain to be shown,
+      // I use a separate proceure (below)
       var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "attempt");
 
+      // Retrieve only the name of the Attempt's Habit, b/c that's the only aspect
+      // of the Habit I need to show on the page.
       var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
       var refFbase_habit = new Firebase(url_Habit);
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
 
+      // Get the exact 28 days of the Chain to be shown,
       var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/startDate/";
       var refFbase_AttemptStartDate = new Firebase(urlAttemptStartDate);
       var startDate;
       refFbase_AttemptStartDate.on("value", function(snapshot) {
-        console.log("startDate " + snapshot.val());  // Alerts "San Francisco"
+        //console.log("startDate " + snapshot.val());
         startDate = snapshot.val();
         var endDate = moment(startDate).add(27, 'd').format('YYYY-MM-DD');
-        console.log("endDate " + endDate);
-        // get the entire Attempt's chain
+        //console.log("endDate " + endDate);
+        // get the entire Attempt's chain. This code is in a callback func because it would run before the retrieval of startDate
+        // The entire chain might have more than 28 Days, because the user might have changed the startDate.
         var urlEntireChain = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/chain/";
         var refFbase_chain = new Firebase(urlEntireChain);
         // query the start date and the following 27

@@ -163,7 +163,7 @@
       //for (var i = 0; i < chain.length; i++) {
       for (var i = 0; i < 28; i++) {
         //console.log(data[i].date);
-        attemptData.child("chain").child( moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD') ).set({
+        attemptData.child("chain").child( moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD') ).update({
           //date: moment().format()
           //date: data[i].date
           date: moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD')

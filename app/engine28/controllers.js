@@ -125,6 +125,7 @@
 
     // cleaned
     $scope.getHabitsAttempts = function () {
+      $scope.deletePoss = false;
       var refFbase_attempt = new Firebase("https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.id);
       var syncObject = $firebaseObject(refFbase_attempt);
       syncObject.$bindTo($scope, "data");
@@ -134,6 +135,11 @@
       var refFbase_habit = new Firebase(url_Habit);
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
+
+      $scope.toggleDeletePoss = function() {
+        $scope.deletePoss = !$scope.deletePoss;
+        console.log("$scope.deletePoss " + $scope.deletePoss);
+      };
 
 
       $scope.showLoading = false;

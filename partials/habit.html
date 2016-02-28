@@ -11,6 +11,9 @@
   <button ng-click="addAttempt()" type="button" class="btn btn-warning">
     <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;NEW ATTEMPT
   </button>
+  <button style="float:right;" ng-click="toggleDeletePoss()" type="button" class="btn btn-danger btn-xs">
+    <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;DELETE
+  </button>
   <!--{{data|json}}-->
   <br/>
   <br/>
@@ -19,7 +22,7 @@
     <tr>
       <th>Name of Attempt</th>
       <th>Start Date</th>
-      <th>Delete</th>
+      <th ng-show="deletePoss" style="width: 75px;">Delete</th>
       <!--<th>Parent Habit</th>-->
     </tr>
     </thead>
@@ -33,7 +36,7 @@
       </td>
       <td>{{value.startDate}}
       </td>
-      <td>
+      <td ng-show="deletePoss">
         <span class="glyphicon glyphicon-trash"></span>
       </td>
 <!--

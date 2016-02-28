@@ -149,17 +149,18 @@
       // STRATEGY take the offset, the difference in numb of days (a positive or negative integer) from the old
       // date and the new date. then apply that change to each day's date in the chain
 
-/*      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      var url = "https://glowing-heat-6414.firebaseio.com/attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
       var attemptData = new Firebase(url);
       //alert(attemptData)
-      for (var i = 0; i < chain.length; i++) {
+      //for (var i = 0; i < chain.length; i++) {
+      for (var i = 0; i < 28; i++) {
         //console.log(data[i].date);
-        attemptData.child("chain").child(i).update({
+        attemptData.child("chain").child( moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD') ).set({
           //date: moment().format()
           //date: data[i].date
-          date: moment(newDate).add(i, 'days').format()
+          date: moment(newDate).add(i + difference, 'days').format('YYYY-MM-DD')
         });
-      }*/
+      }
 
     };
 

@@ -299,10 +299,8 @@
       });
 
       // add Attemt's ID to Habit's Attempt array
-      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts");
-      refFbase_attemptsArray.push(
-        attemptPush.key()
-      );
+      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + $routeParams.id + "/attempts/").child(attemptPush.key());
+      refFbase_attemptsArray.set(attemptPush.key());
 
 
     };
@@ -368,7 +366,7 @@
       // delete Attempt
       console.log(habitId + " | " + attemptId);
       // delete Attempt's Habit's reference to Attempt
-      console.log("deleteAttempt end");
+      //console.log("deleteAttempt end");
     };
 
   }

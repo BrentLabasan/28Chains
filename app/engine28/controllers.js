@@ -367,9 +367,14 @@
     };
 
     $scope.deleteAttempt = function(habitId, attemptId) {
+      //console.log(habitId + " | " + attemptId);
       // delete Attempt
-      console.log(habitId + " | " + attemptId);
+      var attemptToDelete = reference_FirebaseRoot.child("attempts/" + habitId + "/" + attemptId);
+      attemptToDelete.remove();
+
       // delete Attempt's Habit's reference to Attempt
+      var habtsAttmpRefToDelete = reference_FirebaseRoot.child("habits").child($scope.authData.uid).child(habitId).child("attempts").child(attemptId);
+      habtsAttmpRefToDelete.remove();
       //console.log("deleteAttempt end");
     };
 

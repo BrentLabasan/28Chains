@@ -16,7 +16,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li ng-hide="vm.isLoggedIn()" class="active"><a href="" ng-click="vm.login()">Please log in before using 28Chains.</a></li>
+        <li ng-hide="vm.isLoggedIn()"><a href="" ng-click="vm.login()">Please log in before using 28Chains.</a></li>
         <li ng-show="vm.isLoggedIn()" class="active"><a href="#/showAllHabit">My Habits</a></li>
         <li ng-show="vm.isLoggedIn()"><a href="#/createHabit">Add Habit</a></li>
         <li ng-show="vm.isLoggedIn()"><a href="#/updateHabit">Edit Habit</a></li>
@@ -60,3 +60,18 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    // Handler for .ready() called.
+
+    $(".nav li").on("click", function(){
+      $(".nav").find(".active").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $(".navbar-brand").on("click", function(){
+      $(".nav").find(".active").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>

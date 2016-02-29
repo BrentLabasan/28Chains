@@ -264,9 +264,13 @@
       });
 
       habitsRef.child(habitPush.key()).update({
-        attempts: [attemptPush.key()],
+        //attempts: [attemptPush.key()],
         id: habitPush.key()
       });
+
+      // add Attemt's ID to Habit's Attempt array
+      var refFbase_attemptsArray = reference_FirebaseRoot.child("habits/" + currentAuth.uid + "/" + habitPush.key() + "/attempts/").child(attemptPush.key());
+      refFbase_attemptsArray.set(attemptPush.key());
 
       attemptsRef.child(attemptPush.key()).update({
         id: attemptPush.key()

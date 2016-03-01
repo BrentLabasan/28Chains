@@ -71,42 +71,44 @@
                             </svg>
 
                         </uib-tab-heading>
-
-
+<br/>
+                      <div class="container-fluid" id="attempt-3colContainer">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>
+                              Accomplished?
+                              {{day.date | date:'EEE MMM d yyyy'}}
+                              <!--
+                                                              {{data | json}}
+                              -->
+                              &nbsp;
+                              <label class="radio-inline"><input type="radio" ng-model="day.status"
+                                                                 value="true">Yes
+                              </label>
+                              <label class="radio-inline"><input type="radio" ng-model="day.status"
+                                                                 value="false">No
+                              </label>
+                            </label>
+                          </div>
+                          <div class="col-md-4"></div>
+                          <div class="col-md-4"></div>
+                        </div>
+                      </div>
                         <div class="container-fluid" id="attempt-3colContainer">
                         <!--<div ng-if="day.date <= data.startDate" class="container-fluid" id="attempt-3colContainer">-->
                             <div class="row">
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
-                                        Progress Log
+                                      Journal (Private)
                                     </h3>
                                     <ng-form name="nestedForm">
                                         <div class="form-group">
-                                            <br/>
 
-                                            <label>
-                                                Accomplished?
-                                                {{day.date | date:'EEE MMM d yyyy'}}
-                                                <!--
-                                                                                {{data | json}}
-                                                -->
-                                            </label>
+
                                             <!--
                                                                         <select ng-model="day.status" ng-options="x for x in statusChoices.choices"></select>
                                             -->
-                                            <br/>
-                                            <label class="radio-inline"><input type="radio" ng-model="day.status"
-                                                                               value="true">Yes
-                                            </label>
-                                            <label class="radio-inline"><input type="radio" ng-model="day.status"
-                                                                               value="false">No
-                                            </label>
-
-                                            <br/>
-                                            <br/>
-
-                                            <label>Journal Entry</label>
-                                            <textarea rows="8" class="form-control"
+                                     <textarea rows="8" class="form-control"
                                                       ng-model="day.journalEntry"></textarea>
 
                                         </div>
@@ -115,7 +117,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
-                                        FUNDAMENTALS
+                                      Journal (Public)
                                     </h3>
                                   <textarea rows="8" class="form-control"
                                             ng-model="day.fundamentals"></textarea>

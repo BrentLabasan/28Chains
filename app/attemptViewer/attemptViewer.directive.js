@@ -3,16 +3,7 @@
 
 angular
   .module('app.attemptViewer', [])
-  .directive("attemptViewer", function ($scope,
-                                        $location,
-                                        $http,
-                                        $firebase,
-                                        $firebaseObject,
-                                        $firebaseArray,
-                                        $firebaseAuth,
-                                        Auth,
-                                        $routeParams,
-                                        currentAuth) {
+  .directive("attemptViewer", function () {
     return {
       restrict: "E",
       templateUrl: 'app/attemptViewer/attemptViewer.html'
@@ -21,15 +12,3 @@ angular
   });
 
 
-attemptViewer.$inject = [
-  '$scope',
-  '$location',
-  '$http',
-  '$firebase',
-  '$firebaseObject',
-  '$firebaseArray',
-  '$firebaseAuth',
-  'Auth',
-  '$routeParams',
-  'currentAuth'
-];

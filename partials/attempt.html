@@ -109,17 +109,14 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
-                                      Journal (Private)
+                                      Journal
                                     </h3>
                                     <ng-form name="nestedForm">
                                         <div class="form-group">
+                                     <textarea placeholder="Track details about your day.&#13;&#10;&#13;&#10;Maybe log how much weight lifted.&#13;&#10;Or how fast you ran.&#13;&#10;Reflect on your progress and anticipate future difficulties."
+                                               rows="8" class="form-control" ng-model="day.journalEntry">
 
-
-                                            <!--
-                                                                        <select ng-model="day.status" ng-options="x for x in statusChoices.choices"></select>
-                                            -->
-                                     <textarea rows="8" class="form-control"
-                                                      ng-model="day.journalEntry"></textarea>
+                                     </textarea>
 
                                         </div>
                                     </ng-form>
@@ -127,10 +124,10 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <h3 class="journalHeadings">
-                                      Journal (Public)
+                                      Advice To Others
                                     </h3>
-                                  <textarea rows="8" class="form-control"
-                                            ng-model="day.fundamentals"></textarea>
+                                  <textarea placeholder="If someone was attempting the same Habit, what advice would you give them?&#13;&#10;&#13;&#10;"
+                                            rows="8" class="form-control" ng-model="day.fundamentals"></textarea>
                                 </div>
                               <div class="col-lg-4">
                                 <h3 class="journalHeadings">

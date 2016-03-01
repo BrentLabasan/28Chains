@@ -3,10 +3,10 @@
 
 angular
   .module('app.attemptViewer', [])
-  .directive("w3TestDirective", function () {
+  .directive("attemptViewer", function () {
     return {
       restrict: "E",
-      template: "<h1>Made by a directive!</h1>"
+      templateUrl: 'app/attemptViewer/attemptViewer.html'
     };
 
   })();

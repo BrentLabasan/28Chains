@@ -132,8 +132,11 @@
                               <div class="col-lg-4">
                                 <h3 class="journalHeadings">
                                   Pics and Videos
-                                  <h6>YouTube URL</h6>
-                                  <input type="text" ng-model="day.YouTube" size="60"/>
+                                  </h3>
+                                  <input placeholder="YouTube URL" type="text" ng-model="day.YouTube" size="60"/>
+                                  <br/>
+                                  <!--<h6>YouTube URL</h6>-->
+
                                   <div ng-show="day.YouTube" class="embed-responsive embed-responsive-16by9">
                                     <anguvideo ng-model="day.YouTube"></anguvideo>
                                   </div>

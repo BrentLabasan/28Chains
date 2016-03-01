@@ -12,6 +12,7 @@ var app = angular
     'anguvideo',
     'angularBootstrap',
     // 28Chain modules.
+    'app.attemptViewer',
     'app.auth',
     'app.core',
     'app.engine28',

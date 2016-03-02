@@ -21,8 +21,193 @@
           <button ng-click="unloadAttempt()">X</button>
         </div>
       </div>
-      *** A ATTEMPT THAT HAS BEEN LOADED ***
+
+
+      <div ng-init="getAttemptData()">
+        <div>
+          <progress ng-show="showLoading"></progress>
+        </div>
+        <div ng-hide="showLoading">
+          <!--
+                  <h2><label class="label label-default">HABIT</label> &nbsp; {{data.habitName}}</h2>
+          -->
+          <div class="container-fluid" id="attempt-3colContainer">
+            <div class="row">
+              <div class="col-md-6">
+                <h2>
+                  <!--<label class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName"/>-->
+                  <label for="atmptPge_hbtNme" class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName.name"/>
+                </h2>
+                <h3>&nbsp;&nbsp;&nbsp;
+                  <label class="label label-primary">ATTEMPT</label> &nbsp;
+                  <input class="editableField" type="text" ng-model="attempt.name"/>
+                  <label class="label label-primary">START DATE</label> &nbsp;
+                  <input ng-focus="storeOldStartDate(attempt.startDate)" ng-click="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)" class="editableField" type="text" ng-model="attempt.startDate" readonly/>
+
+              </div>
+              <div class="col-md-6">
+                <img src="https://storage.googleapis.com/support-kms-prod/SNP_40CDC3FE322AB07CD3E5860E126FF906B05D_2922298_en_v3"/>
+              </div>
+            </div>
+          </div>
+          <!--<input ng-bind="attempt.startDate" ng-focus="storeOldStartDate(attempt.startDate)"  class="editableField" type="text" />-->
+          <!--<button ng-click="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)">Set Date</button>-->
+
+          </h3>
+          <!--{{attempt.startDate}}-->
+          <!--      <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">
+
+                  <div>
+                    <label for="startDate"><h6>START DATE</h6>
+                      <p class="input-group">
+                        <input type="text" id="startDate" name="startDate" class="form-control"
+                               uib-datepicker-popup="{{format}}"
+                               ng-model="bookBook"
+                               is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
+                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                               ng-required="true"
+                               close-text="Close" alt-input-formats="altInputFormats"/>
+                                <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open1()"><i
+                                    class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                      </p>
+                    </label>
+
+                  </div>
+
+                </div>-->
+
+          <!--{{data | json}}-->
+
+          <br/>
+          <div ng-controller="TabsDemoCtrl">
+            <!--{{data}}-->
+
+            <form name="outerForm" class="tab-form-demo">
+              <uib-tabset class="tab-animation" justified="true">
+
+                <uib-tab ng-repeat="day in data" field="{{1+1}}">
+                  <uib-tab-heading>
+                    <!--<uib-tab-heading ng-if="1===1">-->
+                    <!--<uib-tab-heading ng-if="day.date <= data.startDate">-->
+
+
+                        <span ng-class="{true: 'brenterface label label-success', false: 'brenterface label label-danger'}[day.status]">
+
+                            <span ng-bind-html="getTabHeading($index, day.date)"></span>
+                        </span>
+
+                    <svg class="brenterface" ng-show="day.status=='true' && $index !=27" height="10" width="80"
+                         style="left:
+                        40px; position: absolute">
+                      <line position: absolute x1="0" y1="10" x2="55" y2="10"
+                            style="stroke:rgb(92,184,92);stroke-width:2"/>
+                    </svg>
+
+                  </uib-tab-heading>
+                  <br/>
+                  <div class="container-fluid" id="attempt-3colContainer">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>
+                          Accomplished?
+                          {{day.date | date:'EEE MMM d yyyy'}}
+                          <!--
+                                                          {{data | json}}
+                          -->
+                          &nbsp;
+                          <label class="radio-inline"><input type="radio" ng-model="day.status"
+                                                             value="true">Yes
+                          </label>
+                          <label class="radio-inline"><input type="radio" ng-model="day.status"
+                                                             value="false">No
+                          </label>
+                        </label>
+                      </div>
+                      <div class="col-md-4"></div>
+                      <div class="col-md-4"></div>
+                    </div>
+                  </div>
+                  <div class="container-fluid" id="attempt-3colContainer">
+                    <!--<div ng-if="day.date <= data.startDate" class="container-fluid" id="attempt-3colContainer">-->
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <h3 class="journalHeadings">
+                          Journal
+                        </h3>
+                        <ng-form name="nestedForm">
+                          <div class="form-group">
+                                     <textarea placeholder="Track details about your day.&#13;&#10;&#13;&#10;Maybe log how much weight lifted.&#13;&#10;Or how fast you ran.&#13;&#10;Reflect on your progress and anticipate future difficulties."
+                                               rows="8" class="form-control" ng-model="day.journalEntry">
+
+                                     </textarea>
+
+                          </div>
+                        </ng-form>
+
+                      </div>
+                      <div class="col-lg-4">
+                        <h3 class="journalHeadings">
+                          Advice To Others
+                        </h3>
+                                  <textarea placeholder="If someone was attempting the same Habit, what advice would you give them?&#13;&#10;&#13;&#10;"
+                                            rows="8" class="form-control" ng-model="day.fundamentals"></textarea>
+                      </div>
+                      <div class="col-lg-4">
+                        <h3 class="journalHeadings">
+                          Pics and Videos
+                        </h3>
+                        <input placeholder="YouTube URL" type="text" ng-model="day.YouTube" size="60"/>
+                        <br/>
+                        <!--<h6>YouTube URL</h6>-->
+
+                        <div ng-show="day.YouTube" class="embed-responsive embed-responsive-16by9">
+                          <anguvideo ng-model="day.YouTube"></anguvideo>
+                        </div>
+                        </h3>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </uib-tab>
+
+              </uib-tabset>
+            </form>
+
+
+          </div>
+
+
+          <!--        Model:
+                  <pre>{{ model | json }}</pre>
+                  Nested Form:
+                  <pre>{{ outerForm.nestedForm | json }}</pre>-->
+
+          <!--
+                  <pre>{{ statusChoices | json }}</pre>
+          -->
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+    <!--end attemptViewerUI-->
 
 
 

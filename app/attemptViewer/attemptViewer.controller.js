@@ -375,7 +375,13 @@
      //console.log("deleteAttempt end");
      };*/
 
-    $scope.meow = "meowmeow";
+    $scope.attemptLoaded ;
+
+    $scope.setAttemptLoaded = function() {
+      $scope.attemptLoaded = document.getElementById("queryAttemptID").value;
+      console.log("setting Attempt loaded to ID " + $scope.attemptLoaded);
+    };
+
     console.log("end attemptViewerController");
 
   }

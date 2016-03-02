@@ -375,11 +375,15 @@
      //console.log("deleteAttempt end");
      };*/
 
-    $scope.attemptLoaded ;
+    $scope.attemptIdLoaded ;
 
     $scope.setAttemptLoaded = function() {
-      $scope.attemptLoaded = document.getElementById("queryAttemptID").value;
-      console.log("setting Attempt loaded to ID " + $scope.attemptLoaded);
+      $scope.attemptIdLoaded = document.getElementById("queryAttemptID").value;
+      console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+    };
+
+    $scope.unloadAttempt = function() {
+      $scope.attemptIdLoaded = null;
     };
 
     console.log("end attemptViewerController");

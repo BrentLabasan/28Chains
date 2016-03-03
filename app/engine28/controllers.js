@@ -30,6 +30,10 @@
                               $routeParams,
                               currentAuth) {
 
+    $scope.showLoadingBar = function() {
+      return $scope.showLoading && currentAuth;
+    }
+
     var createDaysForChain = function (date) {
       var arr = [],
         i;

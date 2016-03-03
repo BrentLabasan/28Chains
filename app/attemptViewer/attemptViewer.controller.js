@@ -378,8 +378,13 @@
     $scope.attemptIdLoaded ;
 
     $scope.setAttemptLoaded = function() {
+      // retrieves text in
       $scope.attemptIdLoaded = document.getElementById("queryAttemptID").value;
-      console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+      //console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+      var arr = $scope.attemptIdLoaded.split("/");
+      var idHabit = arr[0];
+      var idAttempt = arr[1];
+      console.log(idHabit + " " + idAttempt);
 
       // TODO in progress
       var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;

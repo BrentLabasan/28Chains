@@ -387,10 +387,11 @@
       console.log(idHabit + " " + idAttempt);
 
       // TODO in progress
-      var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      //var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      var url_attempt = reference_FirebaseRoot + "attempts/" + idHabit + "/" + idAttempt;
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
-      syncObjectAttempt.$bindTo($scope, "attempt");
+      syncObjectAttempt.$bindTo($scope, "otherAttempt");
 
     };
 

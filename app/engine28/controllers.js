@@ -54,7 +54,9 @@
       console.log("$scope.auth.$onAuth in engine28/controller.js");
       // any time auth status updates, add the user data to scope
       $scope.authData = authData;
-      $scope.getAllHabits();
+      if (currentAuth) {
+        $scope.getAllHabits();
+      }
     });
 
 

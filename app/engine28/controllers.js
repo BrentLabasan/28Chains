@@ -72,12 +72,15 @@
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "attempt");
 
-      // Retrieve only the name of the Attempt's Habit, b/c that's the only aspect
-      // of the Habit I need to show on the page.
-      var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
-      var refFbase_habit = new Firebase(url_Habit);
-      var syncObjectHabit = $firebaseObject(refFbase_habit);
-      syncObjectHabit.$bindTo($scope, "habitName");
+      if(currentAuth) {
+        // Retrieve only the name of the Attempt's Habit, b/c that's the only aspect
+        // of the Habit I need to show on the page.
+        var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
+        var refFbase_habit = new Firebase(url_Habit);
+        var syncObjectHabit = $firebaseObject(refFbase_habit);
+        syncObjectHabit.$bindTo($scope, "habitName");
+      }
+
 
       // Get the exact 28 days of the Chain to be shown,
       var urlAttemptStartDate = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/startDate/";

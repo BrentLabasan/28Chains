@@ -1,0 +1,95 @@
+{
+  "rules": {
+    //".read": true,
+    //".write": true,
+
+    "habits": {
+      ".read": true,
+      ".write": true,
+      "$user_id": {
+          //".read": "$user_id === auth.uid",
+          //".write": "$user_id === auth.uid",
+         "$id_habit": {
+           //".read": "$user_id === auth.uid"
+           //".write": true
+          }
+      }
+    }  ,
+
+    "attempts": {
+      ".read": true,
+      //".read": false,
+      //".write": true,
+      "$id_habit": {
+        "$id_attempt": {
+           ".read": true,
+           //".read": false,
+           //".write": false
+           ".write": "data.child('uid').val() === auth.uid",
+           "chain": {
+             ".indexOn": "date"
+           }
+        }
+      }
+    }
+
+
+  }
+}
+
+/* NOT CLEANED UP
+
+{
+  "rules": {
+    // public read access
+    //".read": true,
+    ".write": true,
+
+    "habits": {
+      //".read": true,
+      //".write": true,
+      "$user_id": {
+          //".read": true,
+          //".read": "auth.uid !== $user_id",
+          ".read": "$user_id !== auth.uid",
+          //".write": true,
+         "$id_habit": {
+           //".read": true,
+           ".write": true
+           //".read": "auth.uid === $user_id"
+           //".write": "auth.uid === $user_id"
+          }
+      }
+    }  ,
+
+    "attempts": {
+      //".read": true,
+      //".read": false,
+      //".write": true,
+      "$id_habit": {
+        "$id_attempt": {
+           ".read": true,
+           //".read": false,
+           //".write": false
+           ".write": true
+        }
+      }
+    }
+
+
+  }
+}
+
+*/
+
+
+/* DEFAULT */
+/*
+{
+  "rules": {
+    // public read access
+    ".read": true,
+    ".write": true
+  }
+}
+*/

@@ -380,6 +380,13 @@
     $scope.setAttemptLoaded = function() {
       $scope.attemptIdLoaded = document.getElementById("queryAttemptID").value;
       console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+
+      // TODO in progress
+      var url_attempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt;
+      var refFbase_attempt = new Firebase(url_attempt);
+      var syncObjectAttempt = $firebaseObject(refFbase_attempt);
+      syncObjectAttempt.$bindTo($scope, "attempt");
+
     };
 
     $scope.unloadAttempt = function() {

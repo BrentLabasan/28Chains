@@ -248,8 +248,13 @@ hr.style-five {
   box-shadow: 0 0 10px 1px black;
 }
 
+.shrtndInput {
+  width: 30%;
+}
+
 .shrtndInput:hover {
-  color: blue;
-  width: 100%;
-  z-index: 999999999;
+  /*color: blue;*/
+  /*z-index: 999999999;*/
+  /*width: 100%;*/
+  /*position: absolute;*/
 }

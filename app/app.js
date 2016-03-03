@@ -26,6 +26,9 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/main.html',
       controller: 'TestDatasController'
     })
+    .when('/landing', {
+      templateUrl: 'partials/landing.html'
+    })
     .when('/showAllHabits', {
       templateUrl: 'partials/showAllHabits.html',
       controller: 'engine28Controller',

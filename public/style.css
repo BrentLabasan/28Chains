@@ -208,7 +208,7 @@ textarea {
 /*http://jsfiddle.net/chriscoyier/gaezp/35/*/
 
 hr {
-  margin: 50px 0;
+  /*margin: 50px 0;*/
 }
 
 hr.style-one {
@@ -257,4 +257,9 @@ hr.style-five {
   /*z-index: 999999999;*/
   /*width: 100%;*/
   /*position: absolute;*/
+}
+
+#atmptViewer {
+  margin-left: 0px;
+  margin-right: 0px;
 }

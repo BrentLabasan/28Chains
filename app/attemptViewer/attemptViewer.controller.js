@@ -25,7 +25,7 @@
                                    $firebaseArray,
                                    $firebaseAuth,
                                    $routeParams
-                                   ) {
+  ) {
 
     /*    var createDaysForChain = function (date) {
      var arr = [],
@@ -392,6 +392,17 @@
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "otherAttempt");
+      var xxx = refFbase_attempt.child('uid');
+      var userId;
+      refFbase_attempt.child('uid').on("value", function(snapshot) {
+        userId = snapshot.val();
+        //var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
+        var url_Habit = reference_FirebaseRoot + "habits/" + userId + "/" + idHabit;
+        var refFbase_habit = new Firebase(url_Habit);
+        var syncObjectHabit = $firebaseObject(refFbase_habit);
+        syncObjectHabit.$bindTo($scope, "otherHabit");
+      });
+
 
     };
 

@@ -113,6 +113,11 @@
       $scope.showLoading = false;
     };
 
+    $scope.getAtmptId = function() {
+      alert($routeParams.idhabit + "/" + $routeParams.idattempt);
+
+    };
+
     $scope.getTabHeading = function (index, dateOfTab) {
       var s = "" + (index + 1);
       //console.log( moment(dateOfTab).format("MM-DD-YYYY") + "-----" + moment().format("MM-DD-YYYY") );

@@ -14,7 +14,7 @@
               <label for="atmptPge_hbtNme" class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName.name"/>
             </h2>
             <h3>&nbsp;&nbsp;&nbsp;
-              <label class="label label-primary">ATTEMPT</label> &nbsp;
+              <label class="label label-primary" ng-click="getAtmptId()" id="btn_getAtmptId" style="cursor:pointer;">ATTEMPT</label> &nbsp;
               <input class="editableField" type="text" ng-model="attempt.name"/>
               <label class="label label-primary">START DATE</label> &nbsp;
               <input ng-focus="storeOldStartDate(attempt.startDate)" ng-click="changeChainDates(attempt.chain, oldDateValue, attempt.startDate)" class="editableField" type="text" ng-model="attempt.startDate" readonly/>

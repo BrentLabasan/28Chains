@@ -1,52 +1,60 @@
 <div>
     <h1>Create a new Habit</h1>
 
-    <form role="form">
+  <div class="row">
+    <div class="col-sm-4">
+      <form role="form">
         <div class="form-group">
-            <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6></label>
-            <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
+          <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6></label>
+          <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
         </div>
         <div class="form-group">
-            <label for="description"><h6>DESCRIPTION <span class="label label-info">REQUIRED</span></h6></label>
+          <label for="description"><h6>DESCRIPTION <span class="label label-info">REQUIRED</span></h6></label>
                 <textarea id="description" class="form-control" name="description" ng-model="book.description"
                           required></textarea>
         </div>
 
         <div>
 
-            <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">
+          <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">
 
-                <div>
-                    <label for="startDate"><h6>START DATE</h6>
-                        <p class="input-group">
-                            <input type="text" id="startDate" name="startDate" class="form-control"
-                                   uib-datepicker-popup="{{format}}"
-                                   ng-model="bookdt"
-                                   is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
-                                   datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                                   ng-required="true"
-                                   close-text="Close" alt-input-formats="altInputFormats"/>
+            <div>
+              <label for="startDate"><h6>START DATE</h6>
+                <p class="input-group">
+                  <input type="text" id="startDate" name="startDate" class="form-control"
+                         uib-datepicker-popup="{{format}}"
+                         ng-model="bookdt"
+                         is-open="popup1.opened" min-date="1980/1/1" max-date="maxDate"
+                         datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                         ng-required="true"
+                         close-text="Close" alt-input-formats="altInputFormats"/>
                       <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="open1()"><i
-                                class="glyphicon glyphicon-calendar"></i></button>
+                          class="glyphicon glyphicon-calendar"></i></button>
                       </span>
-                        </p>
-                    </label>
-
-                </div>
+                </p>
+              </label>
 
             </div>
+
+          </div>
 
 
         </div>
         <br/>
         <div>
-            <button type="submit" name="commit" ng-click="addHabit()" ng-show="authData">Create Habit</button>
+          <button type="submit" name="commit" ng-click="addHabit()" ng-show="authData">Create Habit</button>
         </div>
-    </form>
-    <nav>
-        <!--
-            <a href="#/main">Back to main menu</a>
-        -->
-    </nav>
+      </form>
+
+    </div>
+    <div class="col-sm-8 text-center">
+      <h3>Here's some ideas to get you started!</h3>
+      <ul>
+        <button ng-repeat="sugg in arrayOfSuggestions">{{sugg}}</button>
+      </ul>
+    </div>
+  </div>
+
+
 </div>

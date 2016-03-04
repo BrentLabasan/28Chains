@@ -68,6 +68,12 @@
 
     var origAttemptDate;
 
+    $scope.arrayOfSuggestions = [
+      "Meditate Every Day",
+      "Floss Every Day",
+      "No Cigarettes"
+    ]
+
     // cleaned
     $scope.oldDateValue;
     $scope.getAttemptData = function () {

@@ -68,30 +68,7 @@
 
     var origAttemptDate;
 
-    $scope.habitNameField;
-    $scope.habitDescrField;
 
-    $scope.arrayOfSuggestions = [
-      ["Meditate Every Day", "To decrease stress levels."],
-      ["Write In My Journal", "To reflect on my time."],
-      ["Say Something I Like About Myself Out Loud", "For good self-esteem."]
-    ];
-
-    $scope.arrayOfSuggestions.physicalHealth = [
-      ["Floss Every Day", "To reduce the risk of heart disease."],
-      ["No Cigarettes", "To live a longer life for my family."],
-      ["No Alcohol", "Hangovers are a waste of a day."],
-      ["Eat 1 Serving of Fruit", "To prevent scurvy."],
-      ["Eat 1 Serving of Vegetables", "For good bowel movements!"],
-      ["Jog Every Day", "To look sexy."],
-      ["Weight Lift Consistently, with Rest Days", "To impress Arnold."]
-    ];
-
-    $scope.changeHabitNameField = function(name, descr) {
-      $scope.book.name = name;
-      $scope.book.description = descr;
-
-    };
 
     // cleaned
     $scope.oldDateValue;
@@ -328,6 +305,34 @@
       var syncObject = $firebaseObject(allUsersHabits);
       syncObject.$bindTo($scope, "books");
       $scope.showLoading = false;
+    };
+
+    $scope.habitNameField = null;
+    $scope.habitDescrField = null;
+
+    $scope.arrayOfSuggestions = [];
+
+
+      $scope.arrayOfSuggestions['mentalHealth'] = [
+      ["Meditate Every Day", "To decrease stress levels."],
+      ["Write In My Journal", "To reflect on my time."],
+      ["Say Something I Like About Myself Out Loud", "For good self-esteem."]
+    ];
+
+    $scope.arrayOfSuggestions['physicalHealth'] = [
+      ["Floss Every Day", "To reduce the risk of heart disease."],
+      ["No Cigarettes", "To live a longer life for my family."],
+      ["No Alcohol", "Hangovers are a waste of a day."],
+      ["Eat 1 Serving of Fruit", "To prevent scurvy."],
+      ["Eat 1 Serving of Vegetables", "For good bowel movements!"],
+      ["Jog Every Day", "To look sexy."],
+      ["Weight Lift Consistently, with Rest Days", "To impress Arnold."]
+    ];
+
+    $scope.changeHabitNameField = function(name, descr) {
+      $scope.book.name = name;
+      $scope.book.description = descr;
+
     };
 
 

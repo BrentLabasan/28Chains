@@ -52,11 +52,11 @@
       <h3>Here's some ideas to get you started!
         <h4>Mental Health</h4>
         <ul>
-          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions">{{sugg[0]}}</button>
+          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions['mentalHealth']">{{sugg[0]}}</button>
         </ul>
         <h4>PhysicalHealth Health</h4>
         <ul>
-          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions.physicalHealth">{{sugg[0]}}</button>
+          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions['physicalHealth']">{{sugg[0]}}</button>
         </ul>
     </div>
   </div>

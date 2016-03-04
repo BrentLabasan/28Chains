@@ -402,8 +402,20 @@
     };
 
 
+    // This func isn't even updated. The update
+    // Habit button isn't needed becuse the data's 2 way data binded
     $scope.updateHabit = function () {
-
+/*      var url = reference_FirebaseRoot + "attempts/" + $scope.book.id + "/" + $scope.book.attempts[];
+      var attemptData = new Firebase(url);
+      var syncobject = $firebaseObject(attemptData);
+      syncobject.$bindTo($scope, "attemptData");
+      console.log("syncobject1 " + syncobject);
+      //$scope.dog = "woof";
+      //alert(attemptData);
+      var url2 = reference_FirebaseRoot + "habits/" + masterId + "/" + $scope.book.id + "/name";
+      var habitName3 = new Firebase(url2);
+      var syncobject2 = $firebaseObject(habitName3);
+      syncobject2.$bindTo($scope, "habitData");*/
 
       $scope.showLoading = false;
 

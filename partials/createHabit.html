@@ -6,7 +6,7 @@
       <form role="form">
         <div class="form-group">
           <label for="name"><h6>NAME <span class="label label-info">REQUIRED</span></h6></label>
-          <input id="name" class="form-control" type="text" name="name" ng-model="book.name" required/>
+          <input id="name" class="form-control" type="text" name="name" ng-model="habitNameField" required/>
         </div>
         <div class="form-group">
           <label for="description"><h6>DESCRIPTION <span class="label label-info">REQUIRED</span></h6></label>
@@ -52,11 +52,11 @@
       <h3>Here's some ideas to get you started!
         <h4>Mental Health</h4>
         <ul>
-          <button ng-repeat="sugg in arrayOfSuggestions">{{sugg}}</button>
+          <button ng-click="changeHabitNameField(sugg)" ng-repeat="sugg in arrayOfSuggestions">{{sugg}}</button>
         </ul>
         <h4>PhysicalHealth Health</h4>
         <ul>
-          <button ng-repeat="sugg in arrayOfSuggestions.physicalHealth">{{sugg}}</button>
+          <button ng-click="changeHabitNameField(sugg)" ng-repeat="sugg in arrayOfSuggestions.physicalHealth">{{sugg}}</button>
         </ul>
     </div>
   </div>

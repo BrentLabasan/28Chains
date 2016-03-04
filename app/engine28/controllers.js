@@ -68,6 +68,8 @@
 
     var origAttemptDate;
 
+    $scope.habitNameField;
+
     $scope.arrayOfSuggestions = [
       "Meditate Every Day",
       "Write In My Journal",
@@ -82,6 +84,10 @@
       "Jog Every Day",
       "Weight Lift Consistently, with Rest Days"
     ];
+
+    $scope.changeHabitNameField = function(name) {
+      $scope.habitNameField = name;
+    };
 
     // cleaned
     $scope.oldDateValue;

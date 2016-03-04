@@ -70,9 +70,18 @@
 
     $scope.arrayOfSuggestions = [
       "Meditate Every Day",
+      "Write In My Journal",
+      "Say Something I Like About Myself Out Loud"
+    ];
+
+    $scope.arrayOfSuggestions.physicalHealth = [
       "Floss Every Day",
-      "No Cigarettes"
-    ]
+      "No Cigarettes",
+      "Eat 1 Serving of Fruit",
+      "Eat 1 Serving of Vegetables",
+      "Jog Every Day",
+      "Weight Lift Consistently, with Rest Days"
+    ];
 
     // cleaned
     $scope.oldDateValue;

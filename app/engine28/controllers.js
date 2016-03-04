@@ -371,6 +371,11 @@
         id: attemptPush.key()
       });
 
+      attemptsRef.update({
+        uid: $scope.authData.uid
+      });
+
+
       /*      habitsRef.$add({ foo: "bar" }).then(function(ref) {
        var id = ref.key();
        console.log("added record with id " + id);
@@ -443,6 +448,7 @@
       //console.log(habitId + " | " + attemptId);
       // delete Attempt
       var attemptToDelete = reference_FirebaseRoot.child("attempts/" + habitId + "/" + attemptId);
+      console.log("attemptToDelete " + attemptToDelete);
       attemptToDelete.remove();
 
       // delete Attempt's Habit's reference to Attempt

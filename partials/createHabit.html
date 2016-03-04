@@ -1,4 +1,4 @@
-<div>
+<div ng-init="book.name='';book.description=''">
   <h1>Create a new Habit</h1>
 
   <div class="row">
@@ -13,7 +13,6 @@
                 <textarea id="description" class="form-control" name="description" ng-model="book.description"
                           required></textarea>
         </div>
-
         <div>
 
           <div class="form-group" ng-controller="DatepickerDemoCtrl" style="width:200px;">

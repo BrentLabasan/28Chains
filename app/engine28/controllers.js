@@ -30,7 +30,7 @@
                               $routeParams,
                               currentAuth) {
 
-    $scope.showLoadingBar = function() {
+    $scope.showLoadingBar = function () {
       return $scope.showLoading && currentAuth;
     }
 
@@ -69,7 +69,6 @@
     var origAttemptDate;
 
 
-
     // cleaned
     $scope.oldDateValue;
     $scope.getAttemptData = function () {
@@ -80,7 +79,7 @@
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "attempt");
 
-      if(currentAuth) {
+      if (currentAuth) {
         // Retrieve only the name of the Attempt's Habit, b/c that's the only aspect
         // of the Habit I need to show on the page.
         var url_Habit = reference_FirebaseRoot + "habits/" + currentAuth.uid + "/" + $routeParams.idhabit;
@@ -106,9 +105,9 @@
         // query the start date and the following 27
         //refFbase_chain.orderByChild('date').startAt(startDate).endAt(moment(startDate, 'YYYY-MM-DD').add(27, 'days')).on("child_added", function(snapshot) {
 
-/*        // old code, before the changeStartDate() had code to delete any Days that don't fall in the new range
-        var query = refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate);
-        $scope.data = $firebaseArray(query);*/
+        /*        // old code, before the changeStartDate() had code to delete any Days that don't fall in the new range
+         var query = refFbase_chain.orderByChild('date').startAt(startDate).endAt(endDate);
+         $scope.data = $firebaseArray(query);*/
 
         var urlAttempt = reference_FirebaseRoot + "attempts/" + $routeParams.idhabit + "/" + $routeParams.idattempt + "/chain/";
         var ref = new Firebase(urlAttempt);
@@ -124,7 +123,7 @@
       $scope.showLoading = false;
     };
 
-    $scope.getAtmptId = function() {
+    $scope.getAtmptId = function () {
       //alert($routeParams.idhabit + "/" + $routeParams.idattempt);
 
       var textArea = document.createElement("textarea");
@@ -205,7 +204,7 @@
       var syncObjectHabit = $firebaseObject(refFbase_habit);
       syncObjectHabit.$bindTo($scope, "habitName");
 
-      $scope.toggleDeletePoss = function() {
+      $scope.toggleDeletePoss = function () {
         $scope.deletePoss = !$scope.deletePoss;
         console.log("$scope.deletePoss " + $scope.deletePoss);
       };
@@ -225,8 +224,8 @@
       var newDate = window.prompt("Please enter the new date.\n" +
         "Please use format YYYY-MM-DD (2016-12-25)\n" +
         "Any day data outside of the updated 28 day range WILL be deleted!", newDate);
-      console.log("" + (newDate) + (newDate !== "null") + (newDate!== "undefined"));
-      if (newDate && newDate !== "null" && newDate!== "undefined") { // uhh the last 2 return true even though I know they aren't
+      console.log("" + (newDate) + (newDate !== "null") + (newDate !== "undefined"));
+      if (newDate && newDate !== "null" && newDate !== "undefined") { // uhh the last 2 return true even though I know they aren't
         console.log("chain " + chain);
         console.log("oldDate " + oldDate);
         console.log("newDate " + newDate);
@@ -257,14 +256,14 @@
         }
 
         // erase all dates that don't fit into the current date range
-        attemptData.child('chain').once("value", function(snapshot) {
+        attemptData.child('chain').once("value", function (snapshot) {
 
           var lowerBound = moment(oldDate).add(0 + difference, 'days').format('YYYY-MM-DD');
           var upperBound = moment(oldDate).add(27 + difference, 'days').format('YYYY-MM-DD');
           //console.log("lowerBound" + lowerBound);
           //console.log("upperBound" + upperBound);
 
-          snapshot.forEach(function(childSnapshot) {
+          snapshot.forEach(function (childSnapshot) {
             var key = childSnapshot.key();
             //console.log("key " + key);
             var childData = childSnapshot.val();
@@ -289,13 +288,6 @@
 
     };
 
-    /*      $scope.getStartDateOfAttempt = function(book_id, book_id_attempt) {
-     var ref10 = new Firebase("https://glowing-heat-6414.firebaseio.com/");
-     var attemptRef = ref10.child(book_id).child(book_id_attempt);
-     return "9/9/1999";
-     //return attemptRef.startDate;
-     };*/
-
     // cleaned
     $scope.getAllHabits = function () {
       //console.log(currentAuth);
@@ -313,7 +305,7 @@
     $scope.arrayOfSuggestions = [];
 
 
-      $scope.arrayOfSuggestions['mentalHealth'] = [
+    $scope.arrayOfSuggestions['mentalHealth'] = [
       ["Meditate Every Day", "To decrease stress levels."],
       ["Write In My Journal", "To reflect on my time."],
       ["Say Something I Like About Myself Out Loud", "For good self-esteem."]
@@ -329,9 +321,15 @@
       ["Weight Lift Consistently, with Rest Days", "To impress Arnold."]
     ];
 
-    $scope.changeHabitNameField = function(name, descr) {
+    $scope.changeHabitNameField = function (name, descr) {
+      console.log(name + descr);
       $scope.book.name = name;
       $scope.book.description = descr;
+      $scope.habitNameField = name;
+      $scope.habitDescrField = descr;
+
+      //document.getElementById("name").value = name;
+      //document.getElementById("description").value = descr;
 
     };
 
@@ -410,21 +408,21 @@
     // This func isn't even updated. The update
     // Habit button isn't needed becuse the data's 2 way data binded
     $scope.updateHabit = function () {
-/*      var url = reference_FirebaseRoot + "attempts/" + $scope.book.id + "/" + $scope.book.attempts[];
-      var attemptData = new Firebase(url);
-      var syncobject = $firebaseObject(attemptData);
-      syncobject.$bindTo($scope, "attemptData");
-      console.log("syncobject1 " + syncobject);
-      //$scope.dog = "woof";
-      //alert(attemptData);
-      var url2 = reference_FirebaseRoot + "habits/" + masterId + "/" + $scope.book.id + "/name";
-      var habitName3 = new Firebase(url2);
-      var syncobject2 = $firebaseObject(habitName3);
-      syncobject2.$bindTo($scope, "habitData");*/
+      /*      var url = reference_FirebaseRoot + "attempts/" + $scope.book.id + "/" + $scope.book.attempts[];
+       var attemptData = new Firebase(url);
+       var syncobject = $firebaseObject(attemptData);
+       syncobject.$bindTo($scope, "attemptData");
+       console.log("syncobject1 " + syncobject);
+       //$scope.dog = "woof";
+       //alert(attemptData);
+       var url2 = reference_FirebaseRoot + "habits/" + masterId + "/" + $scope.book.id + "/name";
+       var habitName3 = new Firebase(url2);
+       var syncobject2 = $firebaseObject(habitName3);
+       syncobject2.$bindTo($scope, "habitData");*/
 
       $scope.showLoading = false;
 
-      window.location = "/#/habit/" + $scope.book.id ;
+      window.location = "/#/habit/" + $scope.book.id;
 
     };
 
@@ -441,7 +439,7 @@
       // TODO when Habits are able to have multiple Attempts, write code to delete all Habit's Attempts
     };
 
-    $scope.deleteAttempt = function(habitId, attemptId) {
+    $scope.deleteAttempt = function (habitId, attemptId) {
       //console.log(habitId + " | " + attemptId);
       // delete Attempt
       var attemptToDelete = reference_FirebaseRoot.child("attempts/" + habitId + "/" + attemptId);

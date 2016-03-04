@@ -88,8 +88,8 @@
     ];
 
     $scope.changeHabitNameField = function(name, descr) {
-      $scope.habitNameField = name;
-      $scope.habitDescrField = descr;
+      $scope.book.name = name;
+      $scope.book.description = descr;
 
     };
 
@@ -404,44 +404,10 @@
 
     $scope.updateHabit = function () {
 
-      var url = reference_FirebaseRoot + "attempts/" + $scope.book.id + "/" + $scope.book.id_attempt;
-      var attemptData = new Firebase(url);
-      var syncobject = $firebaseObject(attemptData);
-      syncobject.$bindTo($scope, "attemptData");
-      console.log("syncobject1 " + syncobject);
-      //$scope.dog = "woof";
-      //alert(attemptData);
-      var url2 = reference_FirebaseRoot + "habits/" + masterId + "/" + $scope.book.id + "/name";
-      var habitName3 = new Firebase(url2);
-      var syncobject2 = $firebaseObject(habitName3);
-      syncobject2.$bindTo($scope, "habitData");
 
       $scope.showLoading = false;
 
-      /*          var ref7 = new Firebase(rootUrl);
-
-       // update the Habit
-       var habitsRef = ref7.child("habits/" + $scope.authData.uid);
-       var habitPush = habitsRef.update({
-       //id_attempt: attemptPush.key(),
-       name: $scope.book.name,
-       description: $scope.book.description
-       });
-
-       var changeChain = function() {
-       for(var i =0; i<28; i++) {
-
-       }
-       }
-
-       console.log("document.getElementById('startDate').value " + document.getElementById("startDate").value);
-       // create the Attempt
-       var attemptsRef = ref7.child("attempts/" + $scope.book.id + "/" + $scope.book.id_attempt);
-       var attemptPush = attemptsRef.update({
-       startDate: document.getElementById("startDate").value
-       });*/
-
-      window.location = "/#/attempt/" + $scope.book.id + "/" + $scope.book.id_attempt;
+      window.location = "/#/habit/" + $scope.book.id ;
 
     };
 

@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
           <label for="description"><h6>DESCRIPTION <span class="label label-info">REQUIRED</span></h6></label>
-                <textarea id="description" class="form-control" name="description" ng-model="book.description"
+                <textarea id="description" class="form-control" name="description" ng-model="habitDescrField"
                           required></textarea>
         </div>
 
@@ -52,11 +52,11 @@
       <h3>Here's some ideas to get you started!
         <h4>Mental Health</h4>
         <ul>
-          <button ng-click="changeHabitNameField(sugg)" ng-repeat="sugg in arrayOfSuggestions">{{sugg}}</button>
+          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions">{{sugg[0]}}</button>
         </ul>
         <h4>PhysicalHealth Health</h4>
         <ul>
-          <button ng-click="changeHabitNameField(sugg)" ng-repeat="sugg in arrayOfSuggestions.physicalHealth">{{sugg}}</button>
+          <button ng-click="changeHabitNameField(sugg[0], sugg[1])" ng-repeat="sugg in arrayOfSuggestions.physicalHealth">{{sugg[0]}}</button>
         </ul>
     </div>
   </div>

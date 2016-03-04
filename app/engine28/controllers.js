@@ -69,24 +69,28 @@
     var origAttemptDate;
 
     $scope.habitNameField;
+    $scope.habitDescrField;
 
     $scope.arrayOfSuggestions = [
-      "Meditate Every Day",
-      "Write In My Journal",
-      "Say Something I Like About Myself Out Loud"
+      ["Meditate Every Day", "To decrease stress levels."],
+      ["Write In My Journal", "To reflect on my time."],
+      ["Say Something I Like About Myself Out Loud", "For good self-esteem."]
     ];
 
     $scope.arrayOfSuggestions.physicalHealth = [
-      "Floss Every Day",
-      "No Cigarettes",
-      "Eat 1 Serving of Fruit",
-      "Eat 1 Serving of Vegetables",
-      "Jog Every Day",
-      "Weight Lift Consistently, with Rest Days"
+      ["Floss Every Day", "To reduce the risk of heart disease."],
+      ["No Cigarettes", "To live a longer life for my family."],
+      ["No Alcohol", "Hangovers are a waste of a day."],
+      ["Eat 1 Serving of Fruit", "To prevent scurvy."],
+      ["Eat 1 Serving of Vegetables", "For good bowel movements!"],
+      ["Jog Every Day", "To look sexy."],
+      ["Weight Lift Consistently, with Rest Days", "To impress Arnold."]
     ];
 
-    $scope.changeHabitNameField = function(name) {
+    $scope.changeHabitNameField = function(name, descr) {
       $scope.habitNameField = name;
+      $scope.habitDescrField = descr;
+
     };
 
     // cleaned

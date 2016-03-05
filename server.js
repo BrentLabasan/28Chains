@@ -17,7 +17,8 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 var Firebase = require('firebase');
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
-  host: 'localhost:9200',
+  host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
+  //host: 'localhost:9200',
   log: 'trace'
 });
 

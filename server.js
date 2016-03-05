@@ -23,10 +23,16 @@ var client = new elasticsearch.Client({
 });
 
 // listen for changes to Firebase data
-var fb = new Firebase('https://glowing-heat-6414.firebaseio.com/habits/');
+var fb = new Firebase('https://glowing-heat-6414.firebaseio.com/attempts/');
 fb.on('child_added', createOrUpdateIndex);
 fb.on('child_changed', createOrUpdateIndex);
 fb.on('child_removed', removeIndex);
+
+client.indices.create({
+  index: 'firebase',
+}, function (error, response) {
+  console.log(response);
+});
 
 function createOrUpdateIndex(snapshot) {
   console.log('createOrUpdateIndex');

@@ -34,9 +34,9 @@
           <span class="label label-primary">ATTEMPT</span> &nbsp;{{value.name}}
         </a>
       </td>
-      <td>{{value.startDate}}
+      <td ng-if="value.name">{{value.startDate}}
       </td>
-      <td ng-show="deletePoss" ng-click="deleteAttempt(value.id_habit, key)">
+      <td ng-if="value.name" ng-show="deletePoss" ng-click="deleteAttempt(value.id_habit, key)">
         <span style="cursor:pointer;" class="glyphicon glyphicon-trash"></span>
       </td>
 <!--

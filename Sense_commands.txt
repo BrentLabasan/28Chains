@@ -19,3 +19,28 @@ GET attempt/internal/-KAaKyqEgb6iX53SCBWc/_search?q=*&pretty'
 GET attempt/internal/_search?q=*&pretty'
 
 GET attempt/internal/_search?q=temptation&pretty'
+
+GET _search
+{
+   "query": {
+      "match_all": {}
+   }
+}
+
+GET attempt/internal/_search
+{
+   "query": {
+      "match_all": {}
+   },
+   "_source": ["id", "name"]
+}
+
+GET attempt/internal/_search
+{
+  "query": { "match": { "id_habit": "-KAaKyqEgb6iX53SCBWc" } }
+}
+
+GET attempt/internal/_search
+{
+  "query": { "match": { "-KAaKyqEgb6iX53SCBWc" } }
+}

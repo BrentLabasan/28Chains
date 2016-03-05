@@ -13,11 +13,14 @@ app.use(express.static('public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 
-
 var Firebase = require('firebase');
 var elasticsearch = require('elasticsearch');
+var elasticSearchURLs = [
+  'http://localhost:9200',
+  'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com'
+];
 var client = new elasticsearch.Client({
-  host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
+  host: elasticSearchURLs[0],
   //host: 'localhost:9200',
   log: 'trace'
 });
@@ -29,7 +32,7 @@ fb.on('child_changed', createOrUpdateIndex);
 fb.on('child_removed', removeIndex);
 
 client.indices.create({
-  index: 'firebase',
+  index: 'attempt',
 }, function (error, response) {
   //console.log(response);
 });
@@ -38,44 +41,44 @@ function createOrUpdateIndex(snapshot) {
   //console.log('createOrUpdateIndex');
 
   client.index({
-    index: 'firebase',
-    type: 'habits',
+    index: 'attempt',
+    type: 'internal',
     id: snapshot.key(),
     body: snapshot.val()
-  }, function(error, response){
-    if(error){
+  }, function (error, response) {
+    if (error) {
       //console.log("Error indexing user : " + error);
     }
   });
 
-/*  client.index(this.index, this.type, snap.val(), snap.key())
-    .on('data', function(data) { //console.log('indexed ', snap.key()); })
-    .on('error', function(err) { /!* handle errors *!/ });*/
+  /*  client.index(this.index, this.type, snap.val(), snap.key())
+   .on('data', function(data) { //console.log('indexed ', snap.key()); })
+   .on('error', function(err) { /!* handle errors *!/ });*/
 }
 function removeIndex(snapshot) {
   //console.log('removeIndex');
   client.delete({
-    index: 'firebase',
-    type: 'habits',
+    index: 'attempt',
+    type: 'internal',
     id: snapshot.key()
-  }, function(error, response){
-    if(error){
+  }, function (error, response) {
+    if (error) {
       //console.log("Error deleting user : " + error);
     }
   });
 
   /*  client.deleteDocument(this.index, this.type, snap.key(), function(error, data) {
-      if( error ) console.error('failed to delete', snap.key(), error);
-      else //console.log('deleted', snap.key());
-    });*/
+   if( error ) console.error('failed to delete', snap.key(), error);
+   else //console.log('deleted', snap.key());
+   });*/
 }
 
 
-setInterval(function(){
+setInterval(function () {
 
   client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
-    index: 'firebase',
-    type: 'habits',
+    index: 'attempt',
+    type: 'internal',
     body: {
       query: {
         match: {
@@ -84,13 +87,11 @@ setInterval(function(){
       }
     }
   }).then(function (resp) {
-    console.log(resp + "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+    console.log(resp + "RESP RESP RESP RESP RESP RESP RESP RESP RESP RESP");
   }, function (err) {
     //console.log(err.message);
-  });}, 30000);
-
-
-
+  });
+}, 5000);
 
 
 var port = process.env.PORT || 3030;

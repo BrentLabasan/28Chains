@@ -15,31 +15,47 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 
 
 var Firebase = require('firebase');
-/*var elasticsearch = require('elasticsearch');
+var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
   log: 'trace'
-});*/
+});
 
 // listen for changes to Firebase data
 var fb = new Firebase('https://glowing-heat-6414.firebaseio.com/habits/');
-fb.on('child_added',   function(oldChildSnapshot) {
-  // code to handle child removal.
-  console.log("a")
-});
+fb.on('child_added', createOrUpdateIndex);
 fb.on('child_changed', createOrUpdateIndex);
 fb.on('child_removed', removeIndex);
 
-function createOrUpdateIndex() {
-  console.log('ayyyyy');
-/*
-  client.index(this.index, this.type, snap.val(), snap.key())
+function createOrUpdateIndex(snapshot) {
+  console.log('createOrUpdateIndex');
+
+  client.index({
+    index: 'firebase',
+    type: 'habits',
+    id: snapshot.key(),
+    body: snapshot.val()
+  }, function(error, response){
+    if(error){
+      console.log("Error indexing user : " + error);
+    }
+  });
+
+/*  client.index(this.index, this.type, snap.val(), snap.key())
     .on('data', function(data) { console.log('indexed ', snap.key()); })
-    .on('error', function(err) { /!* handle errors *!/ });
-*/
+    .on('error', function(err) { /!* handle errors *!/ });*/
 }
-function removeIndex() {
-  console.log('lmao');
+function removeIndex(snapshot) {
+  console.log('removeIndex');
+  client.delete({
+    index: 'firebase',
+    type: 'habits',
+    id: snapshot.key()
+  }, function(error, response){
+    if(error){
+      console.log("Error deleting user : " + error);
+    }
+  });
 
   /*  client.deleteDocument(this.index, this.type, snap.key(), function(error, data) {
       if( error ) console.error('failed to delete', snap.key(), error);

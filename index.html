@@ -49,6 +49,21 @@
   <script src="app/angularBootstrap/angularBootstrap.module.js"></script>
   <script src="app/angularBootstrap/pagination.js"></script>
 
+  <!--<script src="elastic.min.js"></script>-->
+  <!--<script src="elastic-jquery-client.min.js"></script>  -->
+
+  <script src="public/vendor/elasticsearch/elasticsearch.angular.js"></script>
+  <script>
+    ejs.client = ejs.jQueryClient('http://localhost:9200');
+    client.search({
+      index: 'firebase',
+      type: 'widget',
+      body: ejs.Request().query(ejs.MatchQuery('title', 'foo'))
+    }, function (error, response) {
+      // handle response
+    });
+  </script>
+
 
   <link rel="stylesheet" type="text/css" href="public/vendor/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="public/style.css">

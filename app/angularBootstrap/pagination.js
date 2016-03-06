@@ -159,6 +159,10 @@ angular.module('angularBootstrap')
       $uibModalInstance.dismiss('cancel');
     };
 
+    $scope.loadAtmptFrmSrch = function() {
+      //alert();
+    };
+
     $scope.searchForAttempts = function(term) {
 
       if (term) {

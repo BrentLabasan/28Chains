@@ -3,7 +3,7 @@
   <div class="row">
 
     <div ng-hide="attemptIdLoaded" id="attemptQuerySearcher" class="col-sm-12 text-center">
-      <p> Enter the ID of a Attempt to view it.
+      <p> Enter the ID of an Attempt to view it.
       </p>
       <p>
         Click the <label class="label label-primary">ATTEMPT</label> on any Attempt's page to automatically paste it's ID to your clipboard.
@@ -14,8 +14,6 @@
       <br/>
       <br/>
       <p>Or click here to search for relevant Attempts.</p>
-      <button>SEARCH (IN DEVELOPMENT)</button>
-
 
       <div ng-controller="ModalDemoCtrl">
         <script type="text/ng-template" id="myModalContent.html">
@@ -37,9 +35,10 @@
         </script>
 
         <!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
-        <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+        <!--<button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>-->
         <!--<button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
         <!--<button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
+        <button ng-click="open('lg')">SEARCH</button>
         <div ng-show="selected">Selection from a modal: {{ selected }}</div>
       </div>
 

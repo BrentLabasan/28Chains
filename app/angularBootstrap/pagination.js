@@ -1,62 +1,63 @@
 angular.module('angularBootstrap')
-    .controller('TabsDemoCtrl', function ($scope, $window) {
+  .controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [
-        { title:'Dynamic Title 1', content:'Dynamic content 1' },
-        { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+      {title: 'Dynamic Title 1', content: 'Dynamic content 1'},
+      {title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true}
     ];
 
-    $scope.alertMe = function() {
-        setTimeout(function() {
-            $window.alert('You\'ve selected the alert tab!');
-        });
+    $scope.alertMe = function () {
+      setTimeout(function () {
+        $window.alert('You\'ve selected the alert tab!');
+      });
     };
 
     $scope.model = {
-        name: 'Tabs'
+      name: 'Tabs'
     };
 
     $scope.statusChoices = {
-        choices: ["Yes", "No"]
+      choices: ["Yes", "No"]
     };
-}).controller('DatepickerDemoCtrl', function ($scope) {
-    $scope.today = function() {
-        $scope.bookdt = new Date();
+  })
+  .controller('DatepickerDemoCtrl', function ($scope) {
+    $scope.today = function () {
+      $scope.bookdt = new Date();
     };
     $scope.today();
 
-    $scope.clear = function() {
-        $scope.bookdt = null;
+    $scope.clear = function () {
+      $scope.bookdt = null;
     };
 
     // Disable weekend selection
-/*    $scope.disabled = function(date, mode) {
-        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-    };*/
+    /*    $scope.disabled = function(date, mode) {
+     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+     };*/
 
-    $scope.toggleMin = function() {
-        $scope.minDate = $scope.minDate ? null : new Date();
+    $scope.toggleMin = function () {
+      $scope.minDate = $scope.minDate ? null : new Date();
     };
 
     $scope.toggleMin();
     $scope.maxDate = new Date(2020, 5, 22);
 
-    $scope.open1 = function() {
-        $scope.popup1.opened = true;
+    $scope.open1 = function () {
+      $scope.popup1.opened = true;
     };
 
-    $scope.open2 = function() {
-        $scope.popup2.opened = true;
+    $scope.open2 = function () {
+      $scope.popup2.opened = true;
     };
 
-    $scope.setDate = function(year, month, day) {
-        $scope.bookdt = new Date(year, month, day);
+    $scope.setDate = function (year, month, day) {
+      $scope.bookdt = new Date(year, month, day);
     };
 
     $scope.bookBook = new Date('2016-01-01');
 
     $scope.dateOptions = {
-        formatYear: 'yy',
-        startingDay: 1
+      formatYear: 'yy',
+      startingDay: 1
     };
 
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -69,11 +70,11 @@ angular.module('angularBootstrap')
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
     $scope.popup1 = {
-        opened: false
+      opened: false
     };
 
     $scope.popup2 = {
-        opened: false
+      opened: false
     };
 
     var tomorrow = new Date();
@@ -81,30 +82,78 @@ angular.module('angularBootstrap')
     var afterTomorrow = new Date();
     afterTomorrow.setDate(tomorrow.getDate() + 1);
     $scope.events =
-        [
-            {
-                date: tomorrow,
-                status: 'full'
-            },
-            {
-                date: afterTomorrow,
-                status: 'partially'
-            }
-        ];
-
-    $scope.getDayClass = function(date, mode) {
-        if (mode === 'day') {
-            var dayToCheck = new Date(date).setHours(0,0,0,0);
-
-            for (var i = 0; i < $scope.events.length; i++) {
-                var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
-
-                if (dayToCheck === currentDay) {
-                    return $scope.events[i].status;
-                }
-            }
+      [
+        {
+          date: tomorrow,
+          status: 'full'
+        },
+        {
+          date: afterTomorrow,
+          status: 'partially'
         }
+      ];
 
-        return '';
+    $scope.getDayClass = function (date, mode) {
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
     };
-});
+  })
+  .controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+
+    $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.animationsEnabled = true;
+
+    $scope.open = function (size) {
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    $scope.toggleAnimation = function () {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+  })
+  .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+    $scope.items = items;
+    $scope.selected = {
+      item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+      $uibModalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+  });

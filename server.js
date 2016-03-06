@@ -91,7 +91,7 @@ setInterval(function () {
   }, function (err) {
     //console.log(err.message);
   });
-}, 5000);
+}, 3600000);
 
 
 var port = process.env.PORT || 3030;

@@ -25,7 +25,26 @@
           <!--<div ng-app="ExampleApp" ng-controller="ExampleController" class="modal-body">-->
           <div class="modal-body">
 
-            <pre>{{meow | json}}</pre>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>Habit Name</th>
+                <th>Attempt Name</th>
+                <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="obj in searchResults">
+                <!--<td>{{attempt._source }}</td>-->
+                <!--<td>{{ obj._source }}</td>-->
+                <td>1 {{ Utils.keys(obj._source) }} 2</td>
+                <td>{{ obj._source }}</td>
+                <td>{{}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+            <pre>{{searchResults | json}}</pre>
 
             <!--            <ul>
                           <li ng-repeat="item in items">
@@ -306,7 +325,7 @@
       console.log("RESP");
       console.log(resp);
       var hits = resp.hits.hits;
-      $scope.meow = resp.hits.hits;
+      $scope.searchResults = resp.hits.hits;
     }, function (err) {
       console.trace(err.message);
     });

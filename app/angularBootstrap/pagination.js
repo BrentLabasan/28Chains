@@ -145,7 +145,7 @@ angular.module('angularBootstrap')
   .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
-    $scope.searchTerm = "search term"
+    $scope.searchTerm = "temptation"
     $scope.items = items;
     $scope.selected = {
       item: $scope.items[0]
@@ -200,7 +200,7 @@ angular.module('angularBootstrap')
         console.log("RESP");
         console.log(resp);
         var hits = resp.hits.hits;
-        $scope.meow = resp.hits.hits;
+        $scope.searchResults = resp.hits.hits;
       }, function (err) {
         console.trace(err.message);
       });

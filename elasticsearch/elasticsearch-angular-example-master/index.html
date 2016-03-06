@@ -19,7 +19,7 @@
       <h3 class="panel-title">Cluster State</h3>
     </div>
     <div class="panel-body">
-      <pre>{{meow | json}}</pre>
+      <pre>{{searchResults | json}}</pre>
       <!--<pre>{{clusterState | json}}</pre>-->
 
     </div>
@@ -100,7 +100,7 @@
       console.log("RESP");
       console.log(resp);
       var hits = resp.hits.hits;
-      $scope.meow = resp.hits.hits;
+      $scope.searchResults = resp.hits.hits;
     }, function (err) {
       console.trace(err.message);
     });

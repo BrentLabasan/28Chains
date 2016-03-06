@@ -139,6 +139,10 @@ app.controller('HeaderController', ['$scope', '$firebaseObject', '$firebaseArray
  */
 app.run(['$http', "$rootScope", "$location", function ($http, $rootScope, $location) {
 
+  $rootScope.Utils = { // http://stackoverflow.com/a/25299523/708355
+    keys : Object.keys
+  }
+
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     // We can catch the error thrown when the $requireAuth promise is rejected
     // and redirect the user back to the home page

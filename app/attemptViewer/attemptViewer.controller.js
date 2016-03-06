@@ -410,6 +410,7 @@
       $scope.attemptIdLoaded = null;
     };
 
+
     console.log("end attemptViewerController");
 
   }

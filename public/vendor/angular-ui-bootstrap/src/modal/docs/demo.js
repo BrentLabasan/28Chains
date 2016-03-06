@@ -1,6 +1,10 @@
 angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
-  $scope.items = ['item1', 'item2', 'item3'];
+  $scope.searchForAttempts = function() {
+    alert();
+  };
+
+  $scope.items = ['item1a', 'item2b', 'item3c'];
 
   $scope.animationsEnabled = true;
 
@@ -48,4 +52,9 @@ angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($s
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
+
+  $scope.searchForAttempts = function() {
+    alert();
+  };
+
 });

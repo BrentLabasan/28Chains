@@ -54,14 +54,7 @@
 
   <script src="public/vendor/elasticsearch/elasticsearch.angular.js"></script>
   <script>
-    ejs.client = ejs.jQueryClient('http://localhost:9200');
-    client.search({
-      index: 'firebase',
-      type: 'widget',
-      body: ejs.Request().query(ejs.MatchQuery('title', 'foo'))
-    }, function (error, response) {
-      // handle response
-    });
+
   </script>
 
 

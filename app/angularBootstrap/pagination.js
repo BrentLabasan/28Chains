@@ -111,7 +111,7 @@ angular.module('angularBootstrap')
   })
   .controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
-    $scope.items = ['item1', 'item2', 'item3'];
+    $scope.items = ['item18', 'item29', 'item30'];
 
     $scope.animationsEnabled = true;
 
@@ -140,6 +140,7 @@ angular.module('angularBootstrap')
       $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
+
   })
   .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
@@ -155,5 +156,9 @@ angular.module('angularBootstrap')
 
     $scope.cancel = function () {
       $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.searchForAttempts = function() {
+      console.log("meh");
     };
   });

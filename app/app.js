@@ -11,6 +11,7 @@ var app = angular
     'firebase',
     'anguvideo',
     'angularBootstrap',
+    'elasticsearch',
     // 28Chain modules.
     'app.attemptViewer',
     'app.auth',
@@ -149,8 +150,8 @@ app.run(['$http', "$rootScope", "$location", function ($http, $rootScope, $locat
 
   // Predefine the API's value from Parse.com
   $http.defaults.headers.common = {
-    'X-Parse-Application-Id': 'WkRZPQr0whIqwm3fom8zNAmjqfJFqPmZVeFW5sFD',
-    'X-Parse-REST-API-Key': 'FszCMz7KIEeHjYUy3mbSA4iZPUZ3wZnwRnFa3nvd'
+    //'X-Parse-Application-Id': 'WkRZPQr0whIqwm3fom8zNAmjqfJFqPmZVeFW5sFD',
+    //'X-Parse-REST-API-Key': 'FszCMz7KIEeHjYUy3mbSA4iZPUZ3wZnwRnFa3nvd'
   }
 
 

@@ -142,7 +142,7 @@ angular.module('angularBootstrap')
 
 
   })
-  .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+  .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
     $scope.items = items;
@@ -159,6 +159,58 @@ angular.module('angularBootstrap')
     };
 
     $scope.searchForAttempts = function() {
-      console.log("meh");
+      //console.log("meh");
+      client.cluster.state({
+          metric: [
+            'cluster_name',
+            'nodes',
+            'master_node',
+            'version'
+          ]
+        })
+        .then(function (resp) {
+          $scope.clusterState = resp;
+          $scope.error = null;
+        })
+        .catch(function (err) {
+          $scope.clusterState = null;
+          $scope.error = err;
+
+          // if the err is a NoConnections error, then the client was not able to
+          // connect to elasticsearch. In that case, create a more detailed error
+          // message
+          if (err instanceof esFactory.errors.NoConnections) {
+            $scope.error = new Error('Unable to connect to elasticsearch. ' +
+              'Make sure that it is running and listening at http://localhost:9200');
+          }
+        });
+
+      client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
+        index: 'attempt',
+        type: 'internal',
+        body: {
+          "query": { // http://joelabrahamsson.com/elasticsearch-101/    Basic free text search
+            "query_string": {
+              "query": "temptation"
+            }
+          }
+        }
+      }).then(function (resp) {
+        console.log("RESP");
+        console.log(resp);
+        var hits = resp.hits.hits;
+        $scope.meow = resp.hits.hits;
+      }, function (err) {
+        console.trace(err.message);
+      });
     };
   });
+
+app.service('client', function (esFactory) {
+  return esFactory({
+    host: 'localhost:9200',
+//        host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
+    apiVersion: '1.6',
+    log: 'trace'
+  });
+});

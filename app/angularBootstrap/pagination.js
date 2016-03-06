@@ -108,7 +108,8 @@ angular.module('angularBootstrap')
 
       return '';
     };
-  })
+  });
+/*
   .controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
     $scope.items = ['item18', 'item29', 'item30'];
@@ -196,6 +197,10 @@ angular.module('angularBootstrap')
       $scope.cancel();
     };
 
+    $scope.drake = function() {
+      alert("drake");
+    };
+
     $scope.searchForAttempts = function(term) {
 
       if (term) {
@@ -256,4 +261,4 @@ app.service('client', function (esFactory) {
     apiVersion: '1.6',
     log: 'trace'
   });
-});
+});*/

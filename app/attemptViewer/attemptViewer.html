@@ -36,9 +36,9 @@
 
           </div>
           <div class="modal-footer">
-            <input ng-model="items" style="margin-right: 10px; float: left;" type="text"/>
+            <input ng-model="searchTerm" style="margin-right: 10px; float: left;" type="text"/>
             <!--<button style="float: left;" class="btn btn-primary" type="button" ng-click="ok()">SEARCH</button>-->
-            <button style="float: left;" class="btn btn-primary" type="button" ng-click="searchForAttempts()">SEARCH!</button>
+            <button style="float: left;" class="btn btn-primary" type="button" ng-click="searchForAttempts(searchTerm)">SEARCH!</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
           </div>
         </script>

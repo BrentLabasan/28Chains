@@ -145,6 +145,7 @@ angular.module('angularBootstrap')
   .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
+    $scope.searchTerm = "search term"
     $scope.items = items;
     $scope.selected = {
       item: $scope.items[0]
@@ -158,7 +159,7 @@ angular.module('angularBootstrap')
       $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.searchForAttempts = function() {
+    $scope.searchForAttempts = function(term) {
       //console.log("meh");
       client.cluster.state({
           metric: [
@@ -191,7 +192,7 @@ angular.module('angularBootstrap')
         body: {
           "query": { // http://joelabrahamsson.com/elasticsearch-101/    Basic free text search
             "query_string": {
-              "query": "temptation"
+              "query": term
             }
           }
         }

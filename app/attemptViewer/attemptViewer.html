@@ -28,16 +28,16 @@
               <h4>Use the search input below to search for Attempts.</h4>
             </div>
 
-            <table ng-show="searchResults" class="table table-hover table-striped">
+            <table id="atmpSrchrTbl" ng-show="searchResults" class="table table-hover table-striped">
               <thead>
-              <tr>
+              <tr >
                 <th>Habit Name</th>
                 <th>Attempt Name</th>
                 <th>Description</th>
               </tr>
               </thead>
               <tbody>
-              <tr ng-click="loadAtmptFrmSrch()" ng-repeat="obj in searchResults">
+              <tr ng-click="blahblah()" ng-repeat="obj in searchResults">
                 <!--<td>{{attempt._source }}</td>-->
                 <!--<td>{{ obj._source }}</td>-->
                 <!--<td>1 {{ Utils.keys(obj._source) }} 2</td>-->

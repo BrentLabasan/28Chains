@@ -263,3 +263,7 @@ hr.style-five {
   margin-left: 0px;
   margin-right: 0px;
 }
+
+#atmpSrchrTbl {
+  tr { cursor: pointer; }
+}

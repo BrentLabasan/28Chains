@@ -160,51 +160,56 @@ angular.module('angularBootstrap')
     };
 
     $scope.searchForAttempts = function(term) {
-      //console.log("meh");
-      client.cluster.state({
-          metric: [
-            'cluster_name',
-            'nodes',
-            'master_node',
-            'version'
-          ]
-        })
-        .then(function (resp) {
-          $scope.clusterState = resp;
-          $scope.error = null;
-        })
-        .catch(function (err) {
-          $scope.clusterState = null;
-          $scope.error = err;
 
-          // if the err is a NoConnections error, then the client was not able to
-          // connect to elasticsearch. In that case, create a more detailed error
-          // message
-          if (err instanceof esFactory.errors.NoConnections) {
-            $scope.error = new Error('Unable to connect to elasticsearch. ' +
-              'Make sure that it is running and listening at http://localhost:9200');
-          }
-        });
+      if (term) {
+        //console.log("meh");
+        client.cluster.state({
+            metric: [
+              'cluster_name',
+              'nodes',
+              'master_node',
+              'version'
+            ]
+          })
+          .then(function (resp) {
+            $scope.clusterState = resp;
+            $scope.error = null;
+          })
+          .catch(function (err) {
+            $scope.clusterState = null;
+            $scope.error = err;
 
-      client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
-        index: 'attempt',
-        type: 'internal',
-        body: {
-          "query": { // http://joelabrahamsson.com/elasticsearch-101/    Basic free text search
-            "query_string": {
-              "query": term
+            // if the err is a NoConnections error, then the client was not able to
+            // connect to elasticsearch. In that case, create a more detailed error
+            // message
+            if (err instanceof esFactory.errors.NoConnections) {
+              $scope.error = new Error('Unable to connect to elasticsearch. ' +
+                'Make sure that it is running and listening at http://localhost:9200');
+            }
+          });
+
+        client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
+          index: 'attempt',
+          type: 'internal',
+          body: {
+            "query": { // http://joelabrahamsson.com/elasticsearch-101/    Basic free text search
+              "query_string": {
+                "query": term
+              }
             }
           }
-        }
-      }).then(function (resp) {
-        console.log("RESP");
-        console.log(resp);
-        var hits = resp.hits.hits;
-        $scope.searchResults = resp.hits.hits;
-      }, function (err) {
-        console.trace(err.message);
-      });
+        }).then(function (resp) {
+          console.log("RESP");
+          console.log(resp);
+          var hits = resp.hits.hits;
+          $scope.searchResults = resp.hits.hits;
+        }, function (err) {
+          console.trace(err.message);
+        });
+      }
+
     };
+
   });
 
 app.service('client', function (esFactory) {

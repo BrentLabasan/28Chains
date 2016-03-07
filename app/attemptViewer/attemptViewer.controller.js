@@ -10,12 +10,13 @@
 
 
     })
-    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, arr1, arr2, client, esFactory) {
+    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, arr1, arr2, wayne, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
       $scope.searchTerm = "temptation"
       $scope.arr1 = arr1;
       $scope.arr2 = arr2;
+      $scope.wayne = wayne;
 /*      $scope.selected = {
         item: $scope.items[0]
       };*/
@@ -182,6 +183,9 @@
           },
           arr1: function () {
             return $scope.arr1;
+          },
+          wayne: function () {
+            return $scope.wayne;
           }
         }
       });

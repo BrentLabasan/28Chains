@@ -36,14 +36,14 @@
             <p> {{inModalDemoCtrl}} click HERE</p>
             <table id="atmpSrchrTbl" ng-show="searchResults" class="table table-hover table-striped">
               <thead>
-              <tr ng-click="wayne();">
+              <tr>
                 <th>Habit Name</th>
                 <th>Attempt Name</th>
                 <th>Description</th>
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="obj in searchResults">
+              <tr  ng-click="wayne();" ng-repeat="obj in searchResults">
                 <!--<td>{{attempt._source }}</td>-->
                 <!--<td>{{ obj._source }}</td>-->
                 <!--<td>1 {{ Utils.keys(obj._source) }} 2</td>-->

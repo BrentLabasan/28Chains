@@ -29,6 +29,11 @@
         $uibModalInstance.dismiss('cancel');
       };
 
+      $scope.krakatoa = function () {
+        $scope.wayne2();
+        $uibModalInstance.dismiss('cancel');
+      };
+
       $scope.setAttemptLoaded = function(atmptId) {
 
         if (atmptId) {

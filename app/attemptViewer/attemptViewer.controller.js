@@ -29,8 +29,8 @@
         $uibModalInstance.dismiss('cancel');
       };
 
-      $scope.krakatoa = function () {
-        $scope.wayne2();
+      $scope.krakatoa = function (term) {
+        $scope.wayne2(term);
         $uibModalInstance.dismiss('cancel');
       };
 
@@ -190,7 +190,7 @@
             return $scope.arr1;
           },
           wayne: function () {
-            return $scope.wayne;
+            return $scope.setAttemptLoaded;
           }
         }
       });
@@ -211,10 +211,16 @@
 
     $scope.attemptIdLoaded ;
 
-    $scope.setAttemptLoaded = function() {
+    $scope.setAttemptLoaded = function(term) {
+      alert(term);
+      if (term) {
+        $scope.attemptIdLoaded = term;
+      } else {
+        $scope.attemptIdLoaded = document.getElementById("queryAttemptID").value;
+        //console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+      }
       // retrieves text in
-      $scope.attemptIdLoaded = document.getElementById("queryAttemptID").value;
-      //console.log("setting Attempt loaded to ID " + $scope.attemptIdLoaded);
+
       var arr = $scope.attemptIdLoaded.split("/");
       var idHabit = arr[0];
       var idAttempt = arr[1];

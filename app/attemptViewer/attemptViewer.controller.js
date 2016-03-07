@@ -213,7 +213,7 @@
 
     $scope.setAttemptLoaded = function(term) {
       debugger;
-      alert(term);
+      //alert(term);
       if (term) {
         $scope.attemptIdLoaded = term;
       } else {

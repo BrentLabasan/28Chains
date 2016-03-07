@@ -6,9 +6,44 @@
     .controller('attemptViewerController', attemptViewerController)
     .controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
+      $scope.drake = function() {
+        alert("drake");
+      };
+
+      $scope.inModalDemoCtrl = "inModalDemoCtrl";
+
+      $scope.items = ['item18', 'item29', 'item30'];
+
+      $scope.animationsEnabled = true;
+
+      $scope.open = function (size) {
+
+        var modalInstance = $uibModal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'myModalContent.html',
+          controller: 'ModalInstanceCtrl',
+          size: size,
+          resolve: {
+            items: function () {
+              return $scope.items;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
+
+      $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+      };
+
 
     })
-    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items2, items1, wayne, client, esFactory) {
+    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items2, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
       $scope.searchTerm = "temptation"
@@ -176,14 +211,7 @@
         resolve: {
           items2: function () {
             return $scope.items2;
-          },
-          items1: function () {
-            return $scope.items1;
-          },
-          wayne: function () {
-            return $scope.wayne;
           }
-
         }
       });
 

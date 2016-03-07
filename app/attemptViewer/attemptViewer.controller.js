@@ -16,7 +16,7 @@
       $scope.searchTerm = "temptation"
       $scope.arr1 = arr1;
       $scope.arr2 = arr2;
-      $scope.wayne = wayne;
+      $scope.wayne2 = wayne;
 /*      $scope.selected = {
         item: $scope.items[0]
       };*/

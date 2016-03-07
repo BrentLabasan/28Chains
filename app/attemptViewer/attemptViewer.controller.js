@@ -14,7 +14,8 @@
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
       $scope.searchTerm = "temptation"
-      $scope.items = arr2;
+      $scope.arr1 = arr1;
+      $scope.arr2 = arr2;
 /*      $scope.selected = {
         item: $scope.items[0]
       };*/

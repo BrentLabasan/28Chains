@@ -42,5 +42,20 @@ GET attempt/internal/_search
 
 GET attempt/internal/_search
 {
-  "query": { "match": { "-KAaKyqEgb6iX53SCBWc" } }
+      "query_string" : {
+        "default_field" : "content",
+        "query" : "temptation"
+    }
+}
+
+GET attempt/internal/_search
+{
+      "query_string" : "temptation"
+}
+
+GET attempt/internal/_search
+{
+      "query" : {
+        "term" : { "user" : "kimchy" }
+    }
 }

@@ -6,48 +6,15 @@
     .controller('attemptViewerController', attemptViewerController)
     .controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
-      $scope.drake = function() {
-        alert("drake");
-      };
 
-      $scope.inModalDemoCtrl = "inModalDemoCtrl";
-
-      $scope.items = ['item18', 'item29', 'item30'];
-
-      $scope.animationsEnabled = true;
-
-      $scope.open = function (size) {
-
-        var modalInstance = $uibModal.open({
-          animation: $scope.animationsEnabled,
-          templateUrl: 'myModalContent.html',
-          controller: 'ModalInstanceCtrl',
-          size: size,
-          resolve: {
-            items: function () {
-              return $scope.items;
-            }
-          }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-          $scope.selected = selectedItem;
-        }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
-        });
-      };
-
-      $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      };
 
 
     })
-    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items2, client, esFactory) {
+    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, arr1, arr2, client, esFactory) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
       $scope.searchTerm = "temptation"
-      $scope.items = items2;
+      $scope.items = arr1;
       $scope.selected = {
         item: $scope.items[0]
       };
@@ -192,8 +159,8 @@
 
     $scope.inModalDemoCtrl = "inModalDemoCtrl";
 
-    $scope.items1 = ['items1', 'items1', 'items1'];
-    $scope.items2 = ['items2', 'items2', 'items2'];
+    $scope.arr1 = ['items1a', 'items1b', 'items1c'];
+    $scope.arr2 = ['items2a', 'items2b', 'items2c'];
 
     $scope.wayne = function() {
       alert("wayne");
@@ -209,8 +176,11 @@
         controller: 'ModalInstanceCtrl',
         size: size,
         resolve: {
-          items2: function () {
-            return $scope.items2;
+          arr2: function () {
+            return $scope.arr2;
+          },
+          arr1: function () {
+            return $scope.arr1;
           }
         }
       });

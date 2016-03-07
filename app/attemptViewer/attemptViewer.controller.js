@@ -212,6 +212,7 @@
     $scope.attemptIdLoaded ;
 
     $scope.setAttemptLoaded = function(term) {
+      debugger;
       alert(term);
       if (term) {
         $scope.attemptIdLoaded = term;
@@ -232,7 +233,6 @@
       var refFbase_attempt = new Firebase(url_attempt);
       var syncObjectAttempt = $firebaseObject(refFbase_attempt);
       syncObjectAttempt.$bindTo($scope, "otherAttempt");
-      var xxx = refFbase_attempt.child('uid');
       var userId;
       refFbase_attempt.child('uid').on("value", function(snapshot) {
         userId = snapshot.val();
@@ -243,7 +243,7 @@
         syncObjectHabit.$bindTo($scope, "otherHabit");
       });
 
-
+console.log("end of setAttemptLoaded");
     };
 
     $scope.unloadAttempt = function() {

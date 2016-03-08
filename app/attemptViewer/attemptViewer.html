@@ -3,10 +3,11 @@
   <div class="row">
 
     <div ng-hide="attemptIdLoaded" id="attemptQuerySearcher" class="col-sm-12 text-center">
-      <p> Enter the ID of a Attempt to view it.
+      <p> Enter the ID of an Attempt to view it.
       </p>
       <p>
-        Click the <label class="label label-primary">ATTEMPT</label> on any Attempt's page to automatically paste it's ID to your clipboard.
+        Click the <label class="label label-primary">ATTEMPT</label> on any Attempt's page to automatically paste it's
+        ID to your clipboard.
 
       </p>
       <input id="queryAttemptID" type="text" placeholder="Attempt ID"/>
@@ -14,7 +15,79 @@
       <br/>
       <br/>
       <p>Or click here to search for relevant Attempts.</p>
-      <button>SEARCH (IN DEVELOPMENT)</button>
+
+      <div>
+        <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+            <h3 class="modal-title">SEARCH ATTEMPTS</h3>
+          </div>
+          <div class="modal-body">
+
+            <div ng-hide="searchResults" class="text-center">
+              <h4>Use the search input below to search for Attempts.</h4>
+            </div>
+            a
+{{arr1}}
+            b
+{{arr2}}
+            c
+            {{items}}
+
+            <p> {{inModalDemoCtrl}} click HERE</p>
+            <table id="atmpSrchrTbl" ng-show="searchResults" class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th>Habit Name</th>
+                <th>Attempt Name</th>
+                <th>Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!--<tr  ng-click="krakatoa(obj._source[Utils.keys(obj._source)[0]].id + '/' + obj._source[Utils.keys(obj._source)[0]].id_habit);" ng-repeat="obj in searchResults">-->
+              <tr  ng-click="krakatoa(obj._source[Utils.keys(obj._source)[0]].id_habit + '/' + obj._source[Utils.keys(obj._source)[0]].id);" ng-repeat="obj in searchResults">
+                <!--<td>{{attempt._source }}</td>-->
+                <!--<td>{{ obj._source }}</td>-->
+                <!--<td>1 {{ Utils.keys(obj._source) }} 2</td>-->
+                <!--<td>1 {{ Utils.keys(obj._source)[0] }} 2</td>-->
+                <td>{{ obj._source[Utils.keys(obj._source)[0]].habitName }}</td>
+                <td>{{ obj._source[Utils.keys(obj._source)[0]].name }}</td>
+                <td>{{ obj._source[Utils.keys(obj._source)[0]].description }}</td>
+              </tr>
+              </tbody>
+            </table>
+
+            <!--<pre>{{searchResults | json}}</pre>-->
+
+            <!--            <ul>
+                          <li ng-repeat="item in items">
+                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                          </li>
+                        </ul>
+                        Selected: <b>{{ selected.item }}</b>-->
+
+          </div>
+          <div class="modal-footer">
+
+            <form>
+              <input ng-model="searchTerm" style="margin-right: 10px; float: left;" type="text" autofocus placeholder="Search Term"/>
+              <!--<button style="float: left;" class="btn btn-primary" type="button" ng-click="ok()">SEARCH</button>-->
+              <input value="SEARCH" style="float: left;" class="btn btn-primary" type="submit" ng-click="searchForAttempts(searchTerm)">
+              </input>
+            </form>
+
+
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+          </div>
+        </script>
+
+        <!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
+        <!--<button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>-->
+        <!--<button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
+        <!--<button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
+        <button ng-click="open('lg')">SEARCH</button>
+        <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
+      </div>
+
     </div>
 
     <div ng-show="attemptIdLoaded" id="attemptViewerUI">
@@ -44,7 +117,8 @@
                   <!--<label class="label label-default">HABIT</label> &nbsp; <input id="atmptPge_hbtNme" class="editableField" type="text" ng-model="habitName"/>-->
                   <!--TODO ngmodel-->
                   <label for="other_atmptPge_hbtNme" class="label label-default">HABIT</label> &nbsp;
-                  <input style="width: 80%;" class="otherAttempt_input" id="other_atmptPge_hbtNme" type="text" ng-model="otherHabit.name" readonly/>
+                  <input style="width: 80%;" class="otherAttempt_input" id="other_atmptPge_hbtNme" type="text"
+                         ng-model="otherHabit.name" readonly/>
                 </h2>
                 <h3>&nbsp;&nbsp;&nbsp;
                   <label class="label label-primary">ATTEMPT</label> &nbsp;
@@ -198,3 +272,81 @@
     <br/>
   </div>
 </div>
+
+<!-- app code starts is here -->
+<script>
+  // App module
+  //
+  // The app module will contain all of the components the app needs (directives,
+  // controllers, services, etc.). Since it will be using the components within
+  // the elasticsearch module, define it a dependency.
+  var ExampleApp = angular.module('ExampleApp', ['elasticsearch']);
+
+  // Service
+  //
+  // esFactory() creates a configured client instance. Turn that instance
+  // into a service so that it can be required by other parts of the application
+  ExampleApp.service('client', function (esFactory) {
+    return esFactory({
+//      host: 'localhost:9200',
+        host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
+      apiVersion: '1.2',
+      log: 'trace'
+    });
+  });
+
+  // Controller
+  //
+  // It requires the "client" service, and fetches information about the server,
+  // it adds either an error or info about the server to $scope.
+  //
+  // It also requires the esFactory to that it can check for a specific type of
+  // error which might come back from the client
+  ExampleApp.controller('ExampleController', function ($scope, client, esFactory) {
+
+    client.cluster.state({
+        metric: [
+          'cluster_name',
+          'nodes',
+          'master_node',
+          'version'
+        ]
+      })
+      .then(function (resp) {
+        $scope.clusterState = resp;
+        $scope.error = null;
+      })
+      .catch(function (err) {
+        $scope.clusterState = null;
+        $scope.error = err;
+
+        // if the err is a NoConnections error, then the client was not able to
+        // connect to elasticsearch. In that case, create a more detailed error
+        // message
+        if (err instanceof esFactory.errors.NoConnections) {
+          $scope.error = new Error('Unable to connect to elasticsearch. ' +
+            'Make sure that it is running and listening at http://localhost:9200');
+        }
+      });
+
+    client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
+      index: 'attempt',
+      type: 'internal',
+      body: {
+        "query": { // http://joelabrahamsson.com/elasticsearch-101/    Basic free text search
+          "query_string": {
+            "query": "temptation"
+          }
+        }
+      }
+    }).then(function (resp) {
+      console.log("RESP");
+      console.log(resp);
+      var hits = resp.hits.hits;
+      $scope.searchResults = resp.hits.hits;
+    }, function (err) {
+      console.trace(err.message);
+    });
+
+  });
+</script>

@@ -12,6 +12,8 @@ var app = angular
     'anguvideo',
     'angularBootstrap',
     'elasticsearch',
+    'angulartics',
+    'angulartics.google.analytics',
     // 28Chain modules.
     'app.attemptViewer',
     'app.auth',

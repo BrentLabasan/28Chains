@@ -20,8 +20,7 @@ var elasticSearchURLs = [
   'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com'
 ];
 var client = new elasticsearch.Client({
-  host: elasticSearchURLs[0],
-  //host: 'localhost:9200',
+  host: elasticSearchURLs[1],
   log: 'trace'
 });
 
@@ -74,7 +73,7 @@ function removeIndex(snapshot) {
 }
 
 
-setInterval(function () {
+/*setInterval(function () {
 
   client.search({ //https://dashboard.searchly.com/17573/installation/nodejs#
     index: 'attempt',
@@ -88,10 +87,14 @@ setInterval(function () {
     }
   }).then(function (resp) {
     console.log(resp + "RESP RESP RESP RESP RESP RESP RESP RESP RESP RESP");
+    console.log("process.env. = " + process.env.ENVIRONMENT_28);
   }, function (err) {
     //console.log(err.message);
   });
-}, 3600000);
+
+
+
+}, 5000);*/
 
 
 var port = process.env.PORT || 3030;

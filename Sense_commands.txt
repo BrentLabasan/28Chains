@@ -1,0 +1,61 @@
+GET _search
+{
+   "query": {
+      "match_all": {}
+   }
+}
+
+
+GET attempt/_search
+
+GET attempt/attempt/_search
+
+GET attempt/internal/-KAaKyqEgb6iX53SCBWc
+
+GET attempt/external/-KAaKyqEgb6iX53SCBWc/
+
+GET attempt/internal/-KAaKyqEgb6iX53SCBWc/_search?q=*&pretty'
+
+GET attempt/internal/_search?q=*&pretty'
+
+GET attempt/internal/_search?q=temptation&pretty'
+
+GET _search
+{
+   "query": {
+      "match_all": {}
+   }
+}
+
+GET attempt/internal/_search
+{
+   "query": {
+      "match_all": {}
+   },
+   "_source": ["id", "name"]
+}
+
+GET attempt/internal/_search
+{
+  "query": { "match": { "id_habit": "-KAaKyqEgb6iX53SCBWc" } }
+}
+
+GET attempt/internal/_search
+{
+      "query_string" : {
+        "default_field" : "content",
+        "query" : "temptation"
+    }
+}
+
+GET attempt/internal/_search
+{
+      "query_string" : "temptation"
+}
+
+GET attempt/internal/_search
+{
+      "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}

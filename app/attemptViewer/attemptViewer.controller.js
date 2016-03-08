@@ -126,8 +126,8 @@
 
   app.service('client', function (esFactory) {
     return esFactory({
-      host: 'localhost:9200',
-//        host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
+      //host: 'localhost:9200',
+        host: 'https://paas:6f0aa4d02b9330765a79b677dd412747@dori-us-east-1.searchly.com',
       apiVersion: '1.6',
       log: 'trace'
     });

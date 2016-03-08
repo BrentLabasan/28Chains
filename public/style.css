@@ -264,6 +264,11 @@ hr.style-five {
   margin-right: 0px;
 }
 
-#atmpSrchrTbl {
-  tr { cursor: pointer; }
+#atmpSrchrTbl tr {
+  cursor: pointer;
+  color: #666666;
+}
+
+#atmpSrchrTbl tbody tr:hover {
+  color: #000000;
 }

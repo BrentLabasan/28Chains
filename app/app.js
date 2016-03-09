@@ -19,7 +19,8 @@ var app = angular
     'app.auth',
     'app.core',
     'app.engine28',
-    'app.layout'
+    'app.layout',
+    'app.static'
   ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -28,6 +29,21 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when('/main', {
       templateUrl: 'partials/main.html',
       controller: 'TestDatasController'
+    })
+    .when('/about', {
+      templateUrl: 'partials/about.html',
+      controller: 'StaticController'
+    })
+    .when('/FAQ', {
+      templateUrl: 'partials/FAQ.html',
+      controller: 'StaticController'
+    })
+    .when('/contact', {
+      templateUrl: 'partials/contact.html',
+      controller: 'StaticController'
+    })
+    .when('/support', {
+      redirectTo: '/contact'
     })
     .when('/landing', {
       templateUrl: 'partials/landing.html'

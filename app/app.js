@@ -38,6 +38,14 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'partials/FAQ.html',
       controller: 'StaticController'
     })
+    .when('/disclaimer', {
+      templateUrl: 'partials/disclaimer.html',
+      controller: 'StaticController'
+    })
+    .when('/careers', {
+      templateUrl: 'partials/careers.html',
+      controller: 'StaticController'
+    })
     .when('/contact', {
       templateUrl: 'partials/contact.html',
       controller: 'StaticController'

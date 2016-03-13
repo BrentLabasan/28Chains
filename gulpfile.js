@@ -12,7 +12,7 @@ var jscs = require('gulp-jscs');
 gulp.task('vet', function () {
   return gulp
     .src([
-      './src/**/*.js',
+      //'./src/**/*.js',
       './*.js'
     ])
     .pipe(jscs())

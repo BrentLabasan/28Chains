@@ -2,7 +2,7 @@ h1 {
 
 }
 
-h2{
+h2 {
 
 }
 
@@ -10,56 +10,52 @@ h3 {
 
 }
 
-
 h4 {
 
 }
-
-
-
 
 h5 {
 
 }
 
 .journalHeadings {
-    font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', cursive;
 }
 
 #attempt-3colContainer .col-lg-4 {
-    padding: 0px 10px 0px 20px;
-    background-color: ;
+  padding: 0px 10px 0px 20px;
+  background-color:;
 }
 
 #attempt-3colContainer .col-lg-4 h3 {
-    position: relative;
-    left: -20px;
+  position: relative;
+  left: -20px;
 }
 
 .editableField {
-  border:0px solid #FFFFFF;
+  border: 0px solid #FFFFFF;
 }
 
 .editableField:hover {
 
-  border:1px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 label h6 {
-color: grey;
-    font-weight: bold;
+  color: grey;
+  font-weight: bold;
 }
 
 button {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 table a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #div-nvView {
-    padding: 0 20px 10px 20px;
+  padding: 0 20px 10px 20px;
 }
 
 /*
@@ -69,124 +65,151 @@ hr {
 */
 
 footer {
-    padding: 0px 20px 0px 20px;
+  padding: 0px 20px 0px 20px;
 }
 
 .brenterface {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
 }
 
 .brenterface.ng-hide {
-    opacity: 0;
+  opacity: 0;
 }
 
-svg  {
-    z-index: -99;
+svg {
+  z-index: -99;
 }
 
 uib-tab-heading {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* http://stackoverflow.com/a/25803967 */
 /* set reference point */
 .tab-animation > .tab-content {
-    position: relative;
+  position: relative;
 }
 
 /* set animate effect */
-.tab-animation > .tab-content > .tab-pane{
-    transition: 0.2s linear opacity;
+.tab-animation > .tab-content > .tab-pane {
+  transition: 0.2s linear opacity;
 }
 
 /* overwrite display: none and remove from document flow */
 .tab-animation > .tab-content > .tab-pane.active-remove {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: block;
 }
 
 /* opacity=0 when removing "active" class */
 .tab-animation > .tab-content > .tab-pane.active-remove-active {
-    opacity: 0;
+  opacity: 0;
 }
 
 /* opacity=0 when adding "active" class */
 .tab-animation > .tab-content > .tab-pane.active-add {
-    opacity: 0;
+  opacity: 0;
 }
-
-
 
 /* view-source:http://getbootstrap.com/examples/sticky-footer/ */
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-    position: relative;
-    min-height: 100%;
-}
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #f5f5f5;
-}
-/* custom footer CSS */
-.footer {
-color: #adadad;
+  position: relative;
+  min-height: 100%;
 }
 
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+/* custom footer CSS */
+.footer {
+  color: #adadad;
+}
 
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
 .container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
 }
+
 .container .text-muted {
-    margin: 20px 0;
+  margin: 20px 0;
 }
-
-
 
 /* http://stackoverflow.com/questions/23985018/simple-css-animation-loop-fading-in-out-loading-text */
 
 @keyframes flickerAnimation {
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-o-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-moz-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-webkit-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
 .animate-flicker {
-    -webkit-animation: flickerAnimation 1s infinite;
-    -moz-animation: flickerAnimation 1s infinite;
-    -o-animation: flickerAnimation 1s infinite;
-    animation: flickerAnimation 1s infinite;
+  -webkit-animation: flickerAnimation 1s infinite;
+  -moz-animation: flickerAnimation 1s infinite;
+  -o-animation: flickerAnimation 1s infinite;
+  animation: flickerAnimation 1s infinite;
 }
 
 /* ATTEMPT PAGE */
@@ -195,15 +218,14 @@ color: #adadad;
 }
 
 textarea {
-    overflow-y: scroll;
-    /*height: 100px;*/
-    /*resize: none; !* Remove this if you want the user to resize the textarea *!*/
+  overflow-y: scroll;
+  /*height: 100px;*/
+  /*resize: none; !* Remove this if you want the user to resize the textarea *!*/
 }
 
 .otherAttempt_input {
   border: 0px;
 }
-
 
 /*http://jsfiddle.net/chriscoyier/gaezp/35/*/
 
@@ -216,18 +238,18 @@ hr.style-one {
   height: 1px;
   background: #333;
   background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
-  background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
-  background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
-  background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+  background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
 }
 
 hr.style-two {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 hr.style-three {
@@ -271,4 +293,19 @@ hr.style-five {
 
 #atmpSrchrTbl tbody tr:hover {
   color: #000000;
+}
+
+#landingCols_leftCol {
+  /*background-color: #FF8400;*/
+  /*height:100vh;*/
+}
+
+#landingCols_rightCol {
+  /*background-color: #FFB700;*/
+  /*height:100vh;*/
+  margin: 40px 0 0 0 ;
+}
+
+.navbar {
+  margin-bottom: 0px;
 }

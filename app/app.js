@@ -54,7 +54,8 @@ app.config(['$routeProvider', function ($routeProvider) {
       redirectTo: '/contact'
     })
     .when('/landing', {
-      templateUrl: 'partials/landing.html'
+      //templateUrl: 'partials/landing.html'
+      redirectTo: '/about'
     })
     .when('/showAllHabits', {
       templateUrl: 'partials/showAllHabits.html',
@@ -129,7 +130,7 @@ app.config(['$routeProvider', function ($routeProvider) {
       }
     })
     .otherwise({
-      redirectTo: '/showAllHabits'
+      redirectTo: '/about'
     });
 }]);
 

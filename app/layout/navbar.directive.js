@@ -25,6 +25,7 @@
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       console.log("$scope.auth.$onAuth in navbar.directive.js");
+      console.log(authData);
       $scope.authData = authData;
     });
 
